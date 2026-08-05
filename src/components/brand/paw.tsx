@@ -16,72 +16,108 @@ export const defaultPawColors: PawColors = {
   toe4: "var(--pink)",
 };
 
-/**
- * "Creative Paw" — modular brand motif.
- * Big rounded pad + 4 toes: rounded-square, circle, rounded-square, triangle.
- * Drawn on a 100x100 viewBox.
- */
-export function CreativePaw({
-  colors = defaultPawColors,
-  className,
-  mono,
-}: {
-  colors?: Partial<PawColors>;
-  className?: string;
-  mono?: string;
-}) {
-  const c = { ...defaultPawColors, ...colors };
-  const fill = (v: string) => mono ?? v;
-  return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      {/* pad — slightly smaller, leaves breathing room under the toes */}
-      <rect x="18" y="47" width="64" height="47" rx="23" fill={fill(c.pad)} />
-      {/* toe 1 — rounded square */}
-      <rect x="13" y="21" width="19" height="19" rx="6.5" fill={fill(c.toe1)} transform="rotate(-16 22.5 30.5)" />
-      {/* toe 2 — circle */}
-      <circle cx="42" cy="19" r="10.5" fill={fill(c.toe2)} />
-      {/* toe 3 — rounded square */}
-      <rect x="58" y="12" width="19" height="19" rx="6.5" fill={fill(c.toe3)} transform="rotate(14 67.5 21.5)" />
-      {/* toe 4 — triangle */}
-      <path d="M84 21 L94 40 L74 40 Z" fill={fill(c.toe4)} />
+/** The one true paw silhouette — 100x100 viewBox. */
+export const PAD_D =
+  "M50 94 C 32 94 20 82 20 67 C 20 54 34 48 50 48 C 66 48 80 54 80 67 C 80 82 68 94 50 94Z";
 
-    </svg>
+type ToeSpec = { cx: number; cy: number; rx: number; ry: number; r: number };
+
+export const TOES: ToeSpec[] = [
+  { cx: 24, cy: 46, rx: 8.5, ry: 11.5, r: -22 },
+  { cx: 41, cy: 33, rx: 9, ry: 12.5, r: -8 },
+  { cx: 59, cy: 33, rx: 9, ry: 12.5, r: 8 },
+  { cx: 76, cy: 46, rx: 8.5, ry: 11.5, r: 22 },
+];
+
+/** Slightly larger toes used for the focal welcoming paw. */
+export const TOES_FOCAL: ToeSpec[] = [
+  { cx: 24, cy: 46, rx: 9, ry: 12, r: -22 },
+  { cx: 41, cy: 32, rx: 9.5, ry: 13, r: -8 },
+  { cx: 59, cy: 32, rx: 9.5, ry: 13, r: 8 },
+  { cx: 76, cy: 46, rx: 9, ry: 12, r: 22 },
+];
+
+/** Raw paw geometry (no <svg> wrapper) — drop inside any svg coordinate space. */
+export function PawShape({
+  color,
+  colors,
+  focal = false,
+  ...rest
+}: {
+  color?: string;
+  colors?: Partial<PawColors>;
+  focal?: boolean;
+} & React.SVGProps<SVGGElement>) {
+  const c = { ...defaultPawColors, ...colors };
+  const toes = focal ? TOES_FOCAL : TOES;
+  const fillOf = (v: string) => color ?? v;
+  const toeFills = [c.toe1, c.toe2, c.toe3, c.toe4];
+  return (
+    <g {...rest}>
+      <path d={PAD_D} fill={color ? undefined : fillOf(c.pad)} {...(color ? { fill: color } : {})} />
+      {toes.map((t, i) => (
+        <ellipse
+          key={i}
+          cx={t.cx}
+          cy={t.cy}
+          rx={t.rx}
+          ry={t.ry}
+          transform={`rotate(${t.r} ${t.cx} ${t.cy})`}
+          fill={color ?? toeFills[i]}
+        />
+      ))}
+    </g>
   );
 }
 
+/** Outline-only version (used for the dashed "seat kept open" print). */
+export function PawOutline(props: React.SVGProps<SVGGElement>) {
+  return (
+    <g {...props}>
+      <path d={PAD_D} />
+      {TOES.map((t, i) => (
+        <ellipse
+          key={i}
+          cx={t.cx}
+          cy={t.cy}
+          rx={t.rx}
+          ry={t.ry}
+          transform={`rotate(${t.r} ${t.cx} ${t.cy})`}
+        />
+      ))}
+    </g>
+  );
+}
 
-/** Simple two-tone paw print used for the "walking" prints and logo eyes. */
-export function PawPrint({
+/** Standalone paw as its own svg (logo eyes, floaters, etc.). */
+export function Paw({
   className,
-  color = "var(--coral)",
-  dashed = false,
+  color,
+  colors,
+  focal,
+  opacity,
 }: {
   className?: string;
   color?: string;
-  dashed?: boolean;
+  colors?: Partial<PawColors>;
+  focal?: boolean;
+  opacity?: number;
 }) {
-  const solid = dashed
-    ? { fill: "none", stroke: color, strokeWidth: 4, strokeDasharray: "7 7", strokeLinejoin: "round" as const }
-    : { fill: color };
   return (
-    <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      <rect x="20" y="46" width="60" height="48" rx="24" {...solid} />
-      <ellipse cx="20" cy="30" rx="10" ry="13" {...solid} />
-      <ellipse cx="42" cy="19" rx="10" ry="13" {...solid} />
-      <ellipse cx="64" cy="21" rx="10" ry="13" {...solid} />
-      <ellipse cx="84" cy="36" rx="9" ry="12" {...solid} />
+    <svg viewBox="0 0 100 100" className={className} opacity={opacity} aria-hidden="true">
+      <PawShape color={color} colors={colors} focal={focal} />
     </svg>
   );
 }
 
-/** The Trail — flowing dotted paw-path. */
+/** The Trail — flowing dotted paw-path with perfectly round, evenly spaced dots. */
 export function Trail({
   d,
   className,
   color = "var(--pink)",
   duration = 26,
   width = 3.4,
-  opacity = 0.75,
+  opacity = 0.55,
 }: {
   d: string;
   className?: string;
@@ -98,10 +134,11 @@ export function Trail({
       stroke={color}
       strokeWidth={width}
       strokeLinecap="round"
-      strokeDasharray="0.1 17"
+      strokeDasharray="0.5 15"
+      vectorEffect="non-scaling-stroke"
       opacity={opacity}
       initial={{ strokeDashoffset: 0 }}
-      animate={{ strokeDashoffset: -340 }}
+      animate={{ strokeDashoffset: -155 }}
       transition={{ duration, repeat: Infinity, ease: "linear" }}
     />
   );
