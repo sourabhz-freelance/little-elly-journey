@@ -184,8 +184,8 @@ export default function Hero() {
         transition={{ duration: 1.6 }}
         style={{
           background:
-            "radial-gradient(60% 55% at 88% 6%, color-mix(in oklab, var(--lightpink) 70%, transparent), transparent 70%)," +
-            "radial-gradient(55% 50% at 6% 96%, color-mix(in oklab, var(--yellow) 32%, transparent), transparent 72%)",
+            "radial-gradient(58% 52% at 88% 4%, color-mix(in oklab, var(--lightpink) 42%, transparent), transparent 72%)," +
+            "radial-gradient(52% 48% at 4% 98%, color-mix(in oklab, var(--yellow) 18%, transparent), transparent 74%)",
         }}
       />
       <Trails mx={mx} my={my} />
