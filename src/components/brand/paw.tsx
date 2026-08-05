@@ -46,9 +46,9 @@ export function PawShapes({
   colors,
   focal,
 }: {
-  color?: string;
-  colors?: Partial<PawColors>;
-  focal?: boolean;
+  color?: string | undefined;
+  colors?: Partial<PawColors> | undefined;
+  focal?: boolean | undefined;
 }) {
   const c = { ...brandPawColors, ...colors };
   const toes = focal ? TOES_FOCAL : TOES;
@@ -97,10 +97,10 @@ export function Paw({
   colors,
   focal,
 }: {
-  className?: string;
-  color?: string;
-  colors?: Partial<PawColors>;
-  focal?: boolean;
+  className?: string | undefined;
+  color?: string | undefined;
+  colors?: Partial<PawColors> | undefined;
+  focal?: boolean | undefined;
 }) {
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
