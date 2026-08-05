@@ -103,7 +103,7 @@ function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }
 function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
   return (
     <motion.div
-      className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[360px] lg:max-w-[520px]"
+      className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[340px] lg:max-w-[440px] xl:max-w-[500px]"
       style={{ x: useTransform(mx, (v) => v * 26), y: useTransform(my, (v) => v * 20) }}
       initial={{ opacity: 0, scale: 0.92 }}
       animate={{ opacity: 1, scale: 1 }}
@@ -120,20 +120,20 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
         transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
 
-      {/* the welcoming paw — breathing */}
+      {/* the welcoming paw — breathing, offset up-right to leave room for the trail */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[62%] w-[62%] -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-[56%] top-[44%] h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2"
         animate={{ scale: [1, 1.035, 1] }}
         transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
       >
-        <CreativePaw className="h-full w-full drop-shadow-[0_24px_40px_rgba(232,82,83,0.25)]" />
+        <CreativePaw className="h-full w-full drop-shadow-[0_14px_22px_rgba(232,82,83,0.14)]" />
       </motion.div>
 
-      {/* three prints walking up toward the hand */}
+      {/* three prints walking up (lower-left → base of the big paw), growing as they arrive */}
       {[
-        { l: "2%", t: "78%", s: 44, r: -24 },
-        { l: "16%", t: "62%", s: 40, r: -14 },
-        { l: "31%", t: "50%", s: 36, r: -6 },
+        { l: "8%", t: "86%", s: "9%", r: -26 },
+        { l: "17%", t: "76%", s: "11%", r: -16 },
+        { l: "27%", t: "66%", s: "13%", r: -8 },
       ].map((p, i) => (
         <motion.div
           key={i}
@@ -146,10 +146,11 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
         </motion.div>
       ))}
 
-      {/* the seat kept open */}
+      {/* the seat kept open — endpoint of the trail, just beside the big paw */}
       <motion.div
-        className="absolute right-[2%] top-[26%] h-[16%] w-[16%] rotate-12"
-        animate={{ opacity: [0.35, 0.85, 0.35], scale: [1, 1.06, 1] }}
+        className="absolute left-[21%] top-[52%] h-[15%] w-[15%] -rotate-2"
+
+        animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.06, 1] }}
         transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
       >
         <PawPrint className="h-full w-full" color="var(--coral)" dashed />
@@ -216,7 +217,7 @@ export default function Hero() {
       </motion.header>
 
       {/* content */}
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-8 px-6 pb-8 pt-28 sm:px-10 lg:grid-cols-[55%_45%] lg:gap-10 lg:pb-16">
+      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-8 px-6 pb-10 pt-28 sm:px-10 lg:grid-cols-[55%_45%] lg:gap-10 lg:pb-12 lg:pt-24">
         <div className="order-2 text-center lg:order-1 lg:text-left">
           <motion.p
             className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"

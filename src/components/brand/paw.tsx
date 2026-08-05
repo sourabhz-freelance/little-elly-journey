@@ -34,16 +34,17 @@ export function CreativePaw({
   const fill = (v: string) => mono ?? v;
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
-      {/* pad */}
-      <rect x="14" y="44" width="72" height="52" rx="26" fill={fill(c.pad)} />
+      {/* pad — slightly smaller, leaves breathing room under the toes */}
+      <rect x="18" y="47" width="64" height="47" rx="23" fill={fill(c.pad)} />
       {/* toe 1 — rounded square */}
-      <rect x="6" y="22" width="21" height="21" rx="7" fill={fill(c.toe1)} transform="rotate(-16 16.5 32.5)" />
+      <rect x="13" y="21" width="19" height="19" rx="6.5" fill={fill(c.toe1)} transform="rotate(-16 22.5 30.5)" />
       {/* toe 2 — circle */}
-      <circle cx="38" cy="24" r="11.5" fill={fill(c.toe2)} />
+      <circle cx="42" cy="19" r="10.5" fill={fill(c.toe2)} />
       {/* toe 3 — rounded square */}
-      <rect x="55" y="13" width="21" height="21" rx="7" fill={fill(c.toe3)} transform="rotate(14 65.5 23.5)" />
+      <rect x="58" y="12" width="19" height="19" rx="6.5" fill={fill(c.toe3)} transform="rotate(14 67.5 21.5)" />
       {/* toe 4 — triangle */}
-      <path d="M84 18 L97 40 L71 40 Z" fill={fill(c.toe4)} />
+      <path d="M84 21 L94 40 L74 40 Z" fill={fill(c.toe4)} />
+
     </svg>
   );
 }
