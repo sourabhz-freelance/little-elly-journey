@@ -35,15 +35,16 @@ export function CreativePaw({
   return (
     <svg viewBox="0 0 100 100" className={className} aria-hidden="true">
       {/* pad — slightly smaller, leaves breathing room under the toes */}
-      <rect x="20" y="50" width="60" height="44" rx="22" fill={fill(c.pad)} />
+      <rect x="18" y="47" width="64" height="47" rx="23" fill={fill(c.pad)} />
       {/* toe 1 — rounded square */}
-      <rect x="8" y="24" width="19" height="19" rx="6.5" fill={fill(c.toe1)} transform="rotate(-16 17.5 33.5)" />
+      <rect x="13" y="21" width="19" height="19" rx="6.5" fill={fill(c.toe1)} transform="rotate(-16 22.5 30.5)" />
       {/* toe 2 — circle */}
-      <circle cx="39" cy="22" r="10" fill={fill(c.toe2)} />
+      <circle cx="42" cy="19" r="10.5" fill={fill(c.toe2)} />
       {/* toe 3 — rounded square */}
-      <rect x="56" y="12" width="19" height="19" rx="6.5" fill={fill(c.toe3)} transform="rotate(14 65.5 21.5)" />
+      <rect x="58" y="12" width="19" height="19" rx="6.5" fill={fill(c.toe3)} transform="rotate(14 67.5 21.5)" />
       {/* toe 4 — triangle */}
-      <path d="M85 20 L96 39 L74 39 Z" fill={fill(c.toe4)} />
+      <path d="M84 21 L94 40 L74 40 Z" fill={fill(c.toe4)} />
+
     </svg>
   );
 }

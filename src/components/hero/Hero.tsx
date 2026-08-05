@@ -131,9 +131,9 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
 
       {/* three prints walking up (lower-left → base of the big paw), growing as they arrive */}
       {[
-        { l: "5%", t: "84%", s: "9%", r: -26 },
-        { l: "14%", t: "73%", s: "11%", r: -16 },
-        { l: "24%", t: "63%", s: "13%", r: -8 },
+        { l: "8%", t: "86%", s: "9%", r: -26 },
+        { l: "17%", t: "76%", s: "11%", r: -16 },
+        { l: "27%", t: "66%", s: "13%", r: -8 },
       ].map((p, i) => (
         <motion.div
           key={i}
@@ -148,7 +148,8 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
 
       {/* the seat kept open — endpoint of the trail, just beside the big paw */}
       <motion.div
-        className="absolute left-[19%] top-[50%] h-[15%] w-[15%] -rotate-2"
+        className="absolute left-[21%] top-[52%] h-[15%] w-[15%] -rotate-2"
+
         animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.06, 1] }}
         transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
       >
