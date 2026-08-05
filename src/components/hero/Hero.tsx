@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { Trail } from "@/components/brand/paw";
+import { PawScene } from "@/components/hero/PawScene";
 import { LogoLockup } from "@/components/brand/LogoLockup";
 import { heroContent as C } from "@/content/hero";
 
@@ -25,14 +26,15 @@ function useCounter(target: number, duration = 1800, delay = 500) {
 }
 
 const trails = [
-  "M -60 140 C 220 80, 420 250, 700 310 S 1000 390, 1180 340",
-  "M -40 600 C 260 630, 460 470, 720 400 S 1010 300, 1200 250",
+  { d: "M -80 170 C 260 90, 520 300, 840 360 S 1200 430, 1500 380", color: "var(--pink)" },
+  { d: "M -60 700 C 300 730, 560 540, 880 460 S 1230 340, 1520 290", color: "var(--pink)" },
+  { d: "M -80 460 C 240 470, 520 410, 830 415 S 1240 400, 1520 340", color: "var(--lightpink)" },
 ];
 
 function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
   return (
     <motion.svg
-      viewBox="0 0 1200 700"
+      viewBox="0 0 1440 900"
       preserveAspectRatio="xMidYMid slice"
       className="pointer-events-none absolute inset-0 h-full w-full"
       initial={{ opacity: 0 }}
@@ -40,8 +42,8 @@ function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }
       transition={{ duration: 2, delay: 0.3 }}
       style={{ x: useTransform(mx, (v) => v * -10), y: useTransform(my, (v) => v * -7) }}
     >
-      {trails.map((d, i) => (
-        <Trail key={i} d={d} duration={28 + i * 6} opacity={0.38} color="var(--pink)" />
+      {trails.map((t, i) => (
+        <Trail key={i} d={t.d} duration={28 + i * 6} opacity={0.55} color={t.color} />
       ))}
     </motion.svg>
   );
@@ -104,7 +106,8 @@ export default function Hero() {
       </motion.header>
 
       {/* content */}
-      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-6 pb-10 pt-28 text-center sm:px-10">
+      <div className="relative z-10 mx-auto grid w-full max-w-6xl flex-1 grid-cols-1 items-center gap-6 px-6 pb-10 pt-28 sm:px-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.85fr)] lg:gap-10">
+      <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
         <motion.p
           className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
           initial={{ opacity: 0, y: 14 }}
@@ -142,6 +145,17 @@ export default function Hero() {
           <strong className="font-semibold text-ink">{C.sublineBold}</strong>
           {C.sublineRest}
         </motion.p>
+        </div>
+
+        <motion.div
+          className="relative w-full max-w-[420px] justify-self-center lg:max-w-none"
+          initial={{ opacity: 0, scale: 0.94 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 1.1, delay: 0.6, ease }}
+          style={{ x: useTransform(mx, (v) => v * 14), y: useTransform(my, (v) => v * 10) }}
+        >
+          <PawScene className="h-auto w-full" />
+        </motion.div>
       </div>
 
       {/* proof strip */}
