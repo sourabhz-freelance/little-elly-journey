@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
 import { Trail } from "@/components/brand/paw";
+import { PawScene } from "@/components/hero/PawScene";
 import { LogoLockup } from "@/components/brand/LogoLockup";
 import { heroContent as C } from "@/content/hero";
 
