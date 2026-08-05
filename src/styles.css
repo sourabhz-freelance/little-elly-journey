@@ -77,6 +77,18 @@
 }
 
 :root {
+  /* Little Elly brand palette */
+  --coral: #e85253;
+  --yellow: #ffd541;
+  --pink: #ed9fb6;
+  --ink: #09094d;
+  --periwinkle: #a6a5fe;
+  --cyan: #42c4e1;
+  --orange: #ff9008;
+  --turquoise: #09bab7;
+  --lightpink: #fbd6e1;
+  --cream: #fff8f3;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
