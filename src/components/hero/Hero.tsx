@@ -25,14 +25,15 @@ function useCounter(target: number, duration = 1800, delay = 500) {
 }
 
 const trails = [
-  "M -60 140 C 220 80, 420 250, 700 310 S 1000 390, 1180 340",
-  "M -40 600 C 260 630, 460 470, 720 400 S 1010 300, 1200 250",
+  { d: "M -80 210 C 260 150, 520 300, 860 350 S 1250 420, 1520 360", color: "var(--pink)" },
+  { d: "M -80 700 C 300 730, 560 560, 880 470 S 1240 350, 1520 300", color: "var(--lightpink)" },
+  { d: "M -80 470 C 320 440, 600 500, 900 420 S 1260 250, 1520 190", color: "var(--pink)" },
 ];
 
 function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
   return (
     <motion.svg
-      viewBox="0 0 1200 700"
+      viewBox="0 0 1440 900"
       preserveAspectRatio="xMidYMid slice"
       className="pointer-events-none absolute inset-0 h-full w-full"
       initial={{ opacity: 0 }}
@@ -40,12 +41,13 @@ function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }
       transition={{ duration: 2, delay: 0.3 }}
       style={{ x: useTransform(mx, (v) => v * -10), y: useTransform(my, (v) => v * -7) }}
     >
-      {trails.map((d, i) => (
-        <Trail key={i} d={d} duration={28 + i * 6} opacity={0.38} color="var(--pink)" />
+      {trails.map((t, i) => (
+        <Trail key={i} d={t.d} duration={26 + i * 6} opacity={0.55} color={t.color} />
       ))}
     </motion.svg>
   );
 }
+
 
 /* ---------------------------------- hero --------------------------------- */
 
