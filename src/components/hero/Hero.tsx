@@ -98,16 +98,15 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.2, delay: 0.5, ease }}
     >
-      {/* pulsing glow */}
-      <motion.div
-        className="absolute inset-[6%] rounded-full"
+      {/* soft glow */}
+      <div
+        className="absolute inset-[8%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 26%, transparent), transparent 68%)",
+            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 14%, transparent), transparent 70%)",
         }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
+
 
       {/* the welcoming paw — breathing, offset up-right to leave room for the trail */}
       <motion.div
