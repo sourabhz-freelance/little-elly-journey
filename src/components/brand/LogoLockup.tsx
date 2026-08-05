@@ -1,4 +1,4 @@
-import { PawPrint } from "./paw";
+import { Paw } from "./paw";
 import { heroContent } from "@/content/hero";
 
 /**
@@ -9,8 +9,8 @@ export function LogoLockup() {
     <div className="flex items-center gap-3">
       <div className="relative grid h-11 w-11 shrink-0 place-items-center rounded-full bg-yellow shadow-[0_6px_18px_-6px_rgba(232,82,83,0.45)]">
         <div className="flex gap-1">
-          <PawPrint className="h-4 w-4 -rotate-12" />
-          <PawPrint className="h-4 w-4 rotate-12" />
+          <Paw className="h-4 w-4 -rotate-12" color="var(--coral)" />
+          <Paw className="h-4 w-4 rotate-12" color="var(--coral)" />
         </div>
       </div>
       <div className="leading-none">
