@@ -25,13 +25,9 @@ function useCounter(target: number, duration = 1800, delay = 500) {
 }
 
 const floatingPaws = [
-  { x: "6%", y: "14%", size: 120, rot: -18, color: "var(--coral)", o: 0.08, d: 0, depth: 1 },
-  { x: "22%", y: "72%", size: 88, rot: 24, color: "var(--turquoise)", o: 0.09, d: 1.4, depth: -1 },
-  { x: "44%", y: "8%", size: 70, rot: 8, color: "var(--periwinkle)", o: 0.09, d: 2.2, depth: 1 },
-  { x: "68%", y: "80%", size: 104, rot: -12, color: "var(--orange)", o: 0.07, d: 0.8, depth: -1 },
-  { x: "88%", y: "22%", size: 92, rot: 30, color: "var(--cyan)", o: 0.08, d: 2.8, depth: 1 },
-  { x: "78%", y: "56%", size: 62, rot: -26, color: "var(--pink)", o: 0.1, d: 1.9, depth: -1 },
-  { x: "35%", y: "38%", size: 54, rot: 14, color: "var(--yellow)", o: 0.1, d: 3.4, depth: 1 },
+  { x: "8%", y: "16%", size: 96, rot: -18, color: "var(--coral)", o: 0.06, d: 0, depth: 1 },
+  { x: "86%", y: "24%", size: 78, rot: 22, color: "var(--periwinkle)", o: 0.06, d: 1.6, depth: -1 },
+  { x: "20%", y: "74%", size: 68, rot: 12, color: "var(--turquoise)", o: 0.06, d: 2.6, depth: 1 },
 ];
 
 function FloatingPaws({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
@@ -46,18 +42,18 @@ function FloatingPaws({ mx, my }: { mx: MotionValue<number>; my: MotionValue<num
             top: p.y,
             width: p.size,
             height: p.size,
-            x: useTransform(mx, (v) => v * 22 * p.depth),
-            y: useTransform(my, (v) => v * 16 * p.depth),
+            x: useTransform(mx, (v) => v * 16 * p.depth),
+            y: useTransform(my, (v) => v * 12 * p.depth),
           }}
         >
           <motion.div
             initial={{ opacity: 0 }}
-            animate={{ opacity: p.o, y: [0, -14, 0], rotate: [p.rot, p.rot + 6, p.rot] }}
+            animate={{ opacity: p.o, y: [0, -10, 0] }}
             transition={{
-              opacity: { duration: 1.4, delay: 0.6 + i * 0.08 },
-              y: { duration: 12 + p.d, repeat: Infinity, ease: "easeInOut", delay: p.d },
-              rotate: { duration: 16 + p.d, repeat: Infinity, ease: "easeInOut", delay: p.d },
+              opacity: { duration: 1.4, delay: 0.6 + i * 0.1 },
+              y: { duration: 14 + p.d, repeat: Infinity, ease: "easeInOut", delay: p.d },
             }}
+            style={{ rotate: p.rot }}
           >
             <CreativePaw mono={p.color} className="h-full w-full" />
           </motion.div>
@@ -70,8 +66,6 @@ function FloatingPaws({ mx, my }: { mx: MotionValue<number>; my: MotionValue<num
 const trails = [
   "M -60 120 C 220 60, 420 240, 700 300 S 1000 380, 1180 330",
   "M -40 620 C 260 640, 460 470, 720 400 S 1010 300, 1200 250",
-  "M 300 -60 C 380 140, 560 240, 760 330 S 980 470, 1120 620",
-  "M 1240 60 C 1040 160, 900 220, 780 320 S 620 470, 520 700",
 ];
 
 function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
@@ -83,20 +77,15 @@ function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2, delay: 0.3 }}
-      style={{ x: useTransform(mx, (v) => v * -18), y: useTransform(my, (v) => v * -12) }}
+      style={{ x: useTransform(mx, (v) => v * -12), y: useTransform(my, (v) => v * -8) }}
     >
       {trails.map((d, i) => (
-        <Trail
-          key={i}
-          d={d}
-          duration={22 + i * 5}
-          opacity={i % 2 ? 0.5 : 0.75}
-          color={i === 2 ? "var(--lightpink)" : "var(--pink)"}
-        />
+        <Trail key={i} d={d} duration={26 + i * 6} opacity={0.42} color="var(--pink)" />
       ))}
     </motion.svg>
   );
 }
+
 
 /* --------------------------------- scene --------------------------------- */
 
@@ -109,16 +98,15 @@ function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 1.2, delay: 0.5, ease }}
     >
-      {/* pulsing glow */}
-      <motion.div
-        className="absolute inset-[6%] rounded-full"
+      {/* soft glow */}
+      <div
+        className="absolute inset-[8%] rounded-full"
         style={{
           background:
-            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 26%, transparent), transparent 68%)",
+            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 14%, transparent), transparent 70%)",
         }}
-        animate={{ scale: [1, 1.08, 1], opacity: [0.75, 1, 0.75] }}
-        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
       />
+
 
       {/* the welcoming paw — breathing, offset up-right to leave room for the trail */}
       <motion.div
@@ -196,8 +184,8 @@ export default function Hero() {
         transition={{ duration: 1.6 }}
         style={{
           background:
-            "radial-gradient(60% 55% at 88% 6%, color-mix(in oklab, var(--lightpink) 70%, transparent), transparent 70%)," +
-            "radial-gradient(55% 50% at 6% 96%, color-mix(in oklab, var(--yellow) 32%, transparent), transparent 72%)",
+            "radial-gradient(58% 52% at 88% 4%, color-mix(in oklab, var(--lightpink) 42%, transparent), transparent 72%)," +
+            "radial-gradient(52% 48% at 4% 98%, color-mix(in oklab, var(--yellow) 18%, transparent), transparent 74%)",
         }}
       />
       <Trails mx={mx} my={my} />
