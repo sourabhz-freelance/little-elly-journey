@@ -19,6 +19,21 @@
  */
 
 @theme inline {
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Little Elly brand tokens */
+  --color-coral: var(--coral);
+  --color-yellow: var(--yellow);
+  --color-pink: var(--pink);
+  --color-ink: var(--ink);
+  --color-periwinkle: var(--periwinkle);
+  --color-cyan: var(--cyan);
+  --color-orange: var(--orange);
+  --color-turquoise: var(--turquoise);
+  --color-lightpink: var(--lightpink);
+  --color-cream: var(--cream);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -62,6 +77,18 @@
 }
 
 :root {
+  /* Little Elly brand palette */
+  --coral: #e85253;
+  --yellow: #ffd541;
+  --pink: #ed9fb6;
+  --ink: #09094d;
+  --periwinkle: #a6a5fe;
+  --cyan: #42c4e1;
+  --orange: #ff9008;
+  --turquoise: #09bab7;
+  --lightpink: #fbd6e1;
+  --cream: #fff8f3;
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.129 0.042 264.695);
@@ -138,7 +165,10 @@
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
   }
+
 }
