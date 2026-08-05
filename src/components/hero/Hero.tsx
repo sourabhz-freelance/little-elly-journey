@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion, useMotionValue, useSpring, useTransform, type MotionValue } from "framer-motion";
-import { CreativePaw, PawPrint, Trail } from "@/components/brand/paw";
+import { Trail } from "@/components/brand/paw";
 import { LogoLockup } from "@/components/brand/LogoLockup";
 import { heroContent as C } from "@/content/hero";
 
@@ -24,48 +24,9 @@ function useCounter(target: number, duration = 1800, delay = 500) {
   return n;
 }
 
-const floatingPaws = [
-  { x: "8%", y: "16%", size: 96, rot: -18, color: "var(--coral)", o: 0.06, d: 0, depth: 1 },
-  { x: "86%", y: "24%", size: 78, rot: 22, color: "var(--periwinkle)", o: 0.06, d: 1.6, depth: -1 },
-  { x: "20%", y: "74%", size: 68, rot: 12, color: "var(--turquoise)", o: 0.06, d: 2.6, depth: 1 },
-];
-
-function FloatingPaws({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
-  return (
-    <div className="pointer-events-none absolute inset-0 overflow-hidden">
-      {floatingPaws.map((p, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{
-            left: p.x,
-            top: p.y,
-            width: p.size,
-            height: p.size,
-            x: useTransform(mx, (v) => v * 16 * p.depth),
-            y: useTransform(my, (v) => v * 12 * p.depth),
-          }}
-        >
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: p.o, y: [0, -10, 0] }}
-            transition={{
-              opacity: { duration: 1.4, delay: 0.6 + i * 0.1 },
-              y: { duration: 14 + p.d, repeat: Infinity, ease: "easeInOut", delay: p.d },
-            }}
-            style={{ rotate: p.rot }}
-          >
-            <CreativePaw mono={p.color} className="h-full w-full" />
-          </motion.div>
-        </motion.div>
-      ))}
-    </div>
-  );
-}
-
 const trails = [
-  "M -60 120 C 220 60, 420 240, 700 300 S 1000 380, 1180 330",
-  "M -40 620 C 260 640, 460 470, 720 400 S 1010 300, 1200 250",
+  "M -60 140 C 220 80, 420 250, 700 310 S 1000 390, 1180 340",
+  "M -40 600 C 260 630, 460 470, 720 400 S 1010 300, 1200 250",
 ];
 
 function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
@@ -77,73 +38,12 @@ function Trails({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 2, delay: 0.3 }}
-      style={{ x: useTransform(mx, (v) => v * -12), y: useTransform(my, (v) => v * -8) }}
+      style={{ x: useTransform(mx, (v) => v * -10), y: useTransform(my, (v) => v * -7) }}
     >
       {trails.map((d, i) => (
-        <Trail key={i} d={d} duration={26 + i * 6} opacity={0.42} color="var(--pink)" />
+        <Trail key={i} d={d} duration={28 + i * 6} opacity={0.38} color="var(--pink)" />
       ))}
     </motion.svg>
-  );
-}
-
-
-/* --------------------------------- scene --------------------------------- */
-
-function HandScene({ mx, my }: { mx: MotionValue<number>; my: MotionValue<number> }) {
-  return (
-    <motion.div
-      className="relative mx-auto aspect-square w-full max-w-[240px] sm:max-w-[340px] lg:max-w-[440px] xl:max-w-[500px]"
-      style={{ x: useTransform(mx, (v) => v * 26), y: useTransform(my, (v) => v * 20) }}
-      initial={{ opacity: 0, scale: 0.92 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 1.2, delay: 0.5, ease }}
-    >
-      {/* soft glow */}
-      <div
-        className="absolute inset-[8%] rounded-full"
-        style={{
-          background:
-            "radial-gradient(circle at 50% 50%, color-mix(in oklab, var(--coral) 14%, transparent), transparent 70%)",
-        }}
-      />
-
-
-      {/* the welcoming paw — breathing, offset up-right to leave room for the trail */}
-      <motion.div
-        className="absolute left-[56%] top-[44%] h-[58%] w-[58%] -translate-x-1/2 -translate-y-1/2"
-        animate={{ scale: [1, 1.035, 1] }}
-        transition={{ duration: 5.5, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <CreativePaw className="h-full w-full drop-shadow-[0_14px_22px_rgba(232,82,83,0.14)]" />
-      </motion.div>
-
-      {/* three prints walking up (lower-left → base of the big paw), growing as they arrive */}
-      {[
-        { l: "8%", t: "86%", s: "9%", r: -26 },
-        { l: "17%", t: "76%", s: "11%", r: -16 },
-        { l: "27%", t: "66%", s: "13%", r: -8 },
-      ].map((p, i) => (
-        <motion.div
-          key={i}
-          className="absolute"
-          style={{ left: p.l, top: p.t, width: p.s, height: p.s, rotate: p.r }}
-          animate={{ opacity: [0, 1, 1, 0], y: [10, 0, 0, -6] }}
-          transition={{ duration: 4.5, repeat: Infinity, delay: i * 0.55, times: [0, 0.2, 0.7, 1], ease: "easeInOut" }}
-        >
-          <PawPrint className="h-full w-full" color="var(--coral)" />
-        </motion.div>
-      ))}
-
-      {/* the seat kept open — endpoint of the trail, just beside the big paw */}
-      <motion.div
-        className="absolute left-[21%] top-[52%] h-[15%] w-[15%] -rotate-2"
-
-        animate={{ opacity: [0.4, 0.9, 0.4], scale: [1, 1.06, 1] }}
-        transition={{ duration: 3.6, repeat: Infinity, ease: "easeInOut" }}
-      >
-        <PawPrint className="h-full w-full" color="var(--coral)" dashed />
-      </motion.div>
-    </motion.div>
   );
 }
 
@@ -173,8 +73,8 @@ export default function Hero() {
   return (
     <section
       ref={ref}
-      className="relative flex min-h-[640px] w-full flex-col overflow-hidden bg-cream lg:h-screen"
-      style={{ minHeight: "max(640px, 100svh)" }}
+      className="relative flex min-h-[600px] w-full flex-col overflow-hidden bg-cream lg:h-screen"
+      style={{ minHeight: "max(600px, 100svh)" }}
     >
       {/* warm radial glows */}
       <motion.div
@@ -184,12 +84,11 @@ export default function Hero() {
         transition={{ duration: 1.6 }}
         style={{
           background:
-            "radial-gradient(58% 52% at 88% 4%, color-mix(in oklab, var(--lightpink) 42%, transparent), transparent 72%)," +
-            "radial-gradient(52% 48% at 4% 98%, color-mix(in oklab, var(--yellow) 18%, transparent), transparent 74%)",
+            "radial-gradient(58% 52% at 88% 4%, color-mix(in oklab, var(--lightpink) 38%, transparent), transparent 72%)," +
+            "radial-gradient(52% 48% at 4% 98%, color-mix(in oklab, var(--yellow) 16%, transparent), transparent 74%)",
         }}
       />
       <Trails mx={mx} my={my} />
-      <FloatingPaws mx={mx} my={my} />
 
       {/* header */}
       <motion.header
@@ -205,89 +104,44 @@ export default function Hero() {
       </motion.header>
 
       {/* content */}
-      <div className="relative z-10 mx-auto grid w-full max-w-7xl flex-1 grid-cols-1 items-center gap-8 px-6 pb-10 pt-28 sm:px-10 lg:grid-cols-[55%_45%] lg:gap-10 lg:pb-12 lg:pt-24">
-        <div className="order-2 text-center lg:order-1 lg:text-left">
-          <motion.p
-            className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, delay: 0.35, ease }}
-          >
-            {C.eyebrow}
-          </motion.p>
+      <div className="relative z-10 mx-auto flex w-full max-w-4xl flex-1 flex-col items-center justify-center px-6 pb-10 pt-28 text-center sm:px-10">
+        <motion.p
+          className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
+          initial={{ opacity: 0, y: 14 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, delay: 0.35, ease }}
+        >
+          {C.eyebrow}
+        </motion.p>
 
-          <h1 className="mt-5 font-display font-semibold leading-[1] tracking-[-0.02em] text-ink [font-size:clamp(2.75rem,7.2vw,5.75rem)]">
-            {C.headline.map((w, i) => {
-              const accent = i === C.headlineAccentIndex;
-              return (
-                <span key={w} className="inline-block overflow-hidden align-bottom">
-                  <motion.span
-                    className={`relative inline-block ${accent ? "text-coral" : ""}`}
-                    initial={{ y: "110%" }}
-                    animate={{ y: 0 }}
-                    transition={{ duration: 0.9, delay: 0.45 + i * 0.11, ease }}
-                  >
-                    {w}
-                    {accent && (
-                      <svg
-                        viewBox="0 0 300 26"
-                        className="absolute -bottom-1 left-0 h-[0.28em] w-full overflow-visible"
-                        aria-hidden="true"
-                      >
-                        <motion.path
-                          d="M4 17 C 60 4, 130 26, 196 11 C 232 3, 268 6, 296 14"
-                          fill="none"
-                          stroke="var(--yellow)"
-                          strokeWidth="9"
-                          strokeLinecap="round"
-                          initial={{ pathLength: 0 }}
-                          animate={{ pathLength: 1 }}
-                          transition={{ duration: 1.1, delay: 1.25, ease }}
-                        />
-                      </svg>
-                    )}
-                  </motion.span>
-                  {i < C.headline.length - 1 && <span>&nbsp;</span>}
-                </span>
-              );
-            })}
-          </h1>
+        <h1 className="mt-6 font-display font-semibold leading-[1.02] tracking-[-0.02em] text-ink [font-size:clamp(2.75rem,7vw,5.5rem)]">
+          {C.headline.map((w, i) => {
+            const accent = i === C.headlineAccentIndex;
+            return (
+              <span key={w} className="inline-block overflow-hidden align-bottom">
+                <motion.span
+                  className={`inline-block ${accent ? "text-coral" : ""}`}
+                  initial={{ y: "110%" }}
+                  animate={{ y: 0 }}
+                  transition={{ duration: 0.9, delay: 0.45 + i * 0.11, ease }}
+                >
+                  {w}
+                </motion.span>
+                {i < C.headline.length - 1 && <span>&nbsp;</span>}
+              </span>
+            );
+          })}
+        </h1>
 
-          <motion.p
-            className="mx-auto mt-7 max-w-[32ch] text-base leading-relaxed text-ink/55 sm:text-lg lg:mx-0"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.05, ease }}
-          >
-            <strong className="font-semibold text-ink">{C.sublineBold}</strong>
-            {C.sublineRest}
-          </motion.p>
-
-          <motion.div
-            className="mt-9 flex flex-col items-center gap-5 sm:flex-row sm:gap-7 lg:justify-start"
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2, ease }}
-          >
-            <a
-              href="#opportunity"
-              className="group inline-flex items-center gap-2.5 rounded-full bg-coral px-7 py-4 text-sm font-semibold text-cream shadow-[0_14px_30px_-10px_rgba(232,82,83,0.7)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_20px_40px_-12px_rgba(232,82,83,0.8)]"
-            >
-              {C.primaryCta}
-              <span className="transition-transform duration-300 group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#prospectus"
-              className="text-sm font-medium text-ink/70 underline decoration-coral/40 underline-offset-[6px] transition-colors hover:text-coral hover:decoration-coral"
-            >
-              {C.secondaryCta}
-            </a>
-          </motion.div>
-        </div>
-
-        <div className="order-1 lg:order-2">
-          <HandScene mx={mx} my={my} />
-        </div>
+        <motion.p
+          className="mt-7 max-w-[46ch] text-base leading-relaxed text-ink/55 sm:text-lg"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.05, ease }}
+        >
+          <strong className="font-semibold text-ink">{C.sublineBold}</strong>
+          {C.sublineRest}
+        </motion.p>
       </div>
 
       {/* proof strip */}
@@ -295,7 +149,7 @@ export default function Hero() {
         className="relative z-10 w-full px-6 pb-3"
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.9, delay: 1.4, ease }}
+        transition={{ duration: 0.9, delay: 1.3, ease }}
       >
         <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-x-5 gap-y-2 text-center">
           <Proof value={String(centres)} label={C.proof[0].label} />
@@ -308,12 +162,12 @@ export default function Hero() {
         </div>
       </motion.div>
 
-      {/* scroll cue */}
+      {/* presenter cue */}
       <motion.div
         className="relative z-10 flex w-full flex-col items-center gap-2 pb-7"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 1, delay: 1.8 }}
+        transition={{ duration: 1, delay: 1.7 }}
       >
         <div className="flex h-7 w-[18px] justify-center rounded-full border border-ink/25 pt-1.5">
           <motion.span
