@@ -1,5 +1,6 @@
 /**
  * All hero copy lives here — easy to edit.
+ * This is a presenter-led deck, not a marketing site: no lead-gen CTAs.
  */
 export const heroContent = {
   badge: "Master Franchise Partnership",
@@ -8,9 +9,7 @@ export const heroContent = {
   headlineAccentIndex: 3,
   sublineBold: "172 centres. Two happy decades.",
   sublineRest: " And an open hand, waiting for yours.",
-  primaryCta: "Explore the opportunity",
-  secondaryCta: "Request the prospectus",
-  scrollCue: "Scroll to explore",
+  scrollCue: "Scroll to continue",
   proof: [
     { value: 172, suffix: "", label: "Centres & growing" },
     { value: 19, suffix: "", label: "Cities" },
