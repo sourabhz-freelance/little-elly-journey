@@ -19,6 +19,21 @@
  */
 
 @theme inline {
+  --font-display: "Fredoka", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Poppins", ui-sans-serif, system-ui, sans-serif;
+
+  /* Little Elly brand tokens */
+  --color-coral: var(--coral);
+  --color-yellow: var(--yellow);
+  --color-pink: var(--pink);
+  --color-ink: var(--ink);
+  --color-periwinkle: var(--periwinkle);
+  --color-cyan: var(--cyan);
+  --color-orange: var(--orange);
+  --color-turquoise: var(--turquoise);
+  --color-lightpink: var(--lightpink);
+  --color-cream: var(--cream);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
