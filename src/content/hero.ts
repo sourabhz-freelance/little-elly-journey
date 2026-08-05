@@ -15,10 +15,10 @@ export const heroContent = {
     { value: 172, suffix: "", label: "Centres & growing" },
     { value: 19, suffix: "", label: "Cities" },
     { value: 20, suffix: "+", label: "Years" },
-  ],
+  ] as const,
   proofTag: "India's most admired preschool",
   brand: {
     name: "Little Elly",
     tagline: "A Happy Preschool",
   },
-};
+} as const;
