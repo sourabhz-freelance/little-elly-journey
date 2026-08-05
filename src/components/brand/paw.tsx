@@ -44,9 +44,9 @@ export function PawShape({
   focal = false,
   ...rest
 }: {
-  color?: string;
-  colors?: Partial<PawColors>;
-  focal?: boolean;
+  color?: string | undefined;
+  colors?: Partial<PawColors> | undefined;
+  focal?: boolean | undefined;
 } & React.SVGProps<SVGGElement>) {
   const c = { ...defaultPawColors, ...colors };
   const toes = focal ? TOES_FOCAL : TOES;
@@ -54,7 +54,7 @@ export function PawShape({
   const toeFills = [c.toe1, c.toe2, c.toe3, c.toe4];
   return (
     <g {...rest}>
-      <path d={PAD_D} fill={color ? undefined : fillOf(c.pad)} {...(color ? { fill: color } : {})} />
+      <path d={PAD_D} fill={fillOf(c.pad)} />
       {toes.map((t, i) => (
         <ellipse
           key={i}
@@ -97,11 +97,11 @@ export function Paw({
   focal,
   opacity,
 }: {
-  className?: string;
-  color?: string;
-  colors?: Partial<PawColors>;
-  focal?: boolean;
-  opacity?: number;
+  className?: string | undefined;
+  color?: string | undefined;
+  colors?: Partial<PawColors> | undefined;
+  focal?: boolean | undefined;
+  opacity?: number | undefined;
 }) {
   return (
     <svg viewBox="0 0 100 100" className={className} opacity={opacity} aria-hidden="true">
