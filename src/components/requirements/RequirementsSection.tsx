@@ -1,9 +1,66 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { Ruler, ShieldCheck, Boxes, Wallet } from "lucide-react";
 import { requirementsContent as R } from "@/content/requirements";
+import SchoolArt from "./SchoolArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ICONS = { Ruler, ShieldCheck, Boxes, Wallet } as const;
+
+type Group = (typeof R.groups)[number];
+
+/** Dotted connector paths (viewBox 0 0 100 100, non-scaling stroke keeps dots round). */
+const LINKS = [
+  { d: "M50 42 C 36 42, 30 24, 18 24", i: 0 },
+  { d: "M50 42 C 64 42, 70 24, 82 24", i: 1 },
+  { d: "M50 62 C 36 62, 30 80, 18 80", i: 2 },
+  { d: "M50 62 C 64 62, 70 80, 82 80", i: 3 },
+];
+
+function Card({ g, align }: { g: Group; align: "left" | "right" }) {
+  const Icon = ICONS[g.icon as keyof typeof ICONS];
+  return (
+    <div
+      className="rounded-3xl border bg-white/85 p-6 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 sm:p-7"
+      style={{ borderColor: `color-mix(in oklab, ${g.accent} 32%, transparent)` }}
+    >
+      <div
+        className={`flex items-center gap-3 ${align === "right" ? "lg:flex-row-reverse lg:text-right" : ""}`}
+      >
+        <span
+          className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+          style={{
+            background: `color-mix(in oklab, ${g.accent} 16%, transparent)`,
+            color: g.accent,
+          }}
+          aria-hidden="true"
+        >
+          <Icon size={21} strokeWidth={1.7} />
+        </span>
+        <h3 className="font-display text-xl font-semibold tracking-[-0.01em] text-ink">
+          {g.title}
+        </h3>
+      </div>
+
+      <ul className="mt-5 space-y-3">
+        {g.points.map((p) => (
+          <li
+            key={p}
+            className={`flex gap-3 text-[0.93rem] leading-relaxed text-ink/70 ${
+              align === "right" ? "lg:flex-row-reverse lg:text-right" : ""
+            }`}
+          >
+            <span
+              className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full"
+              style={{ background: g.accent }}
+              aria-hidden="true"
+            />
+            <span>{p}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export default function RequirementsSection() {
   const reduce = useReducedMotion();
@@ -13,9 +70,11 @@ export default function RequirementsSection() {
       : {
           initial: { opacity: 0, y: 24 },
           whileInView: { opacity: 1, y: 0 },
-          viewport: { once: true, amount: 0.3 },
+          viewport: { once: true, amount: 0.25 },
           transition: { duration: 0.75, ease: EASE, delay },
         };
+
+  const groups = R.groups;
 
   return (
     <section
@@ -26,7 +85,7 @@ export default function RequirementsSection() {
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(44% 40% at 50% 30%, color-mix(in oklab, var(--lightpink) 45%, transparent), transparent 70%)",
+            "radial-gradient(46% 42% at 50% 55%, color-mix(in oklab, var(--lightpink) 42%, transparent), transparent 70%)",
         }}
       />
 
@@ -43,53 +102,80 @@ export default function RequirementsSection() {
           </p>
         </motion.div>
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2">
-          {R.groups.map((g, i) => {
-            const Icon = ICONS[g.icon as keyof typeof ICONS];
-            return (
-              <motion.div
-                key={g.id}
-                {...rise(0.08 + i * 0.08)}
-                className="rounded-3xl border bg-white/80 p-7 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 sm:p-8"
-                style={{ borderColor: `color-mix(in oklab, ${g.accent} 32%, transparent)` }}
-              >
-                <div className="flex items-center gap-3">
-                  <span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
-                    style={{
-                      background: `color-mix(in oklab, ${g.accent} 16%, transparent)`,
-                      color: g.accent,
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Icon size={21} strokeWidth={1.7} />
-                  </span>
-                  <h3 className="font-display text-xl font-semibold tracking-[-0.01em] text-ink">
-                    {g.title}
-                  </h3>
-                </div>
+        {/* Infographic — desktop */}
+        <div className="relative mt-20 hidden lg:block">
+          <svg
+            viewBox="0 0 100 100"
+            preserveAspectRatio="none"
+            className="pointer-events-none absolute inset-0 h-full w-full"
+            aria-hidden="true"
+          >
+            {LINKS.map((l) => (
+              <motion.path
+                key={l.i}
+                d={l.d}
+                fill="none"
+                stroke={groups[l.i]!.accent}
+                strokeWidth={2.2}
+                strokeLinecap="round"
+                strokeDasharray="0.1 9"
+                vectorEffect="non-scaling-stroke"
+                initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+                whileInView={{ pathLength: 1, opacity: 0.75 }}
+                viewport={{ once: true, amount: 0.3 }}
+                transition={{ duration: 0.9, ease: EASE, delay: 0.35 + l.i * 0.12 }}
+              />
+            ))}
+          </svg>
 
-                <ul className="mt-6 space-y-3.5">
-                  {g.points.map((p) => (
-                    <li key={p} className="flex gap-3 text-[0.97rem] leading-relaxed text-ink/70">
-                      <span
-                        className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: g.accent }}
-                        aria-hidden="true"
-                      />
-                      <span>{p}</span>
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            );
-          })}
+          <div className="relative grid grid-cols-[1fr_20rem_1fr] items-center gap-x-8 gap-y-14">
+            <motion.div {...rise(0.1)}>
+              <Card g={groups[0]!} align="left" />
+            </motion.div>
+
+            <motion.div
+              className="row-span-2 flex flex-col items-center justify-center px-2"
+              initial={reduce ? false : { opacity: 0, scale: 0.92 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.85, ease: EASE }}
+            >
+              <SchoolArt className="w-full max-w-[19rem]" />
+              <p className="mt-6 text-center font-display text-lg leading-snug text-ink/70">
+                One centre.
+                <br />
+                <span className="text-coral">Then a territory of them.</span>
+              </p>
+            </motion.div>
+
+            <motion.div {...rise(0.18)}>
+              <Card g={groups[1]!} align="right" />
+            </motion.div>
+
+            <motion.div {...rise(0.26)}>
+              <Card g={groups[2]!} align="left" />
+            </motion.div>
+            <motion.div {...rise(0.34)}>
+              <Card g={groups[3]!} align="right" />
+            </motion.div>
+          </div>
         </div>
 
-        <motion.p
-          className="mt-12 text-center text-sm text-ink/45"
-          {...rise(0.1)}
-        >
+        {/* Stacked — mobile / tablet */}
+        <div className="mt-14 lg:hidden">
+          <motion.div className="mx-auto max-w-[16rem]" {...rise(0.05)}>
+            <SchoolArt className="w-full" />
+          </motion.div>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2">
+            {groups.map((g, i) => (
+              <motion.div key={g.id} {...rise(0.08 + i * 0.07)}>
+                <Card g={g} align="left" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        <motion.p className="mt-16 text-center text-sm text-ink/45" {...rise(0.1)}>
           {R.footnote}
         </motion.p>
       </div>
