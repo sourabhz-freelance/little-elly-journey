@@ -53,7 +53,7 @@ export const marketContent = {
 export const demographicsContent = {
   kicker: "The tailwind",
   headline: ["India isn't", "running out of children."],
-  sub: "Four structural forces, none of them a trend. Tap a force to open it.",
+  sub: "Seven structural forces, none of them a trend. Tap a force to open it.",
   drivers: [
     {
       id: "children",
@@ -86,6 +86,30 @@ export const demographicsContent = {
       body: "The National Education Policy places ages 3–8 in a single 'foundational stage' and pushes universal quality early childhood care and education. Parents now read preschool as necessary, not optional.",
       source: "National Education Policy 2020, Government of India",
       accent: "var(--periwinkle)",
+    },
+    {
+      id: "young",
+      stat: "3 in 4",
+      title: "Three quarters of India is under 35",
+      body: "The country's parents are young, and there are more of them arriving every year. A young nation keeps refilling the classroom — the demand curve is demographic, not cyclical.",
+      source: "UNFPA India Ageing Report / Census projections",
+      accent: "var(--turquoise)",
+    },
+    {
+      id: "nuclear",
+      stat: "Nuclear",
+      title: "The joint family used to be the daycare",
+      body: "As families shrink to two parents in a rented flat, the grandparent who once minded the child is three states away. What was free and informal now has to be bought — and bought from someone trusted.",
+      source: "NFHS-5 household composition trends",
+      accent: "var(--pink)",
+    },
+    {
+      id: "priority",
+      stat: "#2 spend",
+      title: "Education is the second thing an Indian family buys after a home",
+      body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through demonetisation, GST and a pandemic — and why fee realisation stays strong.",
+      source: "Household consumption expenditure surveys, MoSPI",
+      accent: "var(--orange)",
     },
   ],
 } as const;
@@ -127,6 +151,11 @@ export const modelContent = {
       id: "light",
       title: "Asset-light footprint",
       body: "Leased premises, modest fit-out, small team. Capital goes into quality and people, not land.",
+    },
+    {
+      id: "cycle",
+      title: "It doesn't read the market",
+      body: "Nobody pulls a four-year-old out of school because of a bad quarter. Enrolment holds through downturns — the closest thing to a defensive consumer business.",
     },
     {
       id: "moat",
