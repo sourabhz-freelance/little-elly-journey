@@ -45,12 +45,11 @@ function GrowthChart() {
               ${v.toFixed(1)}B
             </span>
             <motion.div
-              initial={{ height: 0 }}
+              initial={{ height: 8 }}
               whileInView={{ height: Math.round((v / max) * 170) }}
-              viewport={{ once: true, amount: 0.4 }}
+              viewport={{ once: true, amount: 0, margin: "-10% 0px" }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 * i }}
               className="w-full rounded-t-xl bg-coral"
-              style={{ minHeight: 8 }}
             />
             <span className="text-xs text-ink/45">{years[i]}</span>
           </div>
