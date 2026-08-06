@@ -11,23 +11,25 @@ type Dot = { x: number; y: number; r?: number; delay: number };
 
 /** Marked territories — indicative pins across the map. */
 const DOTS: Dot[] = [
-  { x: 132, y: 78, delay: 0.0 },
-  { x: 176, y: 60, r: 5.5, delay: 0.08 },
-  { x: 214, y: 96, delay: 0.16 },
-  { x: 262, y: 96, delay: 0.24 },
-  { x: 300, y: 118, delay: 0.32 },
-  { x: 246, y: 148, r: 5.5, delay: 0.4 },
-  { x: 190, y: 140, delay: 0.48 },
-  { x: 140, y: 150, delay: 0.56 },
-  { x: 112, y: 196, delay: 0.64 },
-  { x: 166, y: 206, r: 5.5, delay: 0.72 },
-  { x: 222, y: 210, delay: 0.8 },
-  { x: 148, y: 268, delay: 0.88 },
-  { x: 198, y: 272, delay: 0.96 },
-  { x: 172, y: 330, r: 5.5, delay: 1.04 },
-  { x: 206, y: 316, delay: 1.12 },
-  { x: 182, y: 386, delay: 1.2 },
+  { x: 140, y: 95, delay: 0.0 },
+  { x: 190, y: 102, r: 5.5, delay: 0.08 },
+  { x: 132, y: 142, delay: 0.16 },
+  { x: 182, y: 136, delay: 0.24 },
+  { x: 240, y: 152, delay: 0.32 },
+  { x: 300, y: 176, r: 5.5, delay: 0.4 },
+  { x: 92, y: 190, delay: 0.48 },
+  { x: 150, y: 176, delay: 0.56 },
+  { x: 212, y: 186, delay: 0.64 },
+  { x: 112, y: 236, r: 5.5, delay: 0.72 },
+  { x: 170, y: 226, delay: 0.8 },
+  { x: 228, y: 242, delay: 0.88 },
+  { x: 126, y: 296, delay: 0.96 },
+  { x: 180, y: 286, r: 5.5, delay: 1.04 },
+  { x: 142, y: 350, delay: 1.12 },
+  { x: 174, y: 346, delay: 1.2 },
+  { x: 152, y: 400, delay: 1.28 },
 ];
+
 
 export default function GiftMapSection() {
   const reduce = useReducedMotion();
