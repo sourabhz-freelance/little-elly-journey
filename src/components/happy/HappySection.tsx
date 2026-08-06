@@ -99,15 +99,6 @@ export default function HappySection() {
           ))}
         </div>
 
-        <motion.div className="mx-auto mt-20 max-w-3xl text-center" {...rise(0.25)}>
-          <p className="font-display font-semibold leading-[1.15] tracking-[-0.02em] text-ink [font-size:clamp(1.6rem,3.4vw,2.6rem)]">
-            &ldquo;We don&rsquo;t hand you a brand and wave goodbye.{" "}
-            <span className="text-coral">We stay.</span>&rdquo;
-          </p>
-          <p className="mx-auto mt-6 max-w-[56ch] text-base leading-relaxed text-ink/55">
-            {H.closing.support}
-          </p>
-        </motion.div>
       </div>
     </section>
   );
