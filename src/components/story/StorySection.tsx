@@ -120,7 +120,7 @@ function Beat({
       className={
         stacked
           ? "grid gap-8"
-          : "mx-auto grid w-full max-w-6xl grid-cols-[1fr_1fr] items-center gap-16"
+          : "mx-auto grid w-full max-w-5xl grid-cols-[1fr_1.1fr] items-center gap-12"
       }
     >
       <div className={stacked ? "text-center sm:text-left" : ""}>
@@ -134,7 +134,7 @@ function Beat({
           {beat.line}
         </p>
       </div>
-      <div className={stacked ? "h-56 w-full" : "h-[46vh] max-h-[420px] w-full"}>
+      <div className={stacked ? "h-56 w-full" : "h-[54vh] max-h-[500px] w-full"}>
         <Art />
       </div>
     </div>
