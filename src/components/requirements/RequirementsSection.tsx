@@ -119,7 +119,7 @@ export default function RequirementsSection() {
                 stroke={groups[l.i]!.accent}
                 strokeWidth={2.2}
                 strokeLinecap="round"
-                strokeDasharray="0.1 9"
+                strokeDasharray="0.1 7"
                 vectorEffect="non-scaling-stroke"
                 initial={reduce ? false : { pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 0.75 }}
