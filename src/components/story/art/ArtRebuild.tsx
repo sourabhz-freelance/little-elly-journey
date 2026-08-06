@@ -1,46 +1,34 @@
 import { motion } from "framer-motion";
 import { ArtFrame, Glow } from "./shared";
 
-/** 03 — Curriculum blocks torn apart and stacked back, better. */
+/** 03 — Taken apart and stacked back, better each time. */
 export function ArtRebuild() {
   const blocks = [
-    { y: 250, w: 168, fill: "var(--coral)" },
-    { y: 208, w: 148, fill: "var(--yellow)" },
-    { y: 166, w: 128, fill: "var(--periwinkle)" },
-    { y: 124, w: 108, fill: "var(--cyan)" },
+    { y: 252, w: 176, fill: "var(--coral)" },
+    { y: 208, w: 152, fill: "var(--yellow)" },
+    { y: 164, w: 128, fill: "var(--periwinkle)" },
   ];
   return (
     <ArtFrame>
-      <Glow cx={200} cy={175} r={116} />
-      {blocks.map((b, i) => (
-        <motion.rect
-          key={b.y}
-          x={210 - b.w / 2}
-          y={b.y}
-          width={b.w}
-          height={34}
-          rx={12}
-          fill={b.fill}
-          animate={{ x: [210 - b.w / 2, 210 - b.w / 2 + (i % 2 ? 6 : -6), 210 - b.w / 2] }}
-          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: i * 0.3 }}
-        />
+      <Glow cx={205} cy={175} r={116} />
+      {blocks.map((b) => (
+        <rect key={b.y} x={210 - b.w / 2} y={b.y} width={b.w} height={36} rx={12} fill={b.fill} />
       ))}
-      {/* the piece being re-placed */}
+      {/* the piece being put back, again */}
       <motion.rect
-        x={172}
-        y={78}
-        width={76}
-        height={30}
-        rx={11}
-        fill="var(--pink)"
-        animate={{ y: [78, 86, 78], rotate: [-6, 2, -6] }}
-        style={{ transformOrigin: "210px 93px" }}
-        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+        x={166}
+        y={112}
+        width={88}
+        height={36}
+        rx={12}
+        fill="var(--cyan)"
+        animate={{ y: [112, 124, 112] }}
+        transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }}
       />
-      {/* rebuild loop arrow */}
-      <g fill="none" stroke="var(--ink)" strokeWidth={2.6} strokeLinecap="round" opacity={0.35}>
-        <path d="M330 210 A 46 46 0 1 1 296 152" />
-        <path d="M296 152 L 292 172 M296 152 L 314 158" />
+      {/* do it again */}
+      <g fill="none" stroke="var(--ink)" strokeWidth={2.8} strokeLinecap="round" opacity={0.32}>
+        <path d="M336 216 A 44 44 0 1 1 304 160" />
+        <path d="M304 160 L300 180 M304 160 L322 166" />
       </g>
     </ArtFrame>
   );
