@@ -36,8 +36,8 @@ function Index() {
       <ModelSection />
       <CurriculumSection />
       <MethodSection />
-      <PartnerFrameworkSection />
       <RequirementsSection />
+      <PartnerFrameworkSection />
       
     </main>
   );
