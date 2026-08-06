@@ -1,5 +1,9 @@
 import { motion } from "framer-motion";
 import { modelContent as MO } from "@/content/sector";
+import { Wallet, HeartHandshake, Feather, ShieldCheck, BadgeCheck } from "lucide-react";
+
+const ICONS = { Wallet, HeartHandshake, Feather, ShieldCheck, BadgeCheck } as const;
+const ACCENTS = ["var(--coral)", "var(--turquoise)", "var(--periwinkle)", "var(--orange)", "var(--cyan)"];
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -92,20 +96,42 @@ export default function ModelSection() {
           ))}
         </div>
 
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {MO.reasons.map((r, i) => (
-            <motion.div
-              key={r.id}
-              initial={{ opacity: 0, y: 18 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 0.6, ease: EASE, delay: 0.07 * i }}
-              className="rounded-3xl border border-ink/[0.07] bg-white/60 p-7 backdrop-blur-sm"
-            >
-              <p className="font-display text-lg leading-snug text-ink">{r.title}</p>
-              <p className="mt-3 text-sm leading-relaxed text-ink/55">{r.body}</p>
-            </motion.div>
-          ))}
+        <div className="mt-6 flex flex-wrap items-stretch justify-center gap-3">
+          {MO.reasons.map((r, i) => {
+            const Icon = ICONS[r.icon as keyof typeof ICONS];
+            const accent = ACCENTS[i % ACCENTS.length];
+            return (
+              <motion.div
+                key={r.id}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease: EASE, delay: 0.07 * i }}
+                className="flex items-center gap-3"
+              >
+                <div className="flex items-center gap-3 rounded-full border border-ink/[0.07] bg-white/70 py-4 pl-4 pr-6 backdrop-blur-sm">
+                  <span
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+                    style={{
+                      background: `color-mix(in oklab, ${accent} 16%, transparent)`,
+                      color: accent,
+                    }}
+                    aria-hidden="true"
+                  >
+                    <Icon size={21} strokeWidth={1.7} />
+                  </span>
+                  <p className="font-display text-base leading-snug text-ink sm:text-lg">
+                    {r.title}
+                  </p>
+                </div>
+                {i < MO.reasons.length - 1 && (
+                  <span className="font-display text-xl text-coral/50" aria-hidden="true">
+                    +
+                  </span>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
 
         <p className="mx-auto mt-12 max-w-[60ch] text-center text-sm leading-relaxed text-ink/40">
