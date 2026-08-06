@@ -49,10 +49,8 @@ function GrowthChart() {
               whileInView={{ height: Math.round((v / max) * 170) }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 * i }}
-              className="w-full rounded-t-xl"
-              style={{
-                background: `linear-gradient(180deg, var(--coral), color-mix(in oklab, var(--coral) 45%, var(--cream)))`,
-              }}
+              className="w-full rounded-t-xl bg-coral"
+              style={{ minHeight: 8 }}
             />
             <span className="text-xs text-ink/45">{years[i]}</span>
           </div>
