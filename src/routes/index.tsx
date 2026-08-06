@@ -6,6 +6,7 @@ import MarketSection from "@/components/sector/MarketSection";
 import DemographicsSection from "@/components/sector/DemographicsSection";
 import ModelSection from "@/components/sector/ModelSection";
 import CurriculumSection from "@/components/curriculum/CurriculumSection";
+import MethodSection from "@/components/method/MethodSection";
 import PartnerFrameworkSection from "@/components/partner/PartnerFrameworkSection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
@@ -33,6 +34,7 @@ function Index() {
       <DemographicsSection />
       <ModelSection />
       <CurriculumSection />
+      <MethodSection />
       <PartnerFrameworkSection />
       
     </main>
