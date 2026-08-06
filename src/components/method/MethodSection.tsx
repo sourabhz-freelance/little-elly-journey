@@ -126,9 +126,6 @@ export default function MethodSection() {
           >
             {M.eiTitle}
           </motion.p>
-          <p className="mt-8 text-center font-display text-xl text-ink sm:text-2xl">
-            {M.eiCentre}
-          </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {M.eiNodes.map((n, i) => {
               const Icon = EI_ICONS[i % EI_ICONS.length]!;
