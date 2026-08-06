@@ -27,10 +27,10 @@ function Index() {
     <main className="bg-cream">
       <Hero />
       <StorySection />
-      <HappySection />
       <MarketSection />
       <DemographicsSection />
       <ModelSection />
+      <HappySection />
     </main>
   );
 }
