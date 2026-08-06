@@ -36,13 +36,35 @@ function Index() {
       <Hero />
       <CurriculumSection />
       <MethodSection />
+
+      {/* conjunction: from the classroom to the business */}
+      <EditorialBreak
+        kicker="Before the brand"
+        lines={["Look at the opportunity,", "not the business."]}
+        accentIndex={1}
+        note="What happens inside those walls is why parents come. What happens outside them is why this is worth your capital."
+        tone="ink"
+      />
+
       <MarketSection />
       <DemographicsSection />
       <ModelSection />
+
+      {/* conjunction: from the sector to our own story */}
+      <EditorialBreak
+        kicker="Section two"
+        lines={["The invisible", "asset."]}
+        accentIndex={1}
+        note="Twenty years of doing it the hard way — so you don't have to."
+      />
+
       <StorySection />
+      <GiftMapSection />
       <RequirementsSection />
       <TermsSection />
       <PartnerFrameworkSection />
+      <MasterLifeSection />
+
       
     </main>
   );
