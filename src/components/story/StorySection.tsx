@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, type ReactElement } from "react";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import { storyContent as S } from "@/content/story";
 import { ArtStart } from "./art/ArtStart";
@@ -112,7 +112,7 @@ function Beat({
   stacked,
 }: {
   beat: (typeof S.beats)[number];
-  Art: () => JSX.Element;
+  Art: () => ReactElement;
   stacked?: boolean;
 }) {
   return (
