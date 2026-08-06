@@ -28,6 +28,9 @@ function Index() {
       <Hero />
       <StorySection />
       <HappySection />
+      <MarketSection />
+      <DemographicsSection />
+      <ModelSection />
     </main>
   );
 }
