@@ -2,10 +2,7 @@
 export const curriculumContent = {
   kicker: "The curriculum",
   headline: ["A child is not a syllabus", "to be finished."],
-  paras: [
-    "Twenty years in classrooms taught us one thing: a child learns best when they are happy. Not entertained — happy. Curious, safe, moving, and sure of themselves.",
-    "So we stopped designing a syllabus and started designing a childhood. Five things shape a happy child — and over 1 lakh parents have watched them work on their own child.",
-  ],
+  sub: "1 lakh parents have loved our happy curriculum.",
   proof: ["1,00,000+ happy parents", "172 centres", "20+ years"],
   pillars: [
     {
