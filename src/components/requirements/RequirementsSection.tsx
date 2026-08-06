@@ -17,16 +17,14 @@ const LINKS = [
 ];
 
 
-function Card({ g, align }: { g: Group; align: "left" | "right" }) {
+function Card({ g }: { g: Group }) {
   const Icon = ICONS[g.icon as keyof typeof ICONS];
   return (
     <div
       className="rounded-3xl border bg-white/85 p-6 backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1 sm:p-7"
       style={{ borderColor: `color-mix(in oklab, ${g.accent} 32%, transparent)` }}
     >
-      <div
-        className={`flex items-center gap-3 ${align === "right" ? "lg:flex-row-reverse lg:text-right" : ""}`}
-      >
+      <div className="flex items-center gap-3">
         <span
           className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
           style={{
@@ -44,12 +42,8 @@ function Card({ g, align }: { g: Group; align: "left" | "right" }) {
 
       <ul className="mt-5 space-y-3">
         {g.points.map((p) => (
-          <li
-            key={p}
-            className={`flex gap-3 text-[0.93rem] leading-relaxed text-ink/70 ${
-              align === "right" ? "lg:flex-row-reverse lg:text-right" : ""
-            }`}
-          >
+          <li key={p} className="flex gap-3 text-[0.93rem] leading-relaxed text-ink/70">
+
             <span
               className="mt-[0.6em] h-1.5 w-1.5 shrink-0 rounded-full"
               style={{ background: g.accent }}
@@ -131,7 +125,7 @@ export default function RequirementsSection() {
 
           <div className="relative grid grid-cols-[1fr_20rem_1fr] items-center gap-x-8 gap-y-14">
             <motion.div {...rise(0.1)}>
-              <Card g={groups[0]!} align="left" />
+              <Card g={groups[0]!} />
             </motion.div>
 
             <motion.div
@@ -150,14 +144,14 @@ export default function RequirementsSection() {
             </motion.div>
 
             <motion.div {...rise(0.18)}>
-              <Card g={groups[1]!} align="right" />
+              <Card g={groups[1]!} />
             </motion.div>
 
             <motion.div {...rise(0.26)}>
-              <Card g={groups[2]!} align="left" />
+              <Card g={groups[2]!} />
             </motion.div>
             <motion.div {...rise(0.34)}>
-              <Card g={groups[3]!} align="right" />
+              <Card g={groups[3]!} />
             </motion.div>
           </div>
         </div>
@@ -170,7 +164,7 @@ export default function RequirementsSection() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {groups.map((g, i) => (
               <motion.div key={g.id} {...rise(0.08 + i * 0.07)}>
-                <Card g={g} align="left" />
+                <Card g={g} />
               </motion.div>
             ))}
           </div>
