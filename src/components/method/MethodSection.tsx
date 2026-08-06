@@ -10,10 +10,29 @@ import {
   Sparkles,
 } from "lucide-react";
 import { methodContent as M } from "@/content/method";
+import imgVisual from "@/assets/method/visual.jpg";
+import imgMental from "@/assets/method/mental.jpg";
+import imgMath from "@/assets/method/math.jpg";
+import imgLanguage from "@/assets/method/language.jpg";
+import imgPerceiving from "@/assets/method/perceiving.jpg";
+import imgUnderstanding from "@/assets/method/understanding.jpg";
+import imgManaging from "@/assets/method/managing.jpg";
+import imgUsing from "@/assets/method/using.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ICONS = { Eye, Brain, Sigma, MessagesSquare } as const;
 const EI_ICONS = [Heart, Compass, Waves, Sparkles] as const;
+
+const IMAGES: Record<string, string> = {
+  visual: imgVisual,
+  mental: imgMental,
+  math: imgMath,
+  language: imgLanguage,
+  perceiving: imgPerceiving,
+  understanding: imgUnderstanding,
+  managing: imgManaging,
+  using: imgUsing,
+};
 
 export default function MethodSection() {
   const reduce = useReducedMotion();
