@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Hero from "@/components/hero/Hero";
+import StorySection from "@/components/story/StorySection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
@@ -21,6 +22,7 @@ function Index() {
   return (
     <main className="bg-cream">
       <Hero />
+      <StorySection />
     </main>
   );
 }
