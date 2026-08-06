@@ -1,8 +1,45 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { HeartPulse, Lightbulb, ToyBrick, Sparkles, BookOpen } from "lucide-react";
 import { curriculumContent as C } from "@/content/curriculum";
 import childPhoto from "@/assets/happy-child.jpg";
+import childPhotoGirl from "@/assets/happy-child-girl.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+const ICONS = { HeartPulse, Lightbulb, ToyBrick, Sparkles, BookOpen } as const;
+
+const PHOTOS = [
+  { src: childPhoto, alt: "A happy young Indian boy at a Little Elly preschool" },
+  { src: childPhotoGirl, alt: "A happy young Indian girl at a Little Elly preschool" },
+];
+
+function ChildPhoto() {
+  const reduce = useReducedMotion();
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % PHOTOS.length), 4000);
+    return () => clearInterval(t);
+  }, []);
+  const p = PHOTOS[i]!;
+  return (
+    <AnimatePresence mode="wait" initial={false}>
+      <motion.img
+        key={i}
+        src={p.src}
+        alt={p.alt}
+        width={1024}
+        height={1024}
+        loading="lazy"
+        className="absolute inset-0 h-full w-full object-cover"
+        initial={reduce ? false : { opacity: 0, scale: 1.04 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={reduce ? undefined : { opacity: 0 }}
+        transition={{ duration: 0.9, ease: EASE }}
+      />
+    </AnimatePresence>
+  );
+}
 
 type Pillar = (typeof C.pillars)[number];
 
@@ -22,10 +59,18 @@ function PillarCard({ p }: { p: Pillar }) {
       style={{ borderColor: `color-mix(in oklab, ${p.accent} 40%, transparent)` }}
     >
       <span
-        className="block h-3 w-3 rounded-full"
-        style={{ background: p.accent }}
+        className="flex h-11 w-11 items-center justify-center rounded-full"
+        style={{
+          background: `color-mix(in oklab, ${p.accent} 16%, transparent)`,
+          color: p.accent,
+        }}
         aria-hidden="true"
-      />
+      >
+        {(() => {
+          const Icon = ICONS[p.icon as keyof typeof ICONS];
+          return <Icon size={21} strokeWidth={1.7} />;
+        })()}
+      </span>
       <p className="mt-4 font-display text-lg leading-snug text-ink">{p.title}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink/55">{p.line}</p>
     </div>
@@ -122,14 +167,7 @@ export default function CurriculumSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <img
-              src={childPhoto}
-              alt="A happy young Indian child at a Little Elly preschool"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+            <ChildPhoto />
           </motion.div>
 
           {C.pillars.map((p, i) => {
@@ -153,17 +191,10 @@ export default function CurriculumSection() {
         {/* Stacked — mobile / tablet */}
         <div className="mt-16 lg:hidden">
           <motion.div
-            className="mx-auto h-52 w-52 overflow-hidden rounded-full border-[6px] border-coral/70"
+            className="relative mx-auto h-52 w-52 overflow-hidden rounded-full border-[6px] border-coral/70"
             {...rise(0.1)}
           >
-            <img
-              src={childPhoto}
-              alt="A happy young Indian child at a Little Elly preschool"
-              width={1024}
-              height={1024}
-              loading="lazy"
-              className="h-full w-full object-cover"
-            />
+            <ChildPhoto />
           </motion.div>
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {C.pillars.map((p, i) => (
