@@ -1,8 +1,7 @@
 /** Section 07 — What makes a child happy. */
 export const curriculumContent = {
   kicker: "The curriculum",
-  headline: ["A child is not a syllabus", "to be finished."],
-  sub: "1 lakh parents have loved our happy curriculum.",
+  headline: ["1 lakh parents have loved", "our “Happy” curriculum."],
   proof: ["1,00,000+ happy parents", "172 centres", "20+ years"],
   pillars: [
     {
