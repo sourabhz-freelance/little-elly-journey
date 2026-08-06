@@ -9,6 +9,7 @@ import CurriculumSection from "@/components/curriculum/CurriculumSection";
 import MethodSection from "@/components/method/MethodSection";
 import PartnerFrameworkSection from "@/components/partner/PartnerFrameworkSection";
 import RequirementsSection from "@/components/requirements/RequirementsSection";
+import TermsSection from "@/components/terms/TermsSection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
