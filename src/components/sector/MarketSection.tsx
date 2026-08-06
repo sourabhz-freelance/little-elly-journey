@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { marketContent as M } from "@/content/sector";
 import { useCountUp } from "./useCountUp";
 
