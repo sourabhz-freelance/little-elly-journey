@@ -10,11 +10,12 @@ type Group = (typeof R.groups)[number];
 
 /** Dotted connector paths (viewBox 0 0 100 100, non-scaling stroke keeps dots round). */
 const LINKS = [
-  { d: "M50 42 C 36 42, 30 24, 18 24", i: 0 },
-  { d: "M50 42 C 64 42, 70 24, 82 24", i: 1 },
-  { d: "M50 62 C 36 62, 30 80, 18 80", i: 2 },
-  { d: "M50 62 C 64 62, 70 80, 82 80", i: 3 },
+  { d: "M46 44 C 42 36, 40 28, 36.5 26", i: 0 },
+  { d: "M54 44 C 58 36, 60 28, 63.5 26", i: 1 },
+  { d: "M46 62 C 42 70, 40 76, 36.5 78", i: 2 },
+  { d: "M54 62 C 58 70, 60 76, 63.5 78", i: 3 },
 ];
+
 
 function Card({ g, align }: { g: Group; align: "left" | "right" }) {
   const Icon = ICONS[g.icon as keyof typeof ICONS];
