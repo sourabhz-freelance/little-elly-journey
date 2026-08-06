@@ -11,6 +11,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { termsContent as T } from "@/content/terms";
+import { ZoneArt, StateArt } from "./TerritoryArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -65,22 +66,27 @@ export default function TermsSection() {
             <motion.div
               key={t.id}
               {...rise(0.08 * i)}
-              className="flex items-center gap-5 rounded-3xl border bg-white/70 p-8 backdrop-blur-sm"
+              className="overflow-hidden rounded-3xl border bg-white/70 backdrop-blur-sm"
               style={{ borderColor: `color-mix(in oklab, ${t.accent} 35%, transparent)` }}
             >
-              <span
-                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full"
-                style={{
-                  background: `color-mix(in oklab, ${t.accent} 16%, transparent)`,
-                  color: t.accent,
-                }}
-                aria-hidden="true"
-              >
-                <MapPin size={24} strokeWidth={1.7} />
-              </span>
-              <div>
-                <p className="font-display text-xl leading-snug text-ink">{t.label}</p>
-                <p className="mt-1 text-base text-ink/55">{t.scale}</p>
+              <div className="h-44 w-full px-8 pt-6">
+                {i === 0 ? <ZoneArt /> : <StateArt />}
+              </div>
+              <div className="flex items-center gap-5 px-8 pb-8 pt-4">
+                <span
+                  className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    background: `color-mix(in oklab, ${t.accent} 16%, transparent)`,
+                    color: t.accent,
+                  }}
+                  aria-hidden="true"
+                >
+                  <MapPin size={22} strokeWidth={1.7} />
+                </span>
+                <div>
+                  <p className="font-display text-xl leading-snug text-ink">{t.label}</p>
+                  <p className="mt-1 text-base text-ink/55">{t.scale}</p>
+                </div>
               </div>
             </motion.div>
           ))}

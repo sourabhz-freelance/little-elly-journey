@@ -100,8 +100,9 @@ export default function StorySection() {
 function Heading() {
   return (
     <div className="mx-auto max-w-5xl text-center lg:text-left">
-      <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">{S.kicker}</p>
-      <p className="mt-3 max-w-[52ch] text-sm text-ink/50 sm:text-base lg:mx-0 mx-auto">{S.intro}</p>
+      <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-ink/35">
+        The invisible asset · six moments
+      </p>
     </div>
   );
 }

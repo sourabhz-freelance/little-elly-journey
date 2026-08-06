@@ -7,6 +7,12 @@ import {
   BookOpen,
   Wallet,
   Headset,
+  TrendingUp,
+  Share2,
+  Search,
+  KeyRound,
+  HeartHandshake,
+  ShieldCheck,
 } from "lucide-react";
 import { partnerFrameworkContent as P } from "@/content/partnerFramework";
 import partnerMan from "@/assets/partner-man.jpg";
@@ -15,6 +21,15 @@ import partnerWoman from "@/assets/partner-woman.jpg";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const ICONS = { BadgeCheck, Megaphone, GraduationCap, BookOpen, Wallet, Headset } as const;
+const MONEY_ICONS = {
+  Wallet,
+  TrendingUp,
+  Share2,
+  Search,
+  KeyRound,
+  HeartHandshake,
+  ShieldCheck,
+} as const;
 
 const PHOTOS = [
   { src: partnerMan, alt: "A Little Elly master franchise partner" },
@@ -76,7 +91,18 @@ function SupportCard({ s }: { s: Support }) {
       >
         <Icon size={20} strokeWidth={1.7} />
       </span>
-      <p className="font-display text-[0.98rem] leading-snug text-ink">{s.title}</p>
+      <p className="font-display text-[0.98rem] leading-snug text-ink/70">
+        {(() => {
+          const [before = "", ...rest] = s.title.split(s.strong);
+          return (
+            <>
+              {before}
+              <span className="font-semibold text-ink">{s.strong}</span>
+              {rest.join(s.strong)}
+            </>
+          );
+        })()}
+      </p>
     </div>
   );
 }
@@ -201,6 +227,84 @@ export default function PartnerFrameworkSection() {
         >
           “We stand by you at <span className="text-coral">every angle.</span>”
         </motion.p>
+
+        {/* Commercials */}
+        <div className="mt-28 rounded-[2.5rem] border border-ink/[0.07] bg-white/60 px-6 py-14 backdrop-blur-sm sm:px-12">
+          <motion.div className="text-center" {...rise(0)}>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
+              {P.moneyKicker}
+            </p>
+            <h3 className="mx-auto mt-4 max-w-[18ch] font-display font-semibold leading-[1.06] tracking-[-0.03em] text-ink [font-size:clamp(1.7rem,3.6vw,2.8rem)]">
+              {P.moneyHeadline[0]} <span className="text-coral">{P.moneyHeadline[1]}</span>
+            </h3>
+          </motion.div>
+
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
+            {P.figures.map((f, i) => {
+              const Icon = MONEY_ICONS[f.icon as keyof typeof MONEY_ICONS];
+              return (
+                <motion.div
+                  key={f.id}
+                  {...rise(0.08 * i)}
+                  className="rounded-3xl border bg-white/75 p-7"
+                  style={{ borderColor: `color-mix(in oklab, ${f.accent} 34%, transparent)` }}
+                >
+                  <span
+                    className="flex h-11 w-11 items-center justify-center rounded-full"
+                    style={{
+                      background: `color-mix(in oklab, ${f.accent} 15%, transparent)`,
+                      color: f.accent,
+                    }}
+                    aria-hidden="true"
+                  >
+                    <Icon size={21} strokeWidth={1.7} />
+                  </span>
+                  <p
+                    className="mt-5 font-display font-semibold leading-none tracking-[-0.03em] [font-size:clamp(2.2rem,4.4vw,3.2rem)]"
+                    style={{ color: f.accent }}
+                  >
+                    {f.value}
+                  </p>
+                  <p className="mt-3 font-display text-lg leading-snug text-ink">{f.label}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-ink/55">{f.note}</p>
+                </motion.div>
+              );
+            })}
+          </div>
+          <motion.p className="mt-6 text-center text-sm text-ink/40" {...rise(0.1)}>
+            {P.figuresNote}
+          </motion.p>
+
+          <motion.p
+            className="mt-16 text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
+            {...rise(0)}
+          >
+            {P.dutiesKicker}
+          </motion.p>
+          <div className="mt-7 flex flex-wrap items-center justify-center gap-3">
+            {P.duties.map((d, i) => {
+              const Icon = MONEY_ICONS[d.icon as keyof typeof MONEY_ICONS];
+              return (
+                <motion.div key={d.id} {...rise(0.06 * i)} className="flex items-center gap-3">
+                  <div className="flex items-center gap-3 rounded-full border border-ink/[0.07] bg-white/70 py-3 pl-3 pr-6">
+                    <span
+                      className="flex h-9 w-9 items-center justify-center rounded-full bg-coral/10 text-coral"
+                      aria-hidden="true"
+                    >
+                      <Icon size={17} strokeWidth={1.7} />
+                    </span>
+                    <p className="font-display text-[0.98rem] leading-snug text-ink">{d.title}</p>
+                  </div>
+                  {i < P.duties.length - 1 && (
+                    <span className="font-display text-xl text-coral/50" aria-hidden="true">
+                      +
+                    </span>
+                  )}
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </section>
   );
