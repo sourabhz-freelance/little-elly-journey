@@ -129,39 +129,47 @@ export default function MethodSection() {
           >
             {M.eiTitle}
           </motion.p>
-          <div className="mt-8 rounded-[2rem] border border-ink/[0.07] bg-white/70 p-8 backdrop-blur-sm sm:p-10">
-            <p className="text-center font-display text-xl text-ink sm:text-2xl">
-              {M.eiCentre}
-            </p>
-            <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
-              {M.eiNodes.map((n, i) => {
-                const Icon = EI_ICONS[i % EI_ICONS.length]!;
-                return (
-                  <motion.div
-                    key={n.id}
-                    className="flex items-center gap-3 lg:flex-col lg:gap-4 lg:text-center"
-                    initial={reduce ? false : { opacity: 0, y: 14 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.4 }}
-                    transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
-                  >
+          <p className="mt-8 text-center font-display text-xl text-ink sm:text-2xl">
+            {M.eiCentre}
+          </p>
+          <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {M.eiNodes.map((n, i) => {
+              const Icon = EI_ICONS[i % EI_ICONS.length]!;
+              return (
+                <motion.div
+                  key={n.id}
+                  className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
+                  initial={reduce ? false : { opacity: 0, y: 14 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.4 }}
+                  transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
+                >
+                  <img
+                    src={IMAGES[n.id]}
+                    alt={n.title}
+                    loading="lazy"
+                    width={944}
+                    height={704}
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <div className="flex items-center gap-3 p-6">
                     <span
-                      className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
                       style={{
                         background: `color-mix(in oklab, ${n.accent} 14%, transparent)`,
                         color: n.accent,
                       }}
                       aria-hidden="true"
                     >
-                      <Icon size={19} strokeWidth={1.6} />
+                      <Icon size={18} strokeWidth={1.6} />
                     </span>
-                    <p className="font-display text-base leading-snug text-ink/80 sm:text-lg">
+                    <p className="font-display text-base leading-snug text-ink sm:text-lg">
                       {n.title}
                     </p>
-                  </motion.div>
-                );
-              })}
-            </div>
+                  </div>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
 
