@@ -9,17 +9,17 @@ New running order, top to bottom:
    so the jump from hero to curriculum reads as cause and effect.
 3. **The magic in the classroom** — the current "Inside the classroom" section,
    renamed. Headline becomes **"The magic that happens in the class."**
-4. **The invisible asset** — the story section (We started → Now, the gift).
-5. **The sector** — market size, the tailwinds, the model (these three stay
+4. **The sector** — market size, the tailwinds, the model (these three stay
    together in their current order).
+5. **The invisible asset** — the story section (We started → Now, the gift).
 6. **What it takes** — master franchise requirements.
 7. **The association** — territory, terms, profile, rules.
 8. **The same word, for you** — the partner framework closer.
 
 ## Technical notes
 
-- `src/routes/index.tsx`: reorder to Hero → Curriculum → Method → Story →
-  Market → Demographics → Model → Requirements → Terms → PartnerFramework.
+- `src/routes/index.tsx`: reorder to Hero → Curriculum → Method → Market →
+  Demographics → Model → Story → Requirements → Terms → PartnerFramework.
 - `src/content/curriculum.ts`: change `kicker` to the "How did 172 centres…" line.
 - `src/content/method.ts`: change `headline` to `["The magic that happens", "in the class."]`.
 - No layout, styling or component structure changes.
