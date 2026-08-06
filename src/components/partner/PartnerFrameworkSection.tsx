@@ -91,7 +91,18 @@ function SupportCard({ s }: { s: Support }) {
       >
         <Icon size={20} strokeWidth={1.7} />
       </span>
-      <p className="font-display text-[0.98rem] leading-snug text-ink">{s.title}</p>
+      <p className="font-display text-[0.98rem] leading-snug text-ink/70">
+        {(() => {
+          const [before = "", ...rest] = s.title.split(s.strong);
+          return (
+            <>
+              {before}
+              <span className="font-semibold text-ink">{s.strong}</span>
+              {rest.join(s.strong)}
+            </>
+          );
+        })()}
+      </p>
     </div>
   );
 }
