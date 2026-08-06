@@ -83,7 +83,7 @@ export default function EditorialBreak({
             <motion.span
               key={l}
               className="block"
-              style={i === accentIndex ? { color: "var(--coral)" } : undefined}
+              style={{ color: i === accentIndex ? "var(--coral)" : "inherit" }}
               initial={reduce ? false : { opacity: 0, y: 26 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.5 }}
