@@ -106,7 +106,7 @@ export default function MethodSection() {
             </p>
             <div className="mt-8 grid gap-x-8 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
               {M.eiNodes.map((n, i) => {
-                const Icon = EI_ICONS[i % EI_ICONS.length];
+                const Icon = EI_ICONS[i % EI_ICONS.length]!;
                 return (
                   <motion.div
                     key={n.id}
