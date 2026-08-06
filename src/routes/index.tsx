@@ -8,6 +8,7 @@ import ModelSection from "@/components/sector/ModelSection";
 import CurriculumSection from "@/components/curriculum/CurriculumSection";
 import MethodSection from "@/components/method/MethodSection";
 import PartnerFrameworkSection from "@/components/partner/PartnerFrameworkSection";
+import RequirementsSection from "@/components/requirements/RequirementsSection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
@@ -36,6 +37,7 @@ function Index() {
       <CurriculumSection />
       <MethodSection />
       <PartnerFrameworkSection />
+      <RequirementsSection />
       
     </main>
   );
