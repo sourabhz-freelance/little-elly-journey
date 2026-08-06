@@ -1,6 +1,6 @@
 /** Section — the logical half of "Happy": daily practice inside the classroom. */
 export const methodContent = {
-  headline: ["Inside the", "classroom."],
+  headline: ["The magic that happens", "in the class."],
   sub: "What a child is actually built on, day after day.",
 
   iqTitle: "Smarter children, brighter future",
