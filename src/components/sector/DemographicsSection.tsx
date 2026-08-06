@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { demographicsContent as D } from "@/content/sector";
+import { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } from "lucide-react";
+
+const ICONS = { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } as const;
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -61,6 +64,21 @@ export default function DemographicsSection() {
                   aria-expanded={isOpen}
                   className="flex w-full items-center gap-5 px-7 py-6 text-left sm:px-9"
                 >
+                  {(() => {
+                    const Icon = ICONS[d.icon as keyof typeof ICONS];
+                    return (
+                      <span
+                        className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full"
+                        style={{
+                          background: `color-mix(in oklab, ${d.accent} 16%, transparent)`,
+                          color: d.accent,
+                        }}
+                        aria-hidden="true"
+                      >
+                        <Icon size={22} strokeWidth={1.7} />
+                      </span>
+                    );
+                  })()}
                   <span
                     className="hidden shrink-0 font-display text-xl font-semibold sm:block sm:text-2xl"
                     style={{ color: d.accent }}
