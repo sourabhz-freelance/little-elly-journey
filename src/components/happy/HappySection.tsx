@@ -82,11 +82,11 @@ export default function HappySection() {
               key={c.id}
               {...rise(0.15 + i * (i === 2 ? 0.5 : 0.22))}
               className="rounded-3xl border border-ink/[0.07] bg-white/70 p-8 backdrop-blur-sm"
-              style={
-                c.id === "partner"
+              style={{
+                ...(c.id === "partner"
                   ? { borderColor: "color-mix(in oklab, var(--coral) 34%, transparent)" }
-                  : undefined
-              }
+                  : {}),
+              }}
             >
               <Mark id={c.id} accent={c.accent} />
               <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-ink/40">
