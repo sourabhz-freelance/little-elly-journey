@@ -11,7 +11,7 @@ const ANGLES = [-90, -18, 54, 126, 198];
 const R = 38; // % of container half-size
 
 const pos = (i: number) => {
-  const a = (ANGLES[i] * Math.PI) / 180;
+  const a = ((ANGLES[i] ?? 0) * Math.PI) / 180;
   return { x: 50 + R * Math.cos(a), y: 50 + R * Math.sin(a) };
 };
 
@@ -107,7 +107,7 @@ export default function CurriculumSection() {
                   strokeLinecap="round"
                   strokeDasharray="0.1 2"
                   vectorEffect="non-scaling-stroke"
-                  initial={reduce ? undefined : { pathLength: 0, opacity: 0 }}
+                  initial={reduce ? false : { pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.7 }}
                   viewport={{ once: true, amount: 0.3 }}
                   transition={{ duration: 0.6, ease: EASE, delay: 0.5 + i * 0.16 }}
@@ -118,7 +118,7 @@ export default function CurriculumSection() {
 
           <motion.div
             className="absolute left-1/2 top-1/2 h-[17rem] w-[17rem] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-[6px] border-coral/70 shadow-[0_24px_60px_-24px_rgba(9,9,77,0.35)]"
-            initial={reduce ? undefined : { opacity: 0, scale: 0.9 }}
+            initial={reduce ? false : { opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: EASE }}
@@ -140,7 +140,7 @@ export default function CurriculumSection() {
                 key={p.id}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${x}%`, top: `${y}%` }}
-                initial={reduce ? undefined : { opacity: 0, scale: 0.92 }}
+                initial={reduce ? false : { opacity: 0, scale: 0.92 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: EASE, delay: 0.6 + i * 0.16 }}
