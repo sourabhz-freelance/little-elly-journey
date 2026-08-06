@@ -34,7 +34,7 @@ function ChildPhoto() {
         className="absolute inset-0 h-full w-full object-cover"
         initial={reduce ? false : { opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={reduce ? undefined : { opacity: 0 }}
+        exit={{ opacity: reduce ? 1 : 0 }}
         transition={{ duration: 0.9, ease: EASE }}
       />
     </AnimatePresence>
