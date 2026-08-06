@@ -1,20 +1,27 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
-import { HeartPulse, Lightbulb, ToyBrick, Sparkles, BookOpen } from "lucide-react";
-import { curriculumContent as C } from "@/content/curriculum";
-import childPhoto from "@/assets/happy-child.jpg";
-import childPhotoGirl from "@/assets/happy-child-girl.jpg";
+import {
+  BadgeCheck,
+  Megaphone,
+  GraduationCap,
+  BookOpen,
+  Wallet,
+  Headset,
+} from "lucide-react";
+import { partnerFrameworkContent as P } from "@/content/partnerFramework";
+import partnerMan from "@/assets/partner-man.jpg";
+import partnerWoman from "@/assets/partner-woman.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const ICONS = { HeartPulse, Lightbulb, ToyBrick, Sparkles, BookOpen } as const;
+const ICONS = { BadgeCheck, Megaphone, GraduationCap, BookOpen, Wallet, Headset } as const;
 
 const PHOTOS = [
-  { src: childPhoto, alt: "A happy young Indian boy at a Little Elly preschool" },
-  { src: childPhotoGirl, alt: "A happy young Indian girl at a Little Elly preschool" },
+  { src: partnerMan, alt: "A Little Elly master franchise partner" },
+  { src: partnerWoman, alt: "A Little Elly master franchise partner" },
 ];
 
-function ChildPhoto() {
+function PartnerPhoto() {
   const reduce = useReducedMotion();
   const [i, setI] = useState(0);
   useEffect(() => {
@@ -41,43 +48,40 @@ function ChildPhoto() {
   );
 }
 
-type Pillar = (typeof C.pillars)[number];
+type Support = (typeof P.supports)[number];
 
 /** Radial geometry: angles in degrees, clockwise from the top. */
-const ANGLES = [-90, -18, 54, 126, 198];
-const R = 38; // % of container half-size
+const ANGLES = [-90, -30, 30, 90, 150, 210];
+const R = 38;
 
 const pos = (i: number) => {
   const a = ((ANGLES[i] ?? 0) * Math.PI) / 180;
   return { x: 50 + R * Math.cos(a), y: 50 + R * Math.sin(a) };
 };
 
-function PillarCard({ p }: { p: Pillar }) {
+function SupportCard({ s }: { s: Support }) {
+  const Icon = ICONS[s.icon as keyof typeof ICONS];
   return (
     <div
-      className="group w-[15rem] rounded-3xl border bg-white/80 p-5 text-left backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
-      style={{ borderColor: `color-mix(in oklab, ${p.accent} 40%, transparent)` }}
+      className="flex w-[14.5rem] items-center gap-3 rounded-2xl border bg-white/80 p-4 text-left backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
+      style={{ borderColor: `color-mix(in oklab, ${s.accent} 40%, transparent)` }}
     >
       <span
-        className="flex h-11 w-11 items-center justify-center rounded-full"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
         style={{
-          background: `color-mix(in oklab, ${p.accent} 16%, transparent)`,
-          color: p.accent,
+          background: `color-mix(in oklab, ${s.accent} 16%, transparent)`,
+          color: s.accent,
         }}
         aria-hidden="true"
       >
-        {(() => {
-          const Icon = ICONS[p.icon as keyof typeof ICONS];
-          return <Icon size={21} strokeWidth={1.7} />;
-        })()}
+        <Icon size={20} strokeWidth={1.7} />
       </span>
-      <p className="mt-4 font-display text-lg leading-snug text-ink">{p.title}</p>
-      <p className="mt-2 text-sm leading-relaxed text-ink/55">{p.line}</p>
+      <p className="font-display text-[0.98rem] leading-snug text-ink">{s.title}</p>
     </div>
   );
 }
 
-export default function CurriculumSection() {
+export default function PartnerFrameworkSection() {
   const reduce = useReducedMotion();
   const rise = (delay: number) =>
     reduce
@@ -92,39 +96,30 @@ export default function CurriculumSection() {
   return (
     <section
       className="relative w-full overflow-hidden bg-cream px-6 py-28 sm:px-10 lg:py-36"
-      aria-label="What makes a child happy"
+      aria-label="The Happy framework for partners"
     >
       <div
         className="pointer-events-none absolute inset-0"
         style={{
           background:
-            "radial-gradient(46% 42% at 50% 62%, color-mix(in oklab, var(--lightpink) 42%, transparent), transparent 70%)",
+            "radial-gradient(46% 42% at 50% 58%, color-mix(in oklab, var(--yellow) 22%, transparent), transparent 70%)",
         }}
       />
 
       <div className="relative z-10 mx-auto max-w-6xl">
-        {/* Philosophy */}
         <motion.div className="text-center" {...rise(0)}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
-            {C.kicker}
+            {P.kicker}
           </p>
-          <h2 className="mx-auto mt-5 max-w-[20ch] font-display font-semibold leading-[1.05] tracking-[-0.03em] text-ink [font-size:clamp(2.2rem,5vw,4rem)]">
-            {C.headline[0]} <span className="text-coral">{C.headline[1]}</span>
+          <h2 className="mx-auto mt-5 max-w-[24ch] font-display font-semibold leading-[1.08] tracking-[-0.03em] text-ink [font-size:clamp(1.9rem,4.2vw,3.3rem)]">
+            {P.headline[0]} <span className="text-coral">{P.headline[1]}</span>
           </h2>
+          <p className="mx-auto mt-6 max-w-[44ch] text-base leading-relaxed text-ink/55 sm:text-lg">
+            {P.sub}
+          </p>
         </motion.div>
 
-        <motion.div className="mx-auto mt-6 max-w-[46ch] text-center" {...rise(0.15)}>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
-            {C.proof.map((p, i) => (
-              <span key={p} className="flex items-center gap-3">
-                {i > 0 && <span className="text-coral/50">·</span>}
-                {p}
-              </span>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* Radial diagram — desktop */}
+        {/* Radial — desktop */}
         <div className="relative mx-auto mt-20 hidden aspect-square w-full max-w-[54rem] lg:block">
           <svg
             viewBox="0 0 100 100"
@@ -132,16 +127,16 @@ export default function CurriculumSection() {
             preserveAspectRatio="none"
             aria-hidden="true"
           >
-            {C.pillars.map((p, i) => {
+            {P.supports.map((s, i) => {
               const { x, y } = pos(i);
               return (
                 <motion.line
-                  key={p.id}
+                  key={s.id}
                   x1={50}
                   y1={50}
                   x2={x}
                   y2={y}
-                  stroke={p.accent}
+                  stroke={s.accent}
                   strokeWidth={0.5}
                   strokeLinecap="round"
                   strokeDasharray="0.1 2"
@@ -149,7 +144,7 @@ export default function CurriculumSection() {
                   initial={reduce ? false : { pathLength: 0, opacity: 0 }}
                   whileInView={{ pathLength: 1, opacity: 0.7 }}
                   viewport={{ once: true, amount: 0.3 }}
-                  transition={{ duration: 0.6, ease: EASE, delay: 0.5 + i * 0.16 }}
+                  transition={{ duration: 0.6, ease: EASE, delay: 0.5 + i * 0.14 }}
                 />
               );
             })}
@@ -162,22 +157,22 @@ export default function CurriculumSection() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: EASE }}
           >
-            <ChildPhoto />
+            <PartnerPhoto />
           </motion.div>
 
-          {C.pillars.map((p, i) => {
+          {P.supports.map((s, i) => {
             const { x, y } = pos(i);
             return (
               <motion.div
-                key={p.id}
+                key={s.id}
                 className="absolute -translate-x-1/2 -translate-y-1/2"
                 style={{ left: `${x}%`, top: `${y}%` }}
                 initial={reduce ? false : { opacity: 0, scale: 0.92 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.6, ease: EASE, delay: 0.6 + i * 0.16 }}
+                transition={{ duration: 0.6, ease: EASE, delay: 0.6 + i * 0.14 }}
               >
-                <PillarCard p={p} />
+                <SupportCard s={s} />
               </motion.div>
             );
           })}
@@ -189,23 +184,22 @@ export default function CurriculumSection() {
             className="relative mx-auto h-52 w-52 overflow-hidden rounded-full border-[6px] border-coral/70"
             {...rise(0.1)}
           >
-            <ChildPhoto />
+            <PartnerPhoto />
           </motion.div>
-          <div className="mt-10 grid gap-5 sm:grid-cols-2">
-            {C.pillars.map((p, i) => (
-              <motion.div key={p.id} {...rise(0.1 + i * 0.08)} className="[&>div]:w-full">
-                <PillarCard p={p} />
+          <div className="mt-10 grid gap-4 sm:grid-cols-2">
+            {P.supports.map((s, i) => (
+              <motion.div key={s.id} {...rise(0.1 + i * 0.07)} className="[&>div]:w-full">
+                <SupportCard s={s} />
               </motion.div>
             ))}
           </div>
         </div>
 
         <motion.p
-          className="mx-auto mt-20 max-w-[26ch] text-center font-display leading-tight text-ink [font-size:clamp(1.5rem,3vw,2.4rem)]"
+          className="mx-auto mt-20 max-w-[24ch] text-center font-display leading-tight text-ink [font-size:clamp(1.5rem,3vw,2.4rem)]"
           {...rise(0.1)}
         >
-          “Happy is not the mood we aim for.{" "}
-          <span className="text-coral">It&rsquo;s the method.</span>”
+          “We stand by you at <span className="text-coral">every angle.</span>”
         </motion.p>
       </div>
     </section>
