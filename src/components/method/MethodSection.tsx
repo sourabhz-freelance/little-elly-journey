@@ -13,7 +13,7 @@ import { methodContent as M } from "@/content/method";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ICONS = { Eye, Brain, Sigma, MessagesSquare } as const;
-const EI_ICONS = [Heart, Compass, Waves, Sparkles];
+const EI_ICONS = [Heart, Compass, Waves, Sparkles] as const;
 
 export default function MethodSection() {
   const reduce = useReducedMotion();
