@@ -53,7 +53,7 @@ export const marketContent = {
 export const demographicsContent = {
   kicker: "The tailwind",
   headline: ["India isn't", "running out of children."],
-  sub: "Four structural forces, none of them a trend. Tap a force to open it.",
+  sub: "Seven structural forces, none of them a trend. Tap a force to open it.",
   drivers: [
     {
       id: "children",
