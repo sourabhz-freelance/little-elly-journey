@@ -61,10 +61,7 @@ export default function MethodSection() {
 
       <div className="relative z-10 mx-auto max-w-5xl">
         <motion.div className="text-center" {...rise(0)}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
-            {M.kicker}
-          </p>
-          <h2 className="mx-auto mt-5 max-w-[20ch] font-display font-semibold leading-[1.05] tracking-[-0.03em] text-ink [font-size:clamp(2.2rem,5vw,4rem)]">
+          <h2 className="mx-auto max-w-[20ch] font-display font-semibold leading-[1.05] tracking-[-0.03em] text-ink [font-size:clamp(2.2rem,5vw,4rem)]">
             {M.headline[0]} <span className="text-coral">{M.headline[1]}</span>
           </h2>
           <p className="mx-auto mt-6 max-w-[42ch] text-base leading-relaxed text-ink/55 sm:text-lg">
