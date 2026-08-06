@@ -40,13 +40,13 @@ function GrowthChart() {
       <p className="font-display text-xl text-ink sm:text-2xl">{M.chart.title}</p>
       <div className="mt-10 flex h-56 items-end gap-4 sm:gap-8">
         {values.map((v, i) => (
-          <div key={years[i]} className="flex flex-1 flex-col items-center gap-3">
+          <div key={years[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-3">
             <span className="font-display text-sm font-semibold text-ink/70 sm:text-base">
               ${v.toFixed(1)}B
             </span>
             <motion.div
               initial={{ height: 0 }}
-              whileInView={{ height: `${(v / max) * 100}%` }}
+              whileInView={{ height: Math.round((v / max) * 170) }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{ duration: 0.9, ease: EASE, delay: 0.1 * i }}
               className="w-full rounded-t-xl"
