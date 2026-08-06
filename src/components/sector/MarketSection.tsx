@@ -64,7 +64,6 @@ function GrowthChart() {
 }
 
 export default function MarketSection() {
-  const reduce = useReducedMotion();
   return (
     <section
       className="relative w-full overflow-hidden bg-cream px-6 py-28 sm:px-10 lg:py-36"
@@ -80,8 +79,8 @@ export default function MarketSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div
           className="text-center"
-          initial={reduce ? undefined : { opacity: 0, y: 24 }}
-          whileInView={reduce ? undefined : { opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.75, ease: EASE }}
         >
