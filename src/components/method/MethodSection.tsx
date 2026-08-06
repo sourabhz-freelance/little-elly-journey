@@ -86,25 +86,35 @@ export default function MethodSection() {
               return (
                 <motion.div
                   key={a.id}
-                  className="rounded-3xl border border-ink/[0.07] bg-white/70 p-7 backdrop-blur-sm"
+                  className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
                   initial={reduce ? false : { opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.4 }}
                   transition={{ duration: 0.6, ease: EASE, delay: 0.08 * i }}
                 >
-                  <span
-                    className="flex h-11 w-11 items-center justify-center rounded-full"
-                    style={{
-                      background: `color-mix(in oklab, ${a.accent} 14%, transparent)`,
-                      color: a.accent,
-                    }}
-                    aria-hidden="true"
-                  >
-                    <Icon size={20} strokeWidth={1.6} />
-                  </span>
-                  <p className="mt-5 font-display text-lg leading-snug text-ink sm:text-xl">
-                    {a.title}
-                  </p>
+                  <img
+                    src={IMAGES[a.id]}
+                    alt={a.title}
+                    loading="lazy"
+                    width={944}
+                    height={704}
+                    className="aspect-[4/3] w-full object-cover"
+                  />
+                  <div className="flex items-center gap-3 p-6">
+                    <span
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
+                      style={{
+                        background: `color-mix(in oklab, ${a.accent} 14%, transparent)`,
+                        color: a.accent,
+                      }}
+                      aria-hidden="true"
+                    >
+                      <Icon size={18} strokeWidth={1.6} />
+                    </span>
+                    <p className="font-display text-lg leading-snug text-ink">
+                      {a.title}
+                    </p>
+                  </div>
                 </motion.div>
               );
             })}
