@@ -31,12 +31,12 @@ function Index() {
   return (
     <main className="bg-cream">
       <Hero />
-      <StorySection />
+      <CurriculumSection />
+      <MethodSection />
       <MarketSection />
       <DemographicsSection />
       <ModelSection />
-      <CurriculumSection />
-      <MethodSection />
+      <StorySection />
       <RequirementsSection />
       <TermsSection />
       <PartnerFrameworkSection />
