@@ -57,6 +57,7 @@ export const demographicsContent = {
   drivers: [
     {
       id: "children",
+      icon: "Baby",
       stat: "3.5 crore",
       title: "Children aged 0–6 in the ICDS net alone",
       body: "That is the government's own count of young children it reaches — a floor, not a ceiling. Every year replenishes the cohort. This is a business whose customer is born, not converted.",
@@ -65,6 +66,7 @@ export const demographicsContent = {
     },
     {
       id: "income",
+      icon: "TrendingUp",
       stat: "Tier II & III",
       title: "Rising incomes are moving the demand outward",
       body: "Millennial parents outside the metros are now seeking structured early education — the same aspiration that built the metro market, arriving in hundreds of cities at once. This is precisely where master-franchise territory is still open.",
@@ -73,6 +75,7 @@ export const demographicsContent = {
     },
     {
       id: "women",
+      icon: "Briefcase",
       stat: "Dual income",
       title: "More working mothers, more full-day demand",
       body: "Rising female workforce participation and urbanisation are converting preschool from a few hours of play into an all-day, higher-ticket service. Full day care is already 64.5% of the market.",
@@ -81,6 +84,7 @@ export const demographicsContent = {
     },
     {
       id: "policy",
+      icon: "Landmark",
       stat: "NEP 2020",
       title: "Policy made early years part of formal schooling",
       body: "The National Education Policy places ages 3–8 in a single 'foundational stage' and pushes universal quality early childhood care and education. Parents now read preschool as necessary, not optional.",
@@ -89,6 +93,7 @@ export const demographicsContent = {
     },
     {
       id: "young",
+      icon: "Users",
       stat: "3 in 4",
       title: "Three quarters of India is under 35",
       body: "The country's parents are young, and there are more of them arriving every year. A young nation keeps refilling the classroom — the demand curve is demographic, not cyclical.",
@@ -97,6 +102,7 @@ export const demographicsContent = {
     },
     {
       id: "nuclear",
+      icon: "Home",
       stat: "Nuclear",
       title: "The joint family used to be the daycare",
       body: "As families shrink to two parents in a rented flat, the grandparent who once minded the child is three states away. What was free and informal now has to be bought — and bought from someone trusted.",
@@ -105,6 +111,7 @@ export const demographicsContent = {
     },
     {
       id: "priority",
+      icon: "GraduationCap",
       stat: "#2 spend",
       title: "Education is the second thing an Indian family buys after a home",
       body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through demonetisation, GST and a pandemic — and why fee realisation stays strong.",
@@ -139,26 +146,31 @@ export const modelContent = {
   reasons: [
     {
       id: "prepaid",
+      icon: "Wallet",
       title: "Fees come first",
       body: "Term or annual fees are collected up front, ahead of the cost of delivering the year. Working capital behaves kindly.",
     },
     {
       id: "sticky",
+      icon: "HeartHandshake",
       title: "Two to three year customers",
       body: "A family that enrols at playgroup usually stays through kindergarten — and refers the next family on the street.",
     },
     {
       id: "light",
+      icon: "Feather",
       title: "Asset-light footprint",
       body: "Leased premises, modest fit-out, small team. Capital goes into quality and people, not land.",
     },
     {
       id: "cycle",
+      icon: "ShieldCheck",
       title: "It doesn't read the market",
       body: "Nobody pulls a four-year-old out of school because of a bad quarter. Enrolment holds through downturns — the closest thing to a defensive consumer business.",
     },
     {
       id: "moat",
+      icon: "BadgeCheck",
       title: "Trust is the moat",
       body: "Parents don't experiment with three-year-olds. A trusted brand with a proven curriculum wins the decision before price is discussed.",
     },
