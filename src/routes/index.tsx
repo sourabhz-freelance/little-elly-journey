@@ -7,7 +7,10 @@ import DemographicsSection from "@/components/sector/DemographicsSection";
 import ModelSection from "@/components/sector/ModelSection";
 import CurriculumSection from "@/components/curriculum/CurriculumSection";
 import MethodSection from "@/components/method/MethodSection";
+import EditorialBreak from "@/components/shared/EditorialBreak";
+import GiftMapSection from "@/components/gift/GiftMapSection";
 import PartnerFrameworkSection from "@/components/partner/PartnerFrameworkSection";
+import MasterLifeSection from "@/components/partner/MasterLifeSection";
 import RequirementsSection from "@/components/requirements/RequirementsSection";
 import TermsSection from "@/components/terms/TermsSection";
 
