@@ -125,7 +125,7 @@ export default function RequirementsSection() {
 
           <div className="relative grid grid-cols-[1fr_20rem_1fr] items-center gap-x-8 gap-y-14">
             <motion.div {...rise(0.1)}>
-              <Card g={groups[0]!} align="left" />
+              <Card g={groups[0]!} />
             </motion.div>
 
             <motion.div
@@ -144,14 +144,14 @@ export default function RequirementsSection() {
             </motion.div>
 
             <motion.div {...rise(0.18)}>
-              <Card g={groups[1]!} align="right" />
+              <Card g={groups[1]!} />
             </motion.div>
 
             <motion.div {...rise(0.26)}>
-              <Card g={groups[2]!} align="left" />
+              <Card g={groups[2]!} />
             </motion.div>
             <motion.div {...rise(0.34)}>
-              <Card g={groups[3]!} align="right" />
+              <Card g={groups[3]!} />
             </motion.div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function RequirementsSection() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {groups.map((g, i) => (
               <motion.div key={g.id} {...rise(0.08 + i * 0.07)}>
-                <Card g={g} align="left" />
+                <Card g={g} />
               </motion.div>
             ))}
           </div>
