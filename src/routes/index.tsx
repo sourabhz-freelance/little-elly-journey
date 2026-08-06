@@ -21,6 +21,7 @@ function Index() {
   return (
     <main className="bg-cream">
       <Hero />
+      <StorySection />
     </main>
   );
 }
