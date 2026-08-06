@@ -47,7 +47,7 @@ export default function CurriculumSection() {
   return (
     <section
       className="relative w-full overflow-hidden bg-cream px-6 py-28 sm:px-10 lg:py-36"
-      aria-label="The H.A.P.P.Y. curriculum"
+      aria-label="What makes a child happy"
     >
       <div
         className="pointer-events-none absolute inset-0"
@@ -144,7 +144,7 @@ export default function CurriculumSection() {
                 viewport={{ once: true, amount: 0.3 }}
                 transition={{ duration: 0.6, ease: EASE, delay: 0.6 + i * 0.16 }}
               >
-                <PillarCard p={p} letter={p.letter} />
+                <PillarCard p={p} />
               </motion.div>
             );
           })}
@@ -168,7 +168,7 @@ export default function CurriculumSection() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2">
             {C.pillars.map((p, i) => (
               <motion.div key={p.id} {...rise(0.1 + i * 0.08)} className="[&>div]:w-full">
-                <PillarCard p={p} letter={p.letter} />
+                <PillarCard p={p} />
               </motion.div>
             ))}
           </div>
