@@ -7,6 +7,12 @@ import {
   BookOpen,
   Wallet,
   Headset,
+  TrendingUp,
+  Share2,
+  Search,
+  KeyRound,
+  HeartHandshake,
+  ShieldCheck,
 } from "lucide-react";
 import { partnerFrameworkContent as P } from "@/content/partnerFramework";
 import partnerMan from "@/assets/partner-man.jpg";
@@ -15,6 +21,15 @@ import partnerWoman from "@/assets/partner-woman.jpg";
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const ICONS = { BadgeCheck, Megaphone, GraduationCap, BookOpen, Wallet, Headset } as const;
+const MONEY_ICONS = {
+  Wallet,
+  TrendingUp,
+  Share2,
+  Search,
+  KeyRound,
+  HeartHandshake,
+  ShieldCheck,
+} as const;
 
 const PHOTOS = [
   { src: partnerMan, alt: "A Little Elly master franchise partner" },
