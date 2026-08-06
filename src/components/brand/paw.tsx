@@ -109,36 +109,3 @@ export function Paw({
   );
 }
 
-/** The Trail — flowing dotted paw-path. */
-export function Trail({
-  d,
-  className,
-  color = "var(--pink)",
-  duration = 26,
-  width = 3.4,
-  opacity = 0.55,
-}: {
-  d: string;
-  className?: string;
-  color?: string;
-  duration?: number;
-  width?: number;
-  opacity?: number;
-}) {
-  return (
-    <motion.path
-      d={d}
-      className={className}
-      fill="none"
-      stroke={color}
-      strokeWidth={width}
-      strokeLinecap="round"
-      strokeDasharray="0.5 15"
-      vectorEffect="non-scaling-stroke"
-      opacity={opacity}
-      initial={{ strokeDashoffset: 0 }}
-      animate={{ strokeDashoffset: -155 }}
-      transition={{ duration, repeat: Infinity, ease: "linear" }}
-    />
-  );
-}
