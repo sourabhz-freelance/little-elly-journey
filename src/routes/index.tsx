@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import Hero from "@/components/hero/Hero";
 import StorySection from "@/components/story/StorySection";
+import HappySection from "@/components/happy/HappySection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
