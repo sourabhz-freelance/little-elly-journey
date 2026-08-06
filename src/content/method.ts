@@ -1,7 +1,6 @@
 /** Section — the logical half of "Happy": daily practice inside the classroom. */
 export const methodContent = {
-  kicker: "Inside the classroom",
-  headline: ["Happy is the philosophy.", "This is the daily practice."],
+  headline: ["Inside the", "classroom."],
   sub: "What a child is actually built on, day after day.",
 
   iqTitle: "Smarter children, brighter future",
@@ -13,7 +12,6 @@ export const methodContent = {
   ],
 
   eiTitle: "Emotional intelligence",
-  eiCentre: "Emotional Intelligence",
   eiNodes: [
     { id: "perceiving", title: "Perceiving emotions", accent: "var(--orange)" },
     { id: "understanding", title: "Understanding emotions", accent: "var(--turquoise)" },
