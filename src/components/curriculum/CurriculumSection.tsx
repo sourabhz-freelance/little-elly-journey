@@ -113,12 +113,8 @@ export default function CurriculumSection() {
           </h2>
         </motion.div>
 
-        <motion.div className="mx-auto mt-8 max-w-[58ch] text-center" {...rise(0.15)}>
-          {C.paras.map((t, i) => (
-            <p key={i} className="mt-4 text-base leading-relaxed text-ink/60 sm:text-lg">
-              {t}
-            </p>
-          ))}
+        <motion.div className="mx-auto mt-6 max-w-[46ch] text-center" {...rise(0.15)}>
+          <p className="text-lg leading-relaxed text-ink/60 sm:text-xl">{C.sub}</p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
             {C.proof.map((p, i) => (
               <span key={p} className="flex items-center gap-3">
