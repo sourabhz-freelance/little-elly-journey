@@ -24,6 +24,7 @@ function Index() {
     <main className="bg-cream">
       <Hero />
       <StorySection />
+      <HappySection />
     </main>
   );
 }
