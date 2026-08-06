@@ -34,7 +34,7 @@ function Index() {
       <ModelSection />
       <CurriculumSection />
       <PartnerFrameworkSection />
-      <HappySection />
+      
     </main>
   );
 }
