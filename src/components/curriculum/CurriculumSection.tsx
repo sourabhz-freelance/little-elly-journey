@@ -15,18 +15,17 @@ const pos = (i: number) => {
   return { x: 50 + R * Math.cos(a), y: 50 + R * Math.sin(a) };
 };
 
-function PillarCard({ p, letter }: { p: Pillar; letter: string }) {
+function PillarCard({ p }: { p: Pillar }) {
   return (
     <div
       className="group w-[15rem] rounded-3xl border bg-white/80 p-5 text-left backdrop-blur-sm transition-transform duration-300 hover:-translate-y-1"
       style={{ borderColor: `color-mix(in oklab, ${p.accent} 40%, transparent)` }}
     >
       <span
-        className="inline-flex h-9 w-9 items-center justify-center rounded-full font-display text-base font-semibold text-ink"
-        style={{ background: `color-mix(in oklab, ${p.accent} 32%, transparent)` }}
-      >
-        {letter}
-      </span>
+        className="block h-3 w-3 rounded-full"
+        style={{ background: p.accent }}
+        aria-hidden="true"
+      />
       <p className="mt-4 font-display text-lg leading-snug text-ink">{p.title}</p>
       <p className="mt-2 text-sm leading-relaxed text-ink/55">{p.line}</p>
     </div>
