@@ -1,53 +1,51 @@
-# Sections 07–08 — The H.A.P.P.Y. Curriculum
+# Section 07 — The H.A.P.P.Y. Curriculum
 
-Placed directly after "The Model". Two sections: one philosophical opener, one
-infographic centrepiece. Same brand system (Fredoka headings, Poppins body,
-cream ground, coral accent), presenter-paced.
+One section, placed directly after "The Model". It opens philosophically, then
+resolves into the curriculum infographic in the same scroll. Same brand system
+(Fredoka headings, Poppins body, cream ground, coral accent), presenter-paced.
 
-## Section 07 — The philosophy (calm, full-viewport)
+## The shape
+
+```text
+              THE CURRICULUM
+     A child is not a syllabus to be finished.
+        (short philosophical lines + 1 lakh proof)
+
+              A healthy body
+   A lifelong                An awakened
+   love of        [ CHILD ]      mind
+   learning
+      A capable self    A playful heart
+
+     "Happy is not the mood we aim for. It's the method."
+```
+
+## Opening copy
 
 Kicker: `The curriculum`
 
 Headline: **A child is not a syllabus to be finished.**
 
-Body (two short paragraphs, large type, centred, generous space):
+Two short lines, large type, centred:
 
 > Twenty years in classrooms taught us one thing: a child learns best when they
 > are happy. Not entertained — happy. Curious, safe, moving, and sure of
 > themselves.
 >
 > So we stopped designing a syllabus and started designing a childhood. We call
-> it the H.A.P.P.Y. curriculum — and over **1 lakh parents** have watched it
+> it the **H.A.P.P.Y. curriculum** — and over **1 lakh parents** have watched it
 > work on their own child.
 
-Proof line under it: `1,00,000+ happy parents · 172 centres · 20+ years`
-(the 1 lakh figure is the user's; the rest are existing approved proof points).
+Proof line: `1,00,000+ happy parents · 172 centres · 20+ years`
 
-Motion: text fades and rises in three beats; one soft warm glow behind. Nothing
-else — this section is the breath before the infographic.
-
-## Section 08 — The HAPPY Framework (the centrepiece)
-
-A child at the centre, five petals of the framework arranged around them.
-
-```text
-              A healthy body
-   A lifelong                A n awakened
-   love of        [ CHILD ]      mind
-   learning
-      A capable self    A playful heart
-```
+## The curriculum diagram
 
 - **Centre**: a generated photo-real portrait of a happy, affluent, urban Indian
   child (approx. 4–5 years old) in a soft circular mask with a coral ring —
-  warm, premium, not stocky. Prompt specifies Indian child, well-dressed,
-  natural light, neutral warm background.
-- **Around it**: five cards/nodes, each on a brand colour, connected to the
-  centre by thin dotted brand trails (the one place the trail motif earns its
-  keep). Desktop: true radial layout around the child. Mobile: the child on top,
-  the five nodes stacked beneath — no cramped radial on small screens.
-
-Each node carries a letter, a title and one line:
+  warm and premium, not stocky.
+- **Around it**: five nodes, one per brand colour, joined to the centre by thin
+  dotted brand trails. Desktop: true radial layout around the child. Mobile:
+  child on top, five nodes stacked beneath — no cramped radial on small screens.
 
 | Letter | Title | Line | Colour |
 |---|---|---|---|
@@ -57,27 +55,25 @@ Each node carries a letter, a title and one line:
 | P | A capable self | Small independences, practised daily, until they feel ordinary. | periwinkle |
 | Y | A lifelong love of learning | The one outcome that outlives every report card. | turquoise |
 
-Note on the acronym: the five pillars are presented as the H.A.P.P.Y. letters in
-that order. The final line is labelled `Y` as "Yearning to learn — a lifelong
-love of learning" so the acronym resolves cleanly. Say the word if you'd rather
-drop the letters and keep the five phrases plain.
-
-Motion: the child scales in first, then the five nodes bloom outward in
-sequence (clockwise from the top), dotted connectors drawing as each lands.
-Hovering / tapping a node lifts it and deepens its colour — a presenter can park
-on one pillar while talking. Reduced motion: all visible, no stagger.
-
 Closing line, centred under the diagram:
 **"Happy is not the mood we aim for. It's the method."**
 
+## Motion
+
+- Opening copy fades and rises in two beats.
+- The child scales in, then the five nodes bloom outward in sequence (clockwise
+  from the top), each dotted connector drawing as its node lands.
+- Hover / tap on a node lifts it and deepens its colour, so the presenter can
+  park on one pillar while talking.
+- Reduced motion: everything visible, no stagger.
+
 ## Technical notes
 
-- Copy in `src/content/curriculum.ts`; components
-  `src/components/curriculum/PhilosophySection.tsx` and
-  `src/components/curriculum/HappyFrameworkSection.tsx` (with a small
-  `PillarNode` sub-component).
-- Radial layout computed from angles in one container using absolute
-  positioning; connectors in a single overlaid SVG so nothing drifts.
+- Copy in `src/content/curriculum.ts`; component
+  `src/components/curriculum/CurriculumSection.tsx` with a small `PillarNode`
+  sub-component.
+- Radial layout computed from angles with absolute positioning in one container;
+  connectors in a single overlaid SVG so nothing drifts.
 - Child portrait generated to `src/assets/happy-child.jpg`, imported as an ES6
   image import, with descriptive alt text.
 - Framer Motion `whileInView` with `once: true` — no pinning (StorySection keeps
