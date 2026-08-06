@@ -31,6 +31,7 @@ function Index() {
       <MarketSection />
       <DemographicsSection />
       <ModelSection />
+      <CurriculumSection />
       <HappySection />
     </main>
   );
