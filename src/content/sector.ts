@@ -6,7 +6,7 @@
 
 export const marketContent = {
   kicker: "The sector",
-  headline: ["", "The opportunity!"],
+  headline: ["The", "opportunity!"],
   sub: "India's preschool and childcare market is one of the few consumer categories growing at near double digits, year after year, through every cycle.",
   stats: [
     {
