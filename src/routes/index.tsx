@@ -37,14 +37,6 @@ function Index() {
       <CurriculumSection />
       <MethodSection />
 
-      {/* conjunction: from the classroom to the business */}
-      <EditorialBreak
-        kicker="Before the brand"
-        lines={["Look at the opportunity,", "not the business."]}
-        accentIndex={1}
-        note="What happens inside those walls is why parents come. What happens outside them is why this is worth your capital."
-        tone="ink"
-      />
 
       <MarketSection />
       <DemographicsSection />
