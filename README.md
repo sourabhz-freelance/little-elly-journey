@@ -48,18 +48,6 @@ SCROLL CUE: subtle animated mouse/scroll indicator centered near bottom, "SCROLL
 
 Entrances should be staggered and smooth (fade/rise), background should warm in on load. Keep it restrained and expensive-feeling. Make all copy easy to edit and the color tokens centralized so we can theme quickly.
 
-This project was built with [Lovable](https://lovable.dev).
-
-**Live app**: https://little-elly-journey.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/326bce71-220d-4f8f-824b-cf79eda201ca).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
-
 ## Development
 
 Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).

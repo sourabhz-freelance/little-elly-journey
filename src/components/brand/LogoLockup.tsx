@@ -1,10 +1,10 @@
-import logoAsset from "@/assets/little-elly-logo.png.asset.json";
+import logo from "@/assets/little-elly-logo.png";
 import { heroContent } from "@/content/hero";
 
 export function LogoLockup() {
   return (
     <img
-      src={logoAsset.url}
+      src={logo}
       alt={`${heroContent.brand.name} — ${heroContent.brand.tagline}`}
       className="h-14 w-auto sm:h-16"
     />
