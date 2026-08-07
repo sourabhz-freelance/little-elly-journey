@@ -1,7 +1,7 @@
 /** Section 07 — What makes a child happy. */
 export const curriculumContent = {
   kicker: "How did 172 centres, 19 cities, 20 years happen?",
-  headline: ["25,000+ parents have loved", "our “Happy” curriculum and its outcomes."],
+  headline: ["25,000+ parents have loved", "our “Happy” curriculum"],
   proof: ["25,000+ happy parents", "172 centres", "20+ years"],
   pillars: [
     {
