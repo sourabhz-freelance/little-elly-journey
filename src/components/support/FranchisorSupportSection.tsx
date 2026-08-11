@@ -33,129 +33,201 @@ const useRise = () => {
         };
 };
 
-/** The load-bearing beam: four heavy clusters on our side, four light ones on yours. */
-function Beam() {
+/** Flattened list of the nineteen obligations, numbered in cluster order. */
+const STONES = S.clusters.flatMap((c) =>
+  c.items.map((label) => ({ label, accent: c.accent, cluster: c.title })),
+);
+
+/** Geometry: stones sit on a shallow ellipse arc, computed once (SSR-stable). */
+const ARCH = STONES.map((s, i) => {
+  const t = 176 - (i * (176 - 4)) / (STONES.length - 1);
+  const r = (t * Math.PI) / 180;
+  return { ...s, x: 500 + 468 * Math.cos(r), y: 322 - 236 * Math.sin(r) };
+});
+
+const ARC_PATH = (() => {
+  const pts = Array.from({ length: 97 }, (_, k) => {
+    const r = ((180 - (k * 180) / 96) * Math.PI) / 180;
+    return `${(500 + 468 * Math.cos(r)).toFixed(1)},${(322 - 236 * Math.sin(r)).toFixed(1)}`;
+  });
+  return `M ${pts.join(" L ")}`;
+})();
+
+/** The arch: nineteen numbered stones hold up the four things you carry. */
+function Arch() {
   const reduce = useReducedMotion();
   const rise = useRise();
-  const weCarry = S.clusters.reduce((n, c) => n + c.items.length, 0);
+  const [active, setActive] = useState<number | null>(null);
+  const weCarry = STONES.length;
+  const shown = active === null ? null : ARCH[active];
 
   return (
     <div className="mt-20">
-      {/* the balance */}
-      <motion.div
-        className="mx-auto flex max-w-2xl items-center gap-5 rounded-full border border-ink/[0.07] bg-white/70 px-6 py-4 backdrop-blur-sm"
-        {...rise(0)}
-      >
-        <p className="shrink-0 font-display text-sm text-ink/50">
-          You <span className="font-semibold text-ink">{S.yours.length}</span>
-        </p>
-        <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-ink/[0.07]">
-          <motion.span
-            className="h-full rounded-full bg-turquoise"
-            initial={reduce ? false : { width: "0%" }}
-            whileInView={{ width: `${(S.yours.length / (weCarry + S.yours.length)) * 100}%` }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.9, ease: EASE }}
-          />
-          <motion.span
-            className="h-full flex-1 rounded-full bg-coral"
-            initial={reduce ? false : { opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, amount: 0.6 }}
-            transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
-          />
-        </div>
-        <p className="shrink-0 font-display text-sm text-ink/50">
-          <span className="font-semibold text-coral">{weCarry}</span> us
-        </p>
+      {/* legend — the arithmetic, stated */}
+      <motion.div className="flex flex-wrap items-center justify-center gap-2.5" {...rise(0)}>
+        {S.clusters.map((c) => (
+          <span
+            key={c.id}
+            className="flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[0.78rem] leading-none"
+            style={{
+              background: `color-mix(in oklab, ${c.accent} 11%, transparent)`,
+              color: c.accent,
+            }}
+          >
+            <span className="h-1.5 w-1.5 rounded-full" style={{ background: c.accent }} />
+            {c.title}
+            <span className="font-semibold">{c.items.length}</span>
+          </span>
+        ))}
+        <span className="rounded-full bg-ink/[0.06] px-3.5 py-1.5 text-[0.78rem] leading-none text-ink/60">
+          = <span className="font-semibold text-ink">{weCarry}</span> obligations, ours
+        </span>
       </motion.div>
 
-      {/* four clusters, as chips */}
-      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {S.clusters.map((c, i) => {
-          const Icon = CLUSTER_ICONS[c.icon as keyof typeof CLUSTER_ICONS];
-          return (
-            <motion.div
-              key={c.id}
-              {...rise(0.08 * i)}
-              className="flex flex-col rounded-[1.75rem] border bg-white/75 p-6 backdrop-blur-sm"
-              style={{ borderColor: `color-mix(in oklab, ${c.accent} 32%, transparent)` }}
+      {/* ---- desktop: the arch ---- */}
+      <div className="mt-10 hidden lg:block">
+        <div className="relative w-full" style={{ paddingBottom: "34%" }}>
+          <svg
+            viewBox="0 0 1000 340"
+            className="absolute inset-0 h-full w-full"
+            fill="none"
+            aria-hidden="true"
+          >
+            <motion.path
+              d={ARC_PATH}
+              stroke="var(--pink)"
+              strokeWidth={2}
+              strokeLinecap="round"
+              strokeDasharray="0.1 15"
+              vectorEffect="non-scaling-stroke"
+              initial={reduce ? false : { pathLength: 0 }}
+              whileInView={{ pathLength: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{ duration: 1.6, ease: EASE }}
+            />
+          </svg>
+
+          {ARCH.map((s, i) => (
+            <motion.button
+              key={s.label}
+              type="button"
+              onMouseEnter={() => setActive(i)}
+              onMouseLeave={() => setActive((a) => (a === i ? null : a))}
+              onFocus={() => setActive(i)}
+              onBlur={() => setActive((a) => (a === i ? null : a))}
+              className="absolute flex h-[clamp(2rem,3.4vw,2.9rem)] w-[clamp(2rem,3.4vw,2.9rem)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[0.7rem] font-display text-[0.8rem] font-semibold tabular-nums outline-none transition-transform duration-300 hover:-translate-y-[62%] focus-visible:-translate-y-[62%]"
+              style={{
+                left: `${(s.x / 1000) * 100}%`,
+                top: `${(s.y / 340) * 100}%`,
+                background:
+                  active === i
+                    ? s.accent
+                    : `color-mix(in oklab, ${s.accent} 13%, var(--cream))`,
+                color: active === i ? "var(--cream)" : s.accent,
+                boxShadow:
+                  active === i
+                    ? `0 10px 24px -10px color-mix(in oklab, ${s.accent} 70%, transparent)`
+                    : "none",
+                border: `1px solid color-mix(in oklab, ${s.accent} 30%, transparent)`,
+              }}
+              initial={reduce ? false : { opacity: 0, y: 14, scale: 0.85 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.5 }}
+              transition={{ duration: 0.5, ease: EASE, delay: 0.35 + i * 0.055 }}
+              aria-label={`${s.cluster}: ${s.label}`}
             >
-              <div className="flex items-center gap-3">
+              {String(i + 1).padStart(2, "0")}
+            </motion.button>
+          ))}
+        </div>
+
+        {/* the caption — one obligation at a time */}
+        <div className="-mt-2 flex h-8 items-center justify-center">
+          <p
+            className="font-display text-lg leading-none transition-colors duration-300"
+            style={{ color: shown ? shown.accent : "color-mix(in oklab, var(--ink) 35%, transparent)" }}
+          >
+            {shown ? `${shown.cluster} — ${shown.label}` : "Hover a stone to read what it carries"}
+          </p>
+        </div>
+
+        {/* the deck you stand on */}
+        <motion.div
+          className="mt-6 grid grid-cols-4 gap-px overflow-hidden rounded-2xl border border-coral/20 bg-coral/15"
+          {...rise(0.15)}
+        >
+          {S.yours.map((y) => {
+            const Icon = YOURS_ICONS[y.icon as keyof typeof YOURS_ICONS];
+            return (
+              <div key={y.id} className="flex items-center gap-3 bg-cream px-5 py-5">
                 <span
-                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
-                  style={{
-                    background: `color-mix(in oklab, ${c.accent} 15%, transparent)`,
-                    color: c.accent,
-                  }}
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-coral/10 text-coral"
                   aria-hidden="true"
                 >
-                  <Icon size={19} strokeWidth={1.7} />
+                  <Icon size={17} strokeWidth={1.7} />
                 </span>
-                <p
-                  className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:1.35rem]"
-                  style={{ color: c.accent }}
-                >
-                  {c.title}
-                </p>
+                <p className="font-display text-[0.98rem] leading-snug text-ink">{y.title}</p>
               </div>
-              <p className="mt-4 font-display text-[0.95rem] leading-snug text-ink">{c.lead}</p>
-              <ul className="mt-4 flex flex-wrap gap-2">
-                {c.items.map((it) => (
-                  <li
-                    key={it}
-                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.78rem] leading-none text-ink/65"
-                    style={{ background: `color-mix(in oklab, ${c.accent} 10%, transparent)` }}
-                  >
-                    <Check
-                      size={12}
-                      strokeWidth={2.6}
-                      className="shrink-0"
-                      style={{ color: c.accent }}
-                      aria-hidden="true"
-                    />
-                    {it}
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          );
-        })}
+            );
+          })}
+        </motion.div>
+        <motion.p className="mt-4 text-center text-sm text-ink/45" {...rise(0.2)}>
+          You carry {S.yours.length}. The arch above is ours — {weCarry} of them.
+        </motion.p>
       </div>
 
-      {/* the four things you carry */}
-      <motion.p
-        className="mt-14 text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
-        {...rise(0)}
-      >
-        And on your side of the beam
-      </motion.p>
-      <div className="mt-7 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {S.yours.map((y, i) => {
-          const Icon = YOURS_ICONS[y.icon as keyof typeof YOURS_ICONS];
-          return (
-            <motion.div
-              key={y.id}
-              {...rise(0.06 * i)}
-              className="flex items-center gap-3 rounded-2xl border border-ink/[0.08] bg-white/70 px-5 py-4"
+      {/* ---- mobile: the same arch, rotated into a spine ---- */}
+      <div className="mt-10 lg:hidden">
+        <ol className="relative ml-1 border-l-2 border-dotted border-pink/70 pl-5">
+          {ARCH.map((s, i) => (
+            <motion.li
+              key={s.label}
+              {...rise(0.03 * i)}
+              className="relative flex items-center gap-3 py-2"
             >
               <span
-                className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-coral/10 text-coral"
+                className="absolute -left-[1.6rem] h-2.5 w-2.5 rounded-full"
+                style={{ background: s.accent }}
                 aria-hidden="true"
+              />
+              <span
+                className="w-7 shrink-0 font-display text-[0.72rem] font-semibold tabular-nums"
+                style={{ color: s.accent }}
               >
-                <Icon size={17} strokeWidth={1.7} />
+                {String(i + 1).padStart(2, "0")}
               </span>
-              <p className="font-display text-[0.98rem] leading-snug text-ink">{y.title}</p>
-            </motion.div>
-          );
-        })}
+              <span className="font-display text-[0.95rem] leading-snug text-ink">{s.label}</span>
+            </motion.li>
+          ))}
+        </ol>
+
+        <motion.div className="mt-8 grid gap-3 sm:grid-cols-2" {...rise(0.1)}>
+          {S.yours.map((y) => {
+            const Icon = YOURS_ICONS[y.icon as keyof typeof YOURS_ICONS];
+            return (
+              <div
+                key={y.id}
+                className="flex items-center gap-3 rounded-2xl border border-coral/20 bg-coral/[0.05] px-5 py-4"
+              >
+                <span
+                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-coral/10 text-coral"
+                  aria-hidden="true"
+                >
+                  <Icon size={17} strokeWidth={1.7} />
+                </span>
+                <p className="font-display text-[0.98rem] leading-snug text-ink">{y.title}</p>
+              </div>
+            );
+          })}
+        </motion.div>
+        <p className="mt-5 text-center text-sm text-ink/45">
+          You carry {S.yours.length}. The {weCarry} above are ours.
+        </p>
       </div>
-      <motion.p className="mt-6 text-center text-sm text-ink/45" {...rise(0.1)}>
-        {S.yoursNote}
-      </motion.p>
     </div>
   );
 }
+
 
 function Grant() {
   const rise = useRise();
