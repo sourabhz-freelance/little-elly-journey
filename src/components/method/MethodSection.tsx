@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { EllyFloating } from "@/components/brand/Elly";
 import {
   Eye,
   Brain,
