@@ -10,28 +10,20 @@ import {
   Sparkles,
 } from "lucide-react";
 import { methodContent as M } from "@/content/method";
-import imgVisual from "@/assets/method/visual.jpg";
-import imgMental from "@/assets/method/mental.jpg";
-import imgMath from "@/assets/method/math.jpg";
-import imgLanguage from "@/assets/method/language.jpg";
-import imgPerceiving from "@/assets/method/perceiving.jpg";
-import imgUnderstanding from "@/assets/method/understanding.jpg";
-import imgManaging from "@/assets/method/managing.jpg";
-import imgUsing from "@/assets/method/using.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const ICONS = { Eye, Brain, Sigma, MessagesSquare } as const;
 const EI_ICONS = [Heart, Compass, Waves, Sparkles] as const;
 
 const IMAGES: Record<string, string> = {
-  visual: imgVisual,
-  mental: imgMental,
-  math: imgMath,
-  language: imgLanguage,
-  perceiving: imgPerceiving,
-  understanding: imgUnderstanding,
-  managing: imgManaging,
-  using: imgUsing,
+  visual: "/method/visual.jpg",
+  mental: "/method/mental.jpg",
+  math: "/method/math.jpg",
+  language: "/method/language.jpg",
+  perceiving: "/method/perceiving.jpg",
+  understanding: "/method/understanding.jpg",
+  managing: "/method/managing.jpg",
+  using: "/method/using.jpg",
 };
 
 export default function MethodSection() {
@@ -84,10 +76,6 @@ export default function MethodSection() {
                 <motion.div
                   key={a.id}
                   className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
-                  initial={reduce ? false : { opacity: 0, y: 18 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
-                  transition={{ duration: 0.6, ease: EASE, delay: 0.08 * i }}
                 >
                   <img
                     src={IMAGES[a.id]}
@@ -133,10 +121,6 @@ export default function MethodSection() {
                 <motion.div
                   key={n.id}
                   className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
-                  initial={reduce ? false : { opacity: 0, y: 14 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
-                  transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
                 >
                   <img
                     src={IMAGES[n.id]}
