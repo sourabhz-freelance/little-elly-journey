@@ -93,9 +93,9 @@ function Arch() {
             <motion.path
               d={ARC_PATH}
               stroke="var(--pink)"
-              strokeWidth={2}
+              strokeWidth={3}
               strokeLinecap="round"
-              strokeDasharray="0.1 15"
+              strokeDasharray="0.1 13"
               vectorEffect="non-scaling-stroke"
               initial={reduce ? false : { opacity: 0 }}
               whileInView={{ opacity: 1 }}
