@@ -162,18 +162,6 @@ export const modelContent = {
       title: "Asset-light footprint",
       body: "Leased premises, modest fit-out, small team. Capital goes into quality and people, not land.",
     },
-    {
-      id: "cycle",
-      icon: "ShieldCheck",
-      title: "It doesn't read the market",
-      body: "Nobody pulls a four-year-old out of school because of a bad quarter. Enrolment holds through downturns — the closest thing to a defensive consumer business.",
-    },
-    {
-      id: "moat",
-      icon: "BadgeCheck",
-      title: "Trust is the moat",
-      body: "Parents don't experiment with three-year-olds. A trusted brand with a proven curriculum wins the decision before price is discussed.",
-    },
   ],
   placeholder:
     "Unit economics — investment, fee bands, break-even and territory returns — are covered in the next section with real Little Elly numbers.",
