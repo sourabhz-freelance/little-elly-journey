@@ -10,10 +10,11 @@ export const requirementsContent = {
       title: "Space",
       accent: "var(--coral)",
       points: [
-        "1,000–2,000 sq. ft. per centre",
-        "Ground floor is ideal for a play school",
+        "1,000–2,000 sq. ft. per centre, ground floor ideal",
         "Residential neighbourhoods, or right beside them",
-        "Room enough for children to actually play",
+        "Built to our design, layout and child-safety specification",
+        "Lease meets our minimum standards on term, lock-in, renewal and exit",
+        "A small territory office for your own team",
       ],
     },
     {
@@ -22,10 +23,10 @@ export const requirementsContent = {
       title: "Approvals",
       accent: "var(--turquoise)",
       points: [
-        "No government permission needed to run a play school",
-        "No board affiliation required",
-        "A few states have local compliances — we guide you through them",
-        "Where needed, a commercial electricity connection",
+        "No board affiliation required to run a play school",
+        "Local licences and compliances vary by state — budgeted in pre-opening costs",
+        "Every site is approved by us within ten working days of submission",
+        "We represent the brand before education and regulatory authorities",
       ],
     },
     {
@@ -34,10 +35,11 @@ export const requirementsContent = {
       title: "Setup essentials",
       accent: "var(--orange)",
       points: [
-        "The premises for the centre",
-        "Office furniture for staff and visiting parents",
-        "Water purifier",
-        "Display screen or projector for the classroom",
+        "A model centre of your own, set up to brand standard",
+        "Territory office: interiors, furniture and IT",
+        "Franchise kit and operating resources, supplied by us at cost",
+        "Study kits, workbooks and uniforms come straight from us to each centre",
+        "Travel and stay for our trainers when they visit your territory",
       ],
     },
     {
@@ -46,12 +48,15 @@ export const requirementsContent = {
       title: "Financial",
       accent: "var(--cyan)",
       points: [
-        "Territory fee for the master franchise rights",
-        "Setup cost per centre, phased as you grow",
+        "One-time Master Franchisee fee for the five-year term",
+        "Model centre, territory office and launch marketing",
+        "GST at 18% on the fee — recoverable as input credit",
+        "Refundable security deposit and office advance",
         "Working capital for the first operating season",
-        "A detailed investment sheet is shared alongside this presentation",
       ],
     },
   ],
-  footnote: "Indicative figures are shared separately and confirmed for your territory.",
+  footnote:
+    "Figures are set out in the commercials, and confirmed for your territory in the definitive agreement.",
 } as const;
+
