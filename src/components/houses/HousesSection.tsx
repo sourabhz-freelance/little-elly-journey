@@ -1,15 +1,15 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { housesContent as H } from "@/content/houses";
-import learningEdgeAsset from "@/assets/learning-edge.png.asset.json";
-import k2Asset from "@/assets/k2-learning.png.asset.json";
+import learningEdgeLogo from "@/assets/learning-edge.png";
+import k2Logo from "@/assets/k2-learning.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const LOGOS: Record<string, string> = {};
 
 const HOUSE_LOGOS: Record<string, string> = {
-  "learning-edge": learningEdgeAsset.url,
-  k2: k2Asset.url,
+  "learning-edge": learningEdgeLogo,
+  k2: k2Logo,
 };
 
 // Optically matched sizes: K2 is a wide lockup, Learning Edge is a compact stack.
