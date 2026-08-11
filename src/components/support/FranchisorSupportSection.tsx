@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   Megaphone,
   ShieldCheck,
