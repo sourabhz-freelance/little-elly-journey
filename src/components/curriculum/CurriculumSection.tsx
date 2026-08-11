@@ -199,7 +199,7 @@ function Wheel() {
       {/* pillar labels */}
       {C.pillars.map((p, i) => {
         const mid = pillarStart(i) + pillarSpan / 2;
-        const r = 292 / 10; // percent of the container
+        const r = 287 / 10; // percent of the container
         const left = 50 + r * Math.cos(rad(mid));
         const top = 50 + r * Math.sin(rad(mid));
         const Icon = ICONS[p.icon as keyof typeof ICONS];
