@@ -46,13 +46,13 @@ export default function Hero() {
 
       <div className="relative z-10 flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-8 text-center">
         {/* logo — centrepiece */}
-        <motion.img
+        <img
           src={logo}
           alt={`${C.brand.name} — ${C.brand.tagline}`}
           className="h-32 w-auto sm:h-44"
-          initial={{ opacity: 0, y: 14, scale: 0.96 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ duration: 1, delay: 0.1, ease }}
+          loading="eager"
+          decoding="sync"
+          fetchPriority="high"
         />
 
         <motion.span
