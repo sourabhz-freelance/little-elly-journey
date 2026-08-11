@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { EllyFloating } from "@/components/brand/Elly";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   HeartPulse,
