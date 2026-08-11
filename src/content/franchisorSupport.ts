@@ -82,20 +82,59 @@ export const supportContent = {
 
   voiceKicker: "Where you have a voice",
   voice: [
-    { id: "fees", icon: "Wallet", title: "Annual fee revisions", line: "Approved with you, for your Territory." },
-    { id: "policy", icon: "ClipboardList", title: "Administrative policy", line: "Discussed with you before it lands." },
-    { id: "mpc", icon: "Target", title: "Performance commitment", line: "Co-developed, reviewed every six months." },
-    { id: "escalate", icon: "Timer", title: "Escalation", line: "Anything you can't resolve: five working days." },
+    {
+      id: "fees",
+      icon: "Wallet",
+      title: "Annual fee revisions",
+      line: "Approved with you, for your Territory.",
+    },
+    {
+      id: "policy",
+      icon: "ClipboardList",
+      title: "Administrative policy",
+      line: "Discussed with you before it lands.",
+    },
+    {
+      id: "mpc",
+      icon: "Target",
+      title: "Performance commitment",
+      line: "Co-developed, reviewed every six months.",
+    },
+    {
+      id: "escalate",
+      icon: "Timer",
+      title: "Escalation",
+      line: "Anything you can't resolve: five working days.",
+    },
   ],
 
   termKicker: "Term and continuity",
   term: [
-    { id: "start", year: "Year 0", title: "Effective date", line: "Initial term of five years begins." },
-    { id: "run", year: "Years 1–4", title: "You build the territory", line: "Centres open, brand fees compound." },
-    { id: "notice", year: "Year 4.75", title: "Renewal notice", line: "Three months before expiry, on a clean record." },
-    { id: "end", year: "Year 5", title: "Renew, or hand over", line: "Deposit refunded; a qualified successor may be referred." },
+    {
+      id: "start",
+      year: "Year 0",
+      title: "Effective date",
+      line: "Initial term of five years begins.",
+    },
+    {
+      id: "run",
+      year: "Years 1–4",
+      title: "You build the territory",
+      line: "Centres open, brand fees compound.",
+    },
+    {
+      id: "notice",
+      year: "Year 4.75",
+      title: "Renewal notice",
+      line: "Three months before expiry, on a clean record.",
+    },
+    {
+      id: "end",
+      year: "Year 5",
+      title: "Renew, or hand over",
+      line: "Deposit refunded; a qualified successor may be referred.",
+    },
   ],
 
-  disclaimer:
-    "A summary only. The Master Franchise Agreement governs in all respects.",
+  disclaimer: "A summary only. The Master Franchise Agreement governs in all respects.",
 } as const;

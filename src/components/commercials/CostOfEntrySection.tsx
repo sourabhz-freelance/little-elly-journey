@@ -112,8 +112,7 @@ function Reconcile() {
           {C.reconcileKicker}
         </p>
         <h3 className="mx-auto mt-4 max-w-[20ch] font-display font-semibold leading-[1.08] tracking-[-0.03em] text-ink [font-size:clamp(1.7rem,3.6vw,2.7rem)]">
-          {C.reconcileHeadline[0]}{" "}
-          <span className="text-coral">{C.reconcileHeadline[1]}</span>
+          {C.reconcileHeadline[0]} <span className="text-coral">{C.reconcileHeadline[1]}</span>
         </h3>
       </motion.div>
 
@@ -284,9 +283,7 @@ function UnitTicket() {
                   />
                   {u.label}
                 </span>
-                <span className="font-display text-base font-semibold text-ink">
-                  {L(u.amount)}
-                </span>
+                <span className="font-display text-base font-semibold text-ink">{L(u.amount)}</span>
               </motion.li>
             ))}
           </ul>

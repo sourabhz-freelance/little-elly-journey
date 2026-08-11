@@ -227,7 +227,6 @@ export default function PartnerFrameworkSection() {
         >
           “We stand by you at <span className="text-coral">every angle.</span>”
         </motion.p>
-
       </div>
     </section>
   );

@@ -164,8 +164,21 @@ function Calculator() {
 
       <div className="mt-12 grid gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.9fr)] lg:items-center">
         <div className="space-y-8">
-          <Dial label="Centres in your territory" value={centres} set={setCentres} min={1} max={40} />
-          <Dial label="Students per centre" value={students} set={setStudents} min={20} max={150} step={5} />
+          <Dial
+            label="Centres in your territory"
+            value={centres}
+            set={setCentres}
+            min={1}
+            max={40}
+          />
+          <Dial
+            label="Students per centre"
+            value={students}
+            set={setStudents}
+            min={20}
+            max={150}
+            step={5}
+          />
           <Dial
             label="Of those, in daycare"
             value={daycare}

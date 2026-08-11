@@ -83,7 +83,12 @@ export const commercialsContent = {
   unit: [
     { id: "fee", label: "Unit Franchisee fee", amount: 250000, accent: "var(--coral)" },
     { id: "gst", label: "GST at 18%", amount: 45000, accent: "var(--periwinkle)" },
-    { id: "fitout", label: "Fit-out, furniture, material", amount: 1200000, accent: "var(--turquoise)" },
+    {
+      id: "fitout",
+      label: "Fit-out, furniture, material",
+      amount: 1200000,
+      accent: "var(--turquoise)",
+    },
     { id: "pre", label: "Pre-opening and licences", amount: 180000, accent: "var(--orange)" },
     { id: "dep", label: "Premises deposit", amount: 420000, accent: "var(--cyan)" },
     { id: "wc", label: "Initial working capital", amount: 200000, accent: "var(--pink)" },
