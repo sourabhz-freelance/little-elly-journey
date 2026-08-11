@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   Megaphone,
   ShieldCheck,
@@ -102,7 +102,7 @@ function Responsibilities() {
               className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? undefined : { opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: reduce ? 0 : -10 }}
               transition={{ duration: 0.45, ease: EASE }}
             >
               {S.clusters.map((c, ci) => {
@@ -154,7 +154,7 @@ function Responsibilities() {
               className="mx-auto grid max-w-4xl gap-5 sm:grid-cols-2"
               initial={reduce ? false : { opacity: 0, y: 14 }}
               animate={{ opacity: 1, y: 0 }}
-              exit={reduce ? undefined : { opacity: 0, y: -10 }}
+              exit={{ opacity: 0, y: reduce ? 0 : -10 }}
               transition={{ duration: 0.45, ease: EASE }}
             >
               {S.yours.map((y, i) => {
@@ -336,7 +336,7 @@ export default function FranchisorSupportSection() {
           </p>
         </motion.div>
 
-        <Arch />
+        <Responsibilities />
         <Grant />
         <Voice />
         <TermTimeline />
