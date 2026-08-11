@@ -92,40 +92,68 @@ export const supportContent = {
   yoursNote: "Everything else is ours to carry.",
 
   grantKicker: "The grant",
+  grantHeadline: "Three rights, inside one boundary.",
   grant: [
-    "Exclusive rights across your state",
-    "You appoint the Unit Franchisees",
-    "Full licence to the marks and System",
+    {
+      id: "territory",
+      icon: "MapPinned",
+      step: "01",
+      title: "Your state, exclusively",
+      line: "The exclusive right to own, operate and manage Little Elly preschools across your Territory.",
+    },
+    {
+      id: "appoint",
+      icon: "UserPlus",
+      step: "02",
+      title: "You appoint the franchisees",
+      line: "The right to appoint Unit Franchisees within the Territory — the network is yours to build.",
+    },
+    {
+      id: "licence",
+      icon: "BadgeCheck",
+      step: "03",
+      title: "The marks and the System",
+      line: "Full licence to the Little Elly marks and the Little Elly System for the term of the Agreement.",
+    },
   ],
-  grantNote: "Exclusivity operates within your Territory for the term.",
+  grantBoundary: "Your Territory",
+  grantNote:
+    "Exclusivity operates within your Territory. Outside it, the Franchisor may license the brand elsewhere in India and internationally.",
 
   voiceKicker: "Where you have a voice",
+  voiceHeadline: "Four things we don't decide alone.",
+  voiceHub: ["Decisions", "made with you"],
   voice: [
     {
       id: "fees",
       icon: "Wallet",
       title: "Fee revisions",
-      line: "Approved with you.",
+      line: "Annual fee revisions for your Territory are approved in collaboration with you.",
+      cadence: "Every year",
     },
     {
       id: "policy",
       icon: "ClipboardList",
       title: "Policy changes",
-      line: "Discussed before they land.",
+      line: "Administrative policies are discussed with you before they roll out across the Territory.",
+      cadence: "Before rollout",
     },
     {
       id: "mpc",
       icon: "Target",
-      title: "Targets",
-      line: "Co-set, reviewed twice a year.",
+      title: "Performance targets",
+      line: "The Minimum Performance Commitment is co-developed, then reviewed together.",
+      cadence: "Twice a year",
     },
     {
       id: "escalate",
       icon: "Timer",
       title: "Escalation",
-      line: "Answered in five working days.",
+      line: "Anything you can't settle locally comes to us on a full briefing, and is resolved.",
+      cadence: "In 5 working days",
     },
   ],
+
 
   termKicker: "Term and continuity",
   term: [
