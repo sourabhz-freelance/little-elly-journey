@@ -1,4 +1,4 @@
-import logo from "@/assets/little-elly-logo.png";
+const logo = "/little-elly-logo.png";
 import { heroContent } from "@/content/hero";
 
 export function LogoLockup() {
