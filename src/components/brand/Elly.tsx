@@ -23,7 +23,7 @@ export function Elly({
     <motion.img
       src={p.url}
       alt={p.alt}
-      loading="lazy"
+      loading="eager"
       decoding="async"
       className={cn("pointer-events-none select-none", className)}
       initial={reduce ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
