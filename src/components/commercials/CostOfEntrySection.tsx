@@ -158,20 +158,21 @@ function Reconcile() {
           {...rise(0.15)}
           aria-hidden="true"
         >
-          <svg width="80" height="240" viewBox="0 0 80 240" fill="none">
-            {[60, 120, 180].map((y, i) => (
-              <path
-                key={y}
-                d={`M 2 ${y} H 78`}
-                stroke="var(--pink)"
-                strokeWidth={2.5}
-                strokeLinecap="round"
-                strokeDasharray="0.1 11"
-                opacity={0.55 + i * 0.05}
-                vectorEffect="non-scaling-stroke"
+          <div className="flex h-40 w-16 flex-col justify-around">
+            {[0, 1, 2].map((i) => (
+              <div
+                key={i}
+                className="h-[3px] w-full"
+                style={{
+                  backgroundImage:
+                    "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
+                  backgroundSize: "12px 3px",
+                  backgroundRepeat: "repeat-x",
+                  opacity: 0.7,
+                }}
               />
             ))}
-          </svg>
+          </div>
         </motion.div>
 
         {/* what comes back */}
