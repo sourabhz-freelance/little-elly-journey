@@ -136,18 +136,17 @@ export default function HousesSection() {
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div className="text-center" {...rise(0)}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
-            {H.kicker}
+            {H.portfolioKicker}
           </p>
           <h2 className="mx-auto mt-5 max-w-[20ch] font-display font-semibold leading-[1.06] tracking-[-0.03em] text-ink [font-size:clamp(1.9rem,4.4vw,3.3rem)]">
-            {H.headline[0]} <span className="text-coral">{H.headline[1]}</span>
+            {H.portfolioHeadline[0]}{" "}
+            <span className="text-coral">{H.portfolioHeadline[1]}</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-[48ch] text-base leading-relaxed text-ink/55 sm:text-lg">
-            {H.sub}
-          </p>
         </motion.div>
 
         {/* the two houses, joined at a shared centre */}
         <div className="mt-14 grid items-start gap-10 lg:grid-cols-[1fr_11rem_1fr] lg:gap-6">
+
           <House house={H.houses[0]!} delay={0.05} />
 
           <div className="relative hidden lg:flex lg:h-[10rem] lg:items-center lg:justify-center">
