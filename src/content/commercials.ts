@@ -78,7 +78,7 @@ export const commercialsContent = {
     "Net capital committed is about ₹64 L, of which ₹9 L is working capital rather than sunk cost. A refundable, interest-free security deposit is payable separately per Schedule 2.",
 
   /** 03 — the ticket your franchisees write. */
-  unitKicker: "And the cheque you will ask others to write",
+  unitKicker: "The cheque your franchisee writes",
   unitHeadline: ["₹22.95 L", "opens a centre."],
   unit: [
     { id: "fee", label: "Unit Franchisee fee", amount: 250000, accent: "var(--coral)" },

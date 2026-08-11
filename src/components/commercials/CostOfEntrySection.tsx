@@ -158,16 +158,16 @@ function Reconcile() {
           {...rise(0.15)}
           aria-hidden="true"
         >
-          <svg width="72" height="200" viewBox="0 0 72 200" fill="none">
-            {[40, 100, 160].map((y, i) => (
+          <svg width="80" height="240" viewBox="0 0 80 240" fill="none">
+            {[60, 120, 180].map((y, i) => (
               <path
                 key={y}
-                d={`M 4 ${y} C 32 ${y}, 40 ${100}, 68 ${100}`}
+                d={`M 2 ${y} H 78`}
                 stroke="var(--pink)"
                 strokeWidth={2.5}
                 strokeLinecap="round"
-                strokeDasharray="0.1 12"
-                opacity={0.5 + i * 0.05}
+                strokeDasharray="0.1 11"
+                opacity={0.55 + i * 0.05}
                 vectorEffect="non-scaling-stroke"
               />
             ))}
