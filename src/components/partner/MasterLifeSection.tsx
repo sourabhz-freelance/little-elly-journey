@@ -130,6 +130,7 @@ export default function MasterLifeSection() {
         <p className="mx-auto mt-14 max-w-[26ch] text-center font-display text-2xl leading-tight text-ink">
           {M.closing}
         </p>
+        <EllyFloating pose="heart" float={5.5} className="mx-auto mt-8 h-32 w-32" />
       </section>
 
       <section
