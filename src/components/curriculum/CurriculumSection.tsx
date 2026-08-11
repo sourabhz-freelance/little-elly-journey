@@ -196,14 +196,14 @@ function Wheel() {
       {/* pillar labels */}
       {C.pillars.map((p, i) => {
         const mid = pillarStart(i) + pillarSpan / 2;
-        const r = 287 / 10; // percent of the container
+        const r = 292 / 10; // percent of the container
         const left = 50 + r * Math.cos(rad(mid));
         const top = 50 + r * Math.sin(rad(mid));
         const Icon = ICONS[p.icon as keyof typeof ICONS];
         return (
           <motion.div
             key={p.id}
-            className="absolute w-[9.5rem] -translate-x-1/2 -translate-y-1/2 text-center"
+            className="absolute w-[8rem] -translate-x-1/2 -translate-y-1/2 text-center"
             style={{ left: `${left}%`, top: `${top}%` }}
             initial={reduce ? false : { opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
