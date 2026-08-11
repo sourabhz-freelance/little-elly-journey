@@ -11,7 +11,7 @@ import {
   MapPin,
 } from "lucide-react";
 import { termsContent as T } from "@/content/terms";
-import { ZoneArt, StateArt } from "./TerritoryArt";
+import { StateArt } from "./TerritoryArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -60,8 +60,8 @@ export default function TermsSection() {
           </p>
         </motion.div>
 
-        {/* Two territory scales */}
-        <div className="mt-16 grid gap-6 md:grid-cols-2">
+        {/* The territory scale */}
+        <div className="mx-auto mt-16 grid max-w-2xl gap-6">
           {T.tiers.map((t, i) => (
             <motion.div
               key={t.id}
@@ -69,8 +69,8 @@ export default function TermsSection() {
               className="overflow-hidden rounded-3xl border bg-white/70 backdrop-blur-sm"
               style={{ borderColor: `color-mix(in oklab, ${t.accent} 35%, transparent)` }}
             >
-              <div className="h-44 w-full px-8 pt-6">
-                {i === 0 ? <ZoneArt /> : <StateArt />}
+              <div className="h-56 w-full px-8 pt-6">
+                <StateArt />
               </div>
               <div className="flex items-center gap-5 px-8 pb-8 pt-4">
                 <span

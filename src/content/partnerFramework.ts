@@ -1,7 +1,10 @@
 /** Section 08 — "Happy" as a business framework for partners. */
 export const partnerFrameworkContent = {
   kicker: "The same word, for you",
-  headline: ["“Happy” is a curriculum for our children.", "It’s a framework for our partners."],
+  headline: [
+    "“H.A.P.P.Y.” is a curriculum for our children.",
+    "It’s a framework for our partners.",
+  ],
   sub: "The same thinking, pointed at your business.",
   supports: [
     {

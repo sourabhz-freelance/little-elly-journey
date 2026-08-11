@@ -214,7 +214,7 @@ function Reconcile() {
               {L(sunk)}
             </p>
             <p className="font-display text-base leading-snug text-ink">
-              The only money that does not come back.
+              Your investment into the territory.
             </p>
           </motion.div>
         </div>

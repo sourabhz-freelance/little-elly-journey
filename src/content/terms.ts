@@ -2,15 +2,9 @@
 export const termsContent = {
   kicker: "The association",
   headline: ["You don't buy a centre.", "You own a territory."],
-  sub: "A mandal, a zone, a city — or an entire state.",
+  sub: "One scale of association: an entire state, yours to build out.",
 
   tiers: [
-    {
-      id: "area",
-      label: "Area / Zone / Mandal",
-      accent: "var(--coral)",
-      scale: "A city pocket to grow dense",
-    },
     {
       id: "state",
       label: "State",
@@ -25,7 +19,7 @@ export const termsContent = {
     { id: "marketing", icon: "Megaphone", title: "Marketing from the company" },
     { id: "term", icon: "CalendarClock", title: "Five-year term" },
   ],
-  sharedNote: "Same four terms. Only the map changes.",
+  sharedNote: "Four terms. One map: your state.",
 
   profileKicker: "Who we're looking for",
   profile: [
@@ -38,7 +32,7 @@ export const termsContent = {
   rulesKicker: "The fine print, in plain words",
   rules: [
     "Five years, then renewal on mutual terms",
-    "You pick the territory you know best",
+    "You pick the state you know best",
     "You fill it in five years — with our help",
     "No royalty on your franchisees' fees",
     "Brand standards protect everyone in the family",
