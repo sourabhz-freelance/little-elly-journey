@@ -39,5 +39,5 @@ export const housesContent = {
   ],
   zoomKicker: "And today",
   zoomLine: ["Today's conversation is about one of them —", "Little Elly."],
-  zoomNote: "Logos shown are placeholders until the official marks are supplied.",
+  zoomNote: "K2 Learning brand marks are placeholders until the official logos are supplied.",
 } as const;
