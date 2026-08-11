@@ -1,5 +1,4 @@
 import { motion, useReducedMotion } from "framer-motion";
-import { EllyFloating } from "@/components/brand/Elly";
 import {
   Eye,
   Brain,
@@ -52,12 +51,6 @@ export default function MethodSection() {
         }}
       />
 
-      {/* Elly presents the classroom */}
-      <EllyFloating
-        pose="pencil"
-        float={5.5}
-        className="absolute right-2 top-16 z-0 hidden h-40 w-40 opacity-95 xl:block"
-      />
 
 
       <div className="relative z-10 mx-auto max-w-5xl">

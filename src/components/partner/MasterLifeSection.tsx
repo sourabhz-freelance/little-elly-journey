@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { EllyFloating } from "@/components/brand/Elly";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   School,
@@ -130,7 +129,6 @@ export default function MasterLifeSection() {
         <p className="mx-auto mt-14 max-w-[26ch] text-center font-display text-2xl leading-tight text-ink">
           {M.closing}
         </p>
-        <EllyFloating pose="heart" float={5.5} className="mx-auto mt-8 h-32 w-32" />
       </section>
 
       <section
@@ -163,7 +161,6 @@ export default function MasterLifeSection() {
                   {M.closing.split(" He's ")[0]}{" "}
                   <span className="text-coral">He&rsquo;s building a network.</span>
                 </p>
-                <EllyFloating pose="heart" float={5.5} className="h-40 w-40 shrink-0" />
               </div>
             </motion.div>
           </div>

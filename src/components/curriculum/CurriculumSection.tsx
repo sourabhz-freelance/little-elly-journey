@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { EllyFloating } from "@/components/brand/Elly";
 import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
   HeartPulse,
@@ -298,12 +297,6 @@ export default function CurriculumSection() {
         }}
       />
 
-      {/* Elly — the child this curriculum is about */}
-      <EllyFloating
-        pose="read"
-        float={6}
-        className="absolute bottom-6 left-2 z-0 hidden h-44 w-44 opacity-95 xl:block"
-      />
 
 
       <div className="relative z-10 mx-auto max-w-6xl">
