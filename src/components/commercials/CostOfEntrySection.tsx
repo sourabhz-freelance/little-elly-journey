@@ -164,8 +164,7 @@ function Reconcile() {
                 key={i}
                 className="h-[3px] w-full"
                 style={{
-                  backgroundImage:
-                    "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
+                  backgroundImage: "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
                   backgroundSize: "12px 3px",
                   backgroundRepeat: "repeat-x",
                   opacity: 0.7,
