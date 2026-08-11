@@ -33,51 +33,88 @@ const useRise = () => {
         };
 };
 
-/** The load-bearing beam: four heavy pillars on our side, four light ones on yours. */
+/** The load-bearing beam: four heavy clusters on our side, four light ones on yours. */
 function Beam() {
   const reduce = useReducedMotion();
   const rise = useRise();
+  const weCarry = S.clusters.reduce((n, c) => n + c.items.length, 0);
 
   return (
     <div className="mt-20">
-      <div className="grid gap-6 lg:grid-cols-4">
+      {/* the balance */}
+      <motion.div
+        className="mx-auto flex max-w-2xl items-center gap-5 rounded-full border border-ink/[0.07] bg-white/70 px-6 py-4 backdrop-blur-sm"
+        {...rise(0)}
+      >
+        <p className="shrink-0 font-display text-sm text-ink/50">
+          You <span className="font-semibold text-ink">{S.yours.length}</span>
+        </p>
+        <div className="flex h-2.5 flex-1 overflow-hidden rounded-full bg-ink/[0.07]">
+          <motion.span
+            className="h-full rounded-full bg-turquoise"
+            initial={reduce ? false : { width: "0%" }}
+            whileInView={{ width: `${(S.yours.length / (weCarry + S.yours.length)) * 100}%` }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.9, ease: EASE }}
+          />
+          <motion.span
+            className="h-full flex-1 rounded-full bg-coral"
+            initial={reduce ? false : { opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true, amount: 0.6 }}
+            transition={{ duration: 0.9, ease: EASE, delay: 0.3 }}
+          />
+        </div>
+        <p className="shrink-0 font-display text-sm text-ink/50">
+          <span className="font-semibold text-coral">{weCarry}</span> us
+        </p>
+      </motion.div>
+
+      {/* four clusters, as chips */}
+      <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
         {S.clusters.map((c, i) => {
           const Icon = CLUSTER_ICONS[c.icon as keyof typeof CLUSTER_ICONS];
           return (
             <motion.div
               key={c.id}
               {...rise(0.08 * i)}
-              className="flex flex-col rounded-[1.75rem] border bg-white/75 p-7"
+              className="flex flex-col rounded-[1.75rem] border bg-white/75 p-6 backdrop-blur-sm"
               style={{ borderColor: `color-mix(in oklab, ${c.accent} 32%, transparent)` }}
             >
-              <span
-                className="flex h-11 w-11 items-center justify-center rounded-full"
-                style={{
-                  background: `color-mix(in oklab, ${c.accent} 15%, transparent)`,
-                  color: c.accent,
-                }}
-                aria-hidden="true"
-              >
-                <Icon size={21} strokeWidth={1.7} />
-              </span>
-              <p
-                className="mt-5 font-display font-semibold leading-none tracking-[-0.03em] [font-size:clamp(1.4rem,2.6vw,1.8rem)]"
-                style={{ color: c.accent }}
-              >
-                {c.title}
-              </p>
-              <p className="mt-3 font-display text-[0.98rem] leading-snug text-ink">{c.lead}</p>
-              <ul className="mt-5 space-y-3">
+              <div className="flex items-center gap-3">
+                <span
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+                  style={{
+                    background: `color-mix(in oklab, ${c.accent} 15%, transparent)`,
+                    color: c.accent,
+                  }}
+                  aria-hidden="true"
+                >
+                  <Icon size={19} strokeWidth={1.7} />
+                </span>
+                <p
+                  className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:1.35rem]"
+                  style={{ color: c.accent }}
+                >
+                  {c.title}
+                </p>
+              </div>
+              <p className="mt-4 font-display text-[0.95rem] leading-snug text-ink">{c.lead}</p>
+              <ul className="mt-4 flex flex-wrap gap-2">
                 {c.items.map((it) => (
-                  <li key={it} className="flex gap-2.5 text-sm leading-relaxed text-ink/55">
+                  <li
+                    key={it}
+                    className="flex items-center gap-1.5 rounded-full px-3 py-1.5 text-[0.78rem] leading-none text-ink/65"
+                    style={{ background: `color-mix(in oklab, ${c.accent} 10%, transparent)` }}
+                  >
                     <Check
-                      size={15}
-                      strokeWidth={2.4}
-                      className="mt-[3px] shrink-0"
+                      size={12}
+                      strokeWidth={2.6}
+                      className="shrink-0"
                       style={{ color: c.accent }}
                       aria-hidden="true"
                     />
-                    <span>{it}</span>
+                    {it}
                   </li>
                 ))}
               </ul>
@@ -85,21 +122,6 @@ function Beam() {
           );
         })}
       </div>
-
-      {/* the beam itself */}
-      <motion.div
-        className="relative mt-10 h-3 w-full overflow-hidden rounded-full bg-ink/[0.06]"
-        {...rise(0.1)}
-      >
-        <motion.div
-          className="h-full rounded-full bg-coral"
-          initial={reduce ? false : { scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 1, ease: EASE }}
-          style={{ transformOrigin: "left" }}
-        />
-      </motion.div>
 
       {/* the four things you carry */}
       <motion.p

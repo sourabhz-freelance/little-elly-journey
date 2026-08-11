@@ -46,7 +46,7 @@ export const commercialsContent = {
 
   /** 02 — the number they fear, and the number they actually lose. */
   reconcileKicker: "The number, honestly",
-  reconcileHeadline: ["₹72.94 L at signing.", "₹55 L is the real cost."],
+  reconcileHeadline: ["₹72.94 L moves at signing.", "₹55 L is the investment."],
   signing: 7294000,
   reconcile: [
     {
@@ -75,7 +75,7 @@ export const commercialsContent = {
     },
   ],
   reconcileFooter:
-    "Net capital committed is about ₹64 L, of which ₹9 L is working capital rather than sunk cost. A refundable, interest-free security deposit is payable separately per Schedule 2.",
+    "Net capital committed is about ₹64 L, of which ₹9 L stays with you as working capital. The ₹55 L is the investment that builds the territory — a fee, a school of your own, an office and a launch. A refundable, interest-free security deposit is payable separately per Schedule 2.",
 
   /** 03 — the ticket your franchisees write. */
   unitKicker: "The cheque your franchisee writes",
