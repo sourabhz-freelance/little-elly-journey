@@ -156,11 +156,12 @@ export default function MasterLifeSection() {
                   <SceneCard s={s} />
                 </div>
               ))}
-              <div className="flex h-[24rem] w-[24rem] shrink-0 items-center">
+              <div className="flex h-[24rem] w-[26rem] shrink-0 items-center gap-6">
                 <p className="font-display text-3xl leading-tight text-ink">
                   {M.closing.split(" He's ")[0]}{" "}
                   <span className="text-coral">He&rsquo;s building a network.</span>
                 </p>
+                <EllyFloating pose="heart" float={5.5} className="h-40 w-40 shrink-0" />
               </div>
             </motion.div>
           </div>
