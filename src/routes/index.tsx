@@ -57,7 +57,10 @@ function Index() {
       <GiftMapSection />
       <RequirementsSection />
       <TermsSection />
+      <CostOfEntrySection />
+      <RevenueFlowSection />
       <PartnerFrameworkSection />
+      <FranchisorSupportSection />
       <MasterLifeSection />
 
       
