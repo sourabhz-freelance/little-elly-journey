@@ -13,6 +13,9 @@ import PartnerFrameworkSection from "@/components/partner/PartnerFrameworkSectio
 import MasterLifeSection from "@/components/partner/MasterLifeSection";
 import RequirementsSection from "@/components/requirements/RequirementsSection";
 import TermsSection from "@/components/terms/TermsSection";
+import CostOfEntrySection from "@/components/commercials/CostOfEntrySection";
+import RevenueFlowSection from "@/components/commercials/RevenueFlowSection";
+import FranchisorSupportSection from "@/components/support/FranchisorSupportSection";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
