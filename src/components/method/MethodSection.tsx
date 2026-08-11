@@ -86,13 +86,13 @@ export default function MethodSection() {
                   className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
                   initial={reduce ? false : { opacity: 0, y: 18 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
+                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                   transition={{ duration: 0.6, ease: EASE, delay: 0.08 * i }}
                 >
                   <img
                     src={IMAGES[a.id]}
                     alt={a.title}
-                    loading="lazy"
+                    loading="eager"
                     width={944}
                     height={704}
                     className="aspect-[4/3] w-full object-cover"
@@ -135,13 +135,13 @@ export default function MethodSection() {
                   className="overflow-hidden rounded-3xl border border-ink/[0.07] bg-white/70 backdrop-blur-sm"
                   initial={reduce ? false : { opacity: 0, y: 14 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.4 }}
+                  viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                   transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
                 >
                   <img
                     src={IMAGES[n.id]}
                     alt={n.title}
-                    loading="lazy"
+                    loading="eager"
                     width={944}
                     height={704}
                     className="aspect-[4/3] w-full object-cover"
@@ -182,7 +182,7 @@ export default function MethodSection() {
                 className="flex items-center gap-3"
                 initial={reduce ? false : { opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.4 }}
+                viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
                 transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
               >
                 <div className="flex items-center gap-3 rounded-full border border-ink/[0.07] bg-white/70 py-4 pl-4 pr-6 backdrop-blur-sm">
