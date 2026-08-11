@@ -220,6 +220,7 @@ function TermTimeline() {
             backgroundSize: "14px 3px",
             backgroundRepeat: "repeat-x",
             opacity: 0.75,
+            transformOrigin: "left",
           }}
           aria-hidden="true"
           initial={reduce ? false : { scaleX: 0 }}
