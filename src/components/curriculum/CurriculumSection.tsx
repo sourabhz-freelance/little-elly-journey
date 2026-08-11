@@ -199,14 +199,14 @@ function Wheel() {
       {/* pillar labels */}
       {C.pillars.map((p, i) => {
         const mid = pillarStart(i) + pillarSpan / 2;
-        const r = 262 / 10; // percent of the container
+        const r = 258 / 10; // percent of the container — centre-line of the pillar band
         const left = 50 + r * Math.cos(rad(mid));
         const top = 50 + r * Math.sin(rad(mid));
         const Icon = ICONS[p.icon as keyof typeof ICONS];
         return (
           <motion.div
             key={p.id}
-            className="absolute w-[7rem] -translate-x-1/2 -translate-y-1/2 text-center"
+            className="absolute w-[5.6rem] -translate-x-1/2 -translate-y-1/2 text-center sm:w-[6.2rem]"
             style={{ left: `${left}%`, top: `${top}%` }}
             initial={reduce ? false : { opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -214,14 +214,16 @@ function Wheel() {
             transition={{ duration: 0.55, ease: EASE, delay: 0.3 + i * 0.08 }}
           >
             <span
-              className="mx-auto flex h-9 w-9 items-center justify-center rounded-full bg-white/80"
+              className="mx-auto flex h-8 w-8 items-center justify-center rounded-full bg-white/80"
               style={{ color: p.accent }}
               aria-hidden="true"
             >
-              <Icon size={18} strokeWidth={1.8} />
+              <Icon size={16} strokeWidth={1.8} />
             </span>
-            <p className="mt-1.5 font-display text-[0.88rem] leading-tight text-ink">{p.title}</p>
-            <p className="mt-1 text-[0.66rem] leading-snug text-ink/50">{p.line}</p>
+            <p className="mt-1 font-display text-[0.8rem] leading-[1.15] text-ink text-balance">
+              {p.title}
+            </p>
+            <p className="mt-1 text-[0.6rem] leading-[1.25] text-ink/50 text-balance">{p.line}</p>
           </motion.div>
         );
       })}
