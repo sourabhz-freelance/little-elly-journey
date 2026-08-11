@@ -1,25 +1,17 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { housesContent as H } from "@/content/houses";
-import littleEllyLogo from "@/assets/little-elly-logo.png";
-import glentreeAsset from "@/assets/glentree.png.asset.json";
-import ellyChildcareAsset from "@/assets/elly-childcare.png.asset.json";
-import cocoonAsset from "@/assets/cocoon.png.asset.json";
-import letrAsset from "@/assets/letr.png.asset.json";
 import learningEdgeAsset from "@/assets/learning-edge.png.asset.json";
+import k2Asset from "@/assets/k2-learning.png.asset.json";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const LOGOS: Record<string, string> = {
-  "little-elly": littleEllyLogo,
-  glentree: glentreeAsset.url,
-  "elly-childcare": ellyChildcareAsset.url,
-  cocoon: cocoonAsset.url,
-  letr: letrAsset.url,
-};
+const LOGOS: Record<string, string> = {};
 
 const HOUSE_LOGOS: Record<string, string> = {
   "learning-edge": learningEdgeAsset.url,
+  k2: k2Asset.url,
 };
+
 
 
 const useRise = () => {
@@ -117,7 +109,7 @@ function House({ house, delay }: { house: (typeof H.houses)[number]; delay: numb
           <img
             src={HOUSE_LOGOS[house.id]}
             alt={`${house.name} logo`}
-            className="mx-auto mt-3 h-16 w-auto max-w-[15rem] object-contain"
+            className="mx-auto mt-3 h-28 w-auto max-w-[22rem] object-contain"
           />
         ) : (
           <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
