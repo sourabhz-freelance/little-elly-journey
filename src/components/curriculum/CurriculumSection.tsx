@@ -163,13 +163,14 @@ function Wheel() {
         })}
 
         {/* curved labels on the middle ring */}
+        {/* curved labels on the middle ring — centred on the band, following its arc */}
         <defs>
           {C.inspired.map((s, i) => (
             <path
               key={s.id}
               id={`arc-${s.id}`}
               d={textArc(
-                INSPIRED_R0 + 52,
+                (INSPIRED_R0 + INSPIRED_R1) / 2,
                 inspiredStart(i) + 4,
                 inspiredStart(i) + inspiredSpan - 4,
               )}
@@ -182,15 +183,17 @@ function Wheel() {
             key={s.id}
             fill={s.accent}
             className="font-display"
-            fontSize={31}
+            fontSize={30}
             fontWeight={600}
-            letterSpacing="0.04em"
+            letterSpacing="0.03em"
+            dominantBaseline="central"
           >
             <textPath href={`#arc-${s.id}`} startOffset="50%" textAnchor="middle">
               {s.title}
             </textPath>
           </text>
         ))}
+
       </svg>
 
       {/* pillar labels */}
