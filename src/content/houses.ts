@@ -33,7 +33,7 @@ export const housesContent = {
         { id: "glentree", name: "Glentree Academy", note: "K-12 school" },
         { id: "elly-childcare", name: "Elly Childcare", note: "Daycare" },
         { id: "cocoon", name: "Cocoon Early Learning", note: "Early learning" },
-        { id: "letr", name: "LETR", note: "Teacher training & research" },
+        { id: "letr", name: "LETTER", note: "Teacher training & research" },
       ],
     },
   ],
