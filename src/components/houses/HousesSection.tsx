@@ -1,12 +1,26 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { housesContent as H } from "@/content/houses";
 import littleEllyLogo from "@/assets/little-elly-logo.png";
+import glentreeAsset from "@/assets/glentree.png.asset.json";
+import ellyChildcareAsset from "@/assets/elly-childcare.png.asset.json";
+import cocoonAsset from "@/assets/cocoon.png.asset.json";
+import letrAsset from "@/assets/letr.png.asset.json";
+import learningEdgeAsset from "@/assets/learning-edge.png.asset.json";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
 const LOGOS: Record<string, string> = {
   "little-elly": littleEllyLogo,
+  glentree: glentreeAsset.url,
+  "elly-childcare": ellyChildcareAsset.url,
+  cocoon: cocoonAsset.url,
+  letr: letrAsset.url,
 };
+
+const HOUSE_LOGOS: Record<string, string> = {
+  "learning-edge": learningEdgeAsset.url,
+};
+
 
 const useRise = () => {
   const reduce = useReducedMotion();
@@ -53,21 +67,28 @@ function BrandTile({
       }`}
     >
       <span
-        className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl"
-        style={{
-          background: `color-mix(in oklab, ${accent} 12%, transparent)`,
-          color: accent,
-        }}
+        className={`flex h-12 shrink-0 items-center justify-center overflow-hidden rounded-xl ${
+          logo ? "w-[4.5rem] bg-white p-1.5" : "w-12"
+        }`}
+        style={
+          logo
+            ? { boxShadow: `0 0 0 1px color-mix(in oklab, ${accent} 16%, transparent)` }
+            : {
+                background: `color-mix(in oklab, ${accent} 12%, transparent)`,
+                color: accent,
+              }
+        }
         aria-hidden="true"
       >
         {logo ? (
-          <img src={logo} alt="" className="h-8 w-8 object-contain" />
+          <img src={logo} alt="" className="h-full w-full object-contain" />
         ) : (
           <span className="font-display text-[0.8rem] font-semibold tracking-tight">
             {monogram(name)}
           </span>
         )}
       </span>
+
       <span className="min-w-0">
         <span className="block truncate font-display text-[0.98rem] leading-tight text-ink">
           {name}
@@ -92,9 +113,18 @@ function House({ house, delay }: { house: (typeof H.houses)[number]; delay: numb
         >
           {house.role}
         </p>
-        <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
-          {house.name}
-        </p>
+        {HOUSE_LOGOS[house.id] ? (
+          <img
+            src={HOUSE_LOGOS[house.id]}
+            alt={`${house.name} logo`}
+            className="mx-auto mt-3 h-16 w-auto max-w-[15rem] object-contain"
+          />
+        ) : (
+          <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
+            {house.name}
+          </p>
+        )}
+
         <p className="mx-auto mt-3 max-w-[34ch] text-sm leading-relaxed text-ink/55">
           {house.line}
         </p>
