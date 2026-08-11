@@ -39,5 +39,5 @@ export const housesContent = {
   ],
   zoomKicker: "And today",
   zoomLine: ["Today's conversation is about one of them —", "Little Elly."],
-  zoomNote: "K2 Learning brand marks are placeholders until the official logos are supplied.",
+  zoomNote: "Brand marks for individual sub-brands are shown as monograms.",
 } as const;

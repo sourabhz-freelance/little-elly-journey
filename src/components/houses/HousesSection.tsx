@@ -9,7 +9,7 @@ const LOGOS: Record<string, string> = {};
 
 const HOUSE_LOGOS: Record<string, string> = {
   "learning-edge": learningEdgeAsset.url,
-  "k2-learning": k2Asset.url,
+  k2: k2Asset.url,
 };
 
 
