@@ -6,12 +6,37 @@ const dotColors = ["var(--coral)", "var(--turquoise)", "var(--orange)", "var(--c
 export function ZoneArt() {
   return (
     <svg viewBox="0 0 300 180" className="h-full w-full" aria-hidden="true">
-      <rect x="8" y="8" width="284" height="164" rx="22" fill="color-mix(in oklab, var(--coral) 7%, transparent)" />
+      <rect
+        x="8"
+        y="8"
+        width="284"
+        height="164"
+        rx="22"
+        fill="color-mix(in oklab, var(--coral) 7%, transparent)"
+      />
       {[52, 96, 140].map((y) => (
-        <line key={y} x1="26" y1={y} x2="274" y2={y} stroke="var(--ink)" strokeOpacity="0.1" strokeWidth="2" />
+        <line
+          key={y}
+          x1="26"
+          y1={y}
+          x2="274"
+          y2={y}
+          stroke="var(--ink)"
+          strokeOpacity="0.1"
+          strokeWidth="2"
+        />
       ))}
       {[80, 150, 220].map((x) => (
-        <line key={x} x1={x} y1="26" x2={x} y2="156" stroke="var(--ink)" strokeOpacity="0.1" strokeWidth="2" />
+        <line
+          key={x}
+          x1={x}
+          y1="26"
+          x2={x}
+          y2="156"
+          stroke="var(--ink)"
+          strokeOpacity="0.1"
+          strokeWidth="2"
+        />
       ))}
       {[
         [80, 52],

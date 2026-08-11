@@ -109,7 +109,12 @@ function Wheel() {
     <div className="relative mx-auto aspect-square w-full max-w-[40rem]">
       <svg viewBox="0 0 1000 1000" className="absolute inset-0 h-full w-full" aria-hidden="true">
         {/* soft outer halo */}
-        <circle cx={CX} cy={CY} r={492} fill="color-mix(in oklab, var(--yellow) 10%, transparent)" />
+        <circle
+          cx={CX}
+          cy={CY}
+          r={492}
+          fill="color-mix(in oklab, var(--yellow) 10%, transparent)"
+        />
         <circle
           cx={CX}
           cy={CY}
@@ -163,7 +168,11 @@ function Wheel() {
             <path
               key={s.id}
               id={`arc-${s.id}`}
-              d={textArc(INSPIRED_R0 + 52, inspiredStart(i) + 4, inspiredStart(i) + inspiredSpan - 4)}
+              d={textArc(
+                INSPIRED_R0 + 52,
+                inspiredStart(i) + 4,
+                inspiredStart(i) + inspiredSpan - 4,
+              )}
               fill="none"
             />
           ))}

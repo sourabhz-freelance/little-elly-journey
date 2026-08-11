@@ -12,7 +12,12 @@ export const supportContent = {
       icon: "BookOpen",
       accent: "var(--coral)",
       lead: "No academic risk on you.",
-      items: ["Curriculum, kept current", "All teacher training", "Competency standards", "Fee & admission policy"],
+      items: [
+        "Curriculum, kept current",
+        "All teacher training",
+        "Competency standards",
+        "Fee & admission policy",
+      ],
     },
     {
       id: "machine",
@@ -28,7 +33,13 @@ export const supportContent = {
       icon: "Megaphone",
       accent: "var(--orange)",
       lead: "Demand before you ask.",
-      items: ["National campaigns", "Leads routed to you", "First-year launch push", "Collateral, refreshed", "We face authorities"],
+      items: [
+        "National campaigns",
+        "Leads routed to you",
+        "First-year launch push",
+        "Collateral, refreshed",
+        "We face authorities",
+      ],
     },
     {
       id: "quality",
@@ -36,7 +47,13 @@ export const supportContent = {
       icon: "ShieldCheck",
       accent: "var(--periwinkle)",
       lead: "One weak centre stays contained.",
-      items: ["Annual audit per centre", "Common scorecard", "Power to pause admissions", "We vet every franchisee", "Site approval in 10 days"],
+      items: [
+        "Annual audit per centre",
+        "Common scorecard",
+        "Power to pause admissions",
+        "We vet every franchisee",
+        "Site approval in 10 days",
+      ],
     },
   ],
 
