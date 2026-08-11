@@ -215,8 +215,7 @@ function TermTimeline() {
           className="pointer-events-none absolute left-3 top-[10px] hidden h-[3px] lg:block"
           style={{
             right: "calc(12.5% + 0.75rem)",
-            backgroundImage:
-              "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
+            backgroundImage: "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
             backgroundSize: "14px 3px",
             backgroundRepeat: "repeat-x",
             opacity: 0.75,
@@ -228,7 +227,6 @@ function TermTimeline() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 1.4, ease: EASE }}
         />
-
 
         <div className="grid gap-8 lg:grid-cols-4">
           {S.term.map((t, i) => (
