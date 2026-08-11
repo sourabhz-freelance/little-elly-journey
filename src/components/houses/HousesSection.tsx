@@ -12,6 +12,13 @@ const HOUSE_LOGOS: Record<string, string> = {
   k2: k2Asset.url,
 };
 
+// Optically matched sizes: K2 is a wide lockup, Learning Edge is a compact stack.
+const HOUSE_LOGO_CLASS: Record<string, string> = {
+  "learning-edge": "h-28 max-w-[22rem]",
+  k2: "h-14 max-w-[13rem]",
+};
+
+
 
 
 const useRise = () => {
