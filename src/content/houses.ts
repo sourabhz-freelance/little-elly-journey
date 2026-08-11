@@ -1,10 +1,13 @@
 /** Section 00 — the two houses behind this partnership. */
 export const housesContent = {
   kicker: "Before we begin",
-  headline: ["Two houses,", "one table."],
+  headline: ["Two houses.", "One ambition."],
   accentIndex: 1,
-  sub: "This opportunity is carried by two established education groups, sitting together on the same side of the table.",
-  centreNode: "This partnership",
+  sub: "K2 Learning and Learning Edge come together to grow India's happiest preschool.",
+  centreNode: "Together",
+  scrollCue: "Scroll to continue",
+  portfolioKicker: "What the two houses hold",
+  portfolioHeadline: ["Everything already", "built."],
   houses: [
     {
       id: "k2",
