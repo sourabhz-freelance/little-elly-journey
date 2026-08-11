@@ -52,6 +52,14 @@ export default function MethodSection() {
         }}
       />
 
+      {/* Elly presents the classroom */}
+      <EllyFloating
+        pose="pencil"
+        float={5.5}
+        className="absolute right-2 top-16 z-0 hidden h-40 w-40 opacity-95 xl:block"
+      />
+
+
       <div className="relative z-10 mx-auto max-w-5xl">
         <motion.div className="text-center" {...rise(0)}>
           <h2 className="mx-auto max-w-[20ch] font-display font-semibold leading-[1.05] tracking-[-0.03em] text-ink [font-size:clamp(2.2rem,5vw,4rem)]">
