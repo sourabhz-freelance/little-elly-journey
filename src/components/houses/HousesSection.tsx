@@ -67,21 +67,28 @@ function BrandTile({
       }`}
     >
       <span
-        className="flex h-11 w-11 shrink-0 items-center justify-center overflow-hidden rounded-xl"
-        style={{
-          background: `color-mix(in oklab, ${accent} 12%, transparent)`,
-          color: accent,
-        }}
+        className={`flex h-12 shrink-0 items-center justify-center overflow-hidden rounded-xl ${
+          logo ? "w-[4.5rem] bg-white p-1.5" : "w-12"
+        }`}
+        style={
+          logo
+            ? { boxShadow: `0 0 0 1px color-mix(in oklab, ${accent} 16%, transparent)` }
+            : {
+                background: `color-mix(in oklab, ${accent} 12%, transparent)`,
+                color: accent,
+              }
+        }
         aria-hidden="true"
       >
         {logo ? (
-          <img src={logo} alt="" className="h-8 w-8 object-contain" />
+          <img src={logo} alt="" className="h-full w-full object-contain" />
         ) : (
           <span className="font-display text-[0.8rem] font-semibold tracking-tight">
             {monogram(name)}
           </span>
         )}
       </span>
+
       <span className="min-w-0">
         <span className="block truncate font-display text-[0.98rem] leading-tight text-ink">
           {name}
