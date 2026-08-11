@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
-  BookOpen,
-  Cpu,
   Megaphone,
   ShieldCheck,
   Search,
@@ -16,7 +14,6 @@ import {
 import { supportContent as S } from "@/content/franchisorSupport";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
-const CLUSTER_ICONS = { BookOpen, Cpu, Megaphone, ShieldCheck } as const;
 const YOURS_ICONS = { Search, KeyRound, HeartHandshake, ShieldCheck } as const;
 const VOICE_ICONS = { Wallet, ClipboardList, Target, Timer } as const;
 
