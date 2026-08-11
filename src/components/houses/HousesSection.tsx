@@ -116,7 +116,10 @@ function House({ house, delay }: { house: (typeof H.houses)[number]; delay: numb
           <img
             src={HOUSE_LOGOS[house.id]}
             alt={`${house.name} logo`}
-            className="mx-auto mt-3 h-28 w-auto max-w-[22rem] object-contain"
+            className={`mx-auto mt-3 w-auto object-contain ${
+              HOUSE_LOGO_CLASS[house.id] ?? "h-20 max-w-[18rem]"
+            }`}
+
           />
         ) : (
           <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
