@@ -45,6 +45,14 @@ export default function Hero() {
         }}
       />
 
+      {/* Elly signs the hero, quietly */}
+      <EllyFloating
+        pose="wave"
+        float={6}
+        className="absolute bottom-4 left-4 z-0 hidden h-40 w-40 opacity-95 lg:block xl:h-48 xl:w-48"
+      />
+
+
       <div className="relative z-10 flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-8 text-center">
         {/* logo — centrepiece */}
         <img
