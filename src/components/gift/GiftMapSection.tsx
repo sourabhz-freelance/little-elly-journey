@@ -1,4 +1,5 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { EllyFloating } from "@/components/brand/Elly";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -48,6 +49,14 @@ export default function GiftMapSection() {
             "radial-gradient(46% 44% at 50% 46%, color-mix(in oklab, var(--lightpink) 40%, transparent), transparent 72%)",
         }}
       />
+
+      {/* Elly is already there */}
+      <EllyFloating
+        pose="trunkup"
+        float={6}
+        className="absolute bottom-8 left-2 z-0 hidden h-44 w-44 opacity-95 xl:block"
+      />
+
 
       <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-14 lg:grid-cols-[1fr_1.05fr]">
         <div className="text-center lg:text-left">

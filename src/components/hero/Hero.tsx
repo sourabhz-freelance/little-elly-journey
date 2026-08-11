@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { EllyFloating } from "@/components/brand/Elly";
 const logo = "/little-elly-logo.png";
 import { heroContent as C } from "@/content/hero";
 
@@ -43,6 +44,14 @@ export default function Hero() {
             "radial-gradient(58% 46% at 50% 18%, color-mix(in oklab, var(--lightpink) 32%, transparent), transparent 72%)",
         }}
       />
+
+      {/* Elly signs the hero, quietly */}
+      <EllyFloating
+        pose="wave"
+        float={6}
+        className="absolute bottom-4 left-4 z-0 hidden h-40 w-40 opacity-95 lg:block xl:h-48 xl:w-48"
+      />
+
 
       <div className="relative z-10 flex w-full max-w-3xl flex-1 flex-col items-center justify-center gap-8 text-center">
         {/* logo — centrepiece */}
