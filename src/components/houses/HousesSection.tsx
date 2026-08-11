@@ -1,25 +1,17 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { housesContent as H } from "@/content/houses";
-import littleEllyLogo from "@/assets/little-elly-logo.png";
-import glentreeAsset from "@/assets/glentree.png.asset.json";
-import ellyChildcareAsset from "@/assets/elly-childcare.png.asset.json";
-import cocoonAsset from "@/assets/cocoon.png.asset.json";
-import letrAsset from "@/assets/letr.png.asset.json";
 import learningEdgeAsset from "@/assets/learning-edge.png.asset.json";
+import k2Asset from "@/assets/k2-learning.png.asset.json";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
-const LOGOS: Record<string, string> = {
-  "little-elly": littleEllyLogo,
-  glentree: glentreeAsset.url,
-  "elly-childcare": ellyChildcareAsset.url,
-  cocoon: cocoonAsset.url,
-  letr: letrAsset.url,
-};
+const LOGOS: Record<string, string> = {};
 
 const HOUSE_LOGOS: Record<string, string> = {
   "learning-edge": learningEdgeAsset.url,
+  "k2-learning": k2Asset.url,
 };
+
 
 
 const useRise = () => {
