@@ -211,16 +211,6 @@ export default function HousesSection() {
           <House house={H.houses[1]!} delay={0.12} />
         </div>
 
-        {/* zoom in on Little Elly */}
-        <motion.div className="mt-20 text-center" {...rise(0.05)}>
-          <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
-            {H.zoomKicker}
-          </p>
-          <p className="mx-auto mt-5 max-w-[26ch] font-display text-2xl leading-tight text-ink sm:text-[2rem]">
-            {H.zoomLine[0]} <span className="text-coral">{H.zoomLine[1]}</span>
-          </p>
-          <p className="mt-6 text-xs text-ink/35">{H.zoomNote}</p>
-        </motion.div>
       </div>
     </section>
   );
