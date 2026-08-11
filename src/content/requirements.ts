@@ -10,7 +10,7 @@ export const requirementsContent = {
       title: "Space",
       accent: "var(--coral)",
       points: [
-        "1,000–2,000 sq. ft. per centre, ground floor ideal",
+        "2,000+ sq. ft. per centre, ground floor ideal",
         "Residential neighbourhoods, or right beside them",
         "Built to our design, layout and child-safety specification",
         "Lease meets our minimum standards on term, lock-in, renewal and exit",
