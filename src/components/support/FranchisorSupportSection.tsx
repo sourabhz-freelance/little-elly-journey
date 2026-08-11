@@ -211,25 +211,23 @@ function TermTimeline() {
       </motion.p>
 
       <div className="relative mt-12">
-        <svg
-          className="pointer-events-none absolute inset-x-0 top-5 hidden h-4 w-full lg:block"
-          viewBox="0 0 1000 10"
-          preserveAspectRatio="none"
+        <motion.div
+          className="pointer-events-none absolute left-3 top-[10px] hidden h-[3px] lg:block"
+          style={{
+            right: "calc(12.5% + 0.75rem)",
+            backgroundImage:
+              "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
+            backgroundSize: "14px 3px",
+            backgroundRepeat: "repeat-x",
+            opacity: 0.75,
+          }}
           aria-hidden="true"
-        >
-          <motion.path
-            d="M 20 5 H 980"
-            stroke="var(--pink)"
-            strokeWidth={3}
-            strokeLinecap="round"
-            strokeDasharray="0.1 14"
-            vectorEffect="non-scaling-stroke"
-            initial={reduce ? false : { pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
-            viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 1.4, ease: EASE }}
-          />
-        </svg>
+          initial={reduce ? false : { scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 1.4, ease: EASE }}
+        />
+
 
         <div className="grid gap-8 lg:grid-cols-4">
           {S.term.map((t, i) => (
