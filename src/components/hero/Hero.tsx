@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { EllyFloating } from "@/components/brand/Elly";
 const logo = "/little-elly-logo.png";
 import { heroContent as C } from "@/content/hero";
 
