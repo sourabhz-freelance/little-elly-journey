@@ -46,7 +46,7 @@ export function EllyFloating(props: Parameters<typeof Elly>[0]) {
   return (
     <motion.div
       className={cn("pointer-events-none", className)}
-      animate={reduce ? undefined : { y: [0, -10, 0] }}
+      animate={reduce ? { y: 0 } : { y: [0, -10, 0] }}
       transition={{ duration: float, repeat: Infinity, ease: "easeInOut" }}
     >
       <Elly {...rest} className="h-full w-full object-contain" />
