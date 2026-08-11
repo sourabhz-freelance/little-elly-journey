@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import { EllyFloating } from "@/components/brand/Elly";
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import {
   School,
