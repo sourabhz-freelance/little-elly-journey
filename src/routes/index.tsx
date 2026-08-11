@@ -38,6 +38,7 @@ function Index() {
   return (
     <main className="bg-cream">
       <Hero />
+      <HousesSection />
       <CurriculumSection />
       <MethodSection />
 
