@@ -113,9 +113,18 @@ function House({ house, delay }: { house: (typeof H.houses)[number]; delay: numb
         >
           {house.role}
         </p>
-        <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
-          {house.name}
-        </p>
+        {HOUSE_LOGOS[house.id] ? (
+          <img
+            src={HOUSE_LOGOS[house.id]}
+            alt={`${house.name} logo`}
+            className="mx-auto mt-3 h-16 w-auto max-w-[15rem] object-contain"
+          />
+        ) : (
+          <p className="mt-3 font-display text-2xl leading-tight text-ink sm:text-[1.7rem]">
+            {house.name}
+          </p>
+        )}
+
         <p className="mx-auto mt-3 max-w-[34ch] text-sm leading-relaxed text-ink/55">
           {house.line}
         </p>
