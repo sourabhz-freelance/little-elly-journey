@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import logo from "@/assets/little-elly-logo.png";
+const logo = "/little-elly-logo.png";
 import { heroContent as C } from "@/content/hero";
 
 const ease = [0.22, 1, 0.36, 1] as const;

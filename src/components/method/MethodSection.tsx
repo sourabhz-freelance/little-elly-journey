@@ -151,47 +151,6 @@ export default function MethodSection() {
           </div>
         </div>
 
-        {/* Beat 3 — methods */}
-        <div className="mt-20">
-          <motion.p
-            className="text-center text-[11px] font-semibold uppercase tracking-[0.24em] text-ink/40"
-            {...rise(0.05)}
-          >
-            {M.methodsTitle}
-          </motion.p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            {M.methods.map((m, i) => (
-              <motion.div
-                key={m.id}
-                className="flex items-center gap-3"
-                initial={reduce ? false : { opacity: 0, y: 14 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15, margin: "0px 0px -10% 0px" }}
-                transition={{ duration: 0.55, ease: EASE, delay: 0.08 * i }}
-              >
-                <div className="flex items-center gap-3 rounded-full border border-ink/[0.07] bg-white/70 py-4 pl-4 pr-6 backdrop-blur-sm">
-                  <span
-                    className="h-2.5 w-2.5 shrink-0 rounded-full"
-                    style={{ background: m.accent }}
-                    aria-hidden="true"
-                  />
-                  <p className="font-display text-base leading-snug text-ink sm:text-lg">
-                    {m.title}
-                  </p>
-                </div>
-                {i < M.methods.length - 1 && (
-                  <span className="font-display text-xl text-coral/50" aria-hidden="true">
-                    +
-                  </span>
-                )}
-              </motion.div>
-            ))}
-          </div>
-          <p className="mt-6 text-center font-display text-lg text-ink/50 sm:text-xl">
-            {M.methodsCentre}
-          </p>
-        </div>
-
         <motion.p
           className="mx-auto mt-20 max-w-[26ch] text-center font-display leading-tight text-ink [font-size:clamp(1.5rem,3vw,2.4rem)]"
           {...rise(0.1)}
