@@ -90,10 +90,10 @@ function textArc(r: number, a0: number, a1: number) {
   return `M ${x0} ${y0} A ${r} ${r} 0 0 ${flip ? 0 : 1} ${x1} ${y1}`;
 }
 
-const PILLAR_R0 = 212;
-const PILLAR_R1 = 362;
-const INSPIRED_R0 = 372;
-const INSPIRED_R1 = 452;
+const PILLAR_R0 = 158;
+const PILLAR_R1 = 366;
+const INSPIRED_R0 = 376;
+const INSPIRED_R1 = 456;
 
 const pillarSpan = 360 / C.pillars.length;
 const inspiredSpan = 360 / C.inspired.length;
@@ -163,13 +163,14 @@ function Wheel() {
         })}
 
         {/* curved labels on the middle ring */}
+        {/* curved labels on the middle ring — centred on the band, following its arc */}
         <defs>
           {C.inspired.map((s, i) => (
             <path
               key={s.id}
               id={`arc-${s.id}`}
               d={textArc(
-                INSPIRED_R0 + 52,
+                (INSPIRED_R0 + INSPIRED_R1) / 2,
                 inspiredStart(i) + 4,
                 inspiredStart(i) + inspiredSpan - 4,
               )}
@@ -182,28 +183,30 @@ function Wheel() {
             key={s.id}
             fill={s.accent}
             className="font-display"
-            fontSize={31}
+            fontSize={30}
             fontWeight={600}
-            letterSpacing="0.04em"
+            letterSpacing="0.03em"
+            dominantBaseline="central"
           >
             <textPath href={`#arc-${s.id}`} startOffset="50%" textAnchor="middle">
               {s.title}
             </textPath>
           </text>
         ))}
+
       </svg>
 
       {/* pillar labels */}
       {C.pillars.map((p, i) => {
         const mid = pillarStart(i) + pillarSpan / 2;
-        const r = 292 / 10; // percent of the container
+        const r = 262 / 10; // percent of the container
         const left = 50 + r * Math.cos(rad(mid));
         const top = 50 + r * Math.sin(rad(mid));
         const Icon = ICONS[p.icon as keyof typeof ICONS];
         return (
           <motion.div
             key={p.id}
-            className="absolute w-[8rem] -translate-x-1/2 -translate-y-1/2 text-center"
+            className="absolute w-[7rem] -translate-x-1/2 -translate-y-1/2 text-center"
             style={{ left: `${left}%`, top: `${top}%` }}
             initial={reduce ? false : { opacity: 0, scale: 0.94 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -217,15 +220,15 @@ function Wheel() {
             >
               <Icon size={18} strokeWidth={1.8} />
             </span>
-            <p className="mt-1.5 font-display text-[0.95rem] leading-tight text-ink">{p.title}</p>
-            <p className="mt-1 text-[0.7rem] leading-snug text-ink/50">{p.line}</p>
+            <p className="mt-1.5 font-display text-[0.88rem] leading-tight text-ink">{p.title}</p>
+            <p className="mt-1 text-[0.66rem] leading-snug text-ink/50">{p.line}</p>
           </motion.div>
         );
       })}
 
       {/* the child at the centre */}
       <motion.div
-        className="absolute left-1/2 top-1/2 h-[34%] w-[34%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-[6px] border-coral/70 shadow-[0_24px_60px_-24px_rgba(9,9,77,0.35)]"
+        className="absolute left-1/2 top-1/2 h-[29%] w-[29%] -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-full border-[6px] border-coral/70 shadow-[0_24px_60px_-24px_rgba(9,9,77,0.35)]"
         initial={reduce ? false : { opacity: 0, scale: 0.9 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}

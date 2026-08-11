@@ -2,7 +2,12 @@
 export const supportContent = {
   kicker: "What we carry",
   headline: ["You carry four things.", "We carry the rest."],
-  sub: "Nineteen obligations the Franchisor owes you under the Master Franchise Agreement.",
+  sub: "Nineteen obligations sit with us. Four sit with you. Switch between the two.",
+
+  tabs: {
+    ours: { label: "We carry", note: "Nineteen obligations the Franchisor owes you under the Master Franchise Agreement." },
+    yours: { label: "You carry", note: "Four responsibilities stay with the Master Franchisee." },
+  },
 
   /** The four clusters we carry — short chips, not paragraphs. */
   clusters: [
@@ -59,10 +64,30 @@ export const supportContent = {
 
   /** The four things the Master Franchisee carries. */
   yours: [
-    { id: "find", icon: "Search", title: "Find the franchisees" },
-    { id: "open", icon: "KeyRound", title: "Open their centres" },
-    { id: "mentor", icon: "HeartHandshake", title: "Mentor them" },
-    { id: "standards", icon: "ShieldCheck", title: "Hold the standard" },
+    {
+      id: "find",
+      icon: "Search",
+      title: "Find the franchisees",
+      line: "Meet, shortlist and sign the right people in your state.",
+    },
+    {
+      id: "open",
+      icon: "KeyRound",
+      title: "Open their centres",
+      line: "Site, setup and launch, with our approvals behind you.",
+    },
+    {
+      id: "mentor",
+      icon: "HeartHandshake",
+      title: "Mentor them",
+      line: "Be the first call when a centre needs a hand.",
+    },
+    {
+      id: "standards",
+      icon: "ShieldCheck",
+      title: "Hold the standard",
+      line: "Walk the floors and keep every centre worthy of the name.",
+    },
   ],
   yoursNote: "Everything else is ours to carry.",
 
