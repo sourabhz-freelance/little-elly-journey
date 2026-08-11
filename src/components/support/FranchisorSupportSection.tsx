@@ -39,13 +39,13 @@ const STONES = S.clusters.flatMap((c) =>
 const ARCH = STONES.map((s, i) => {
   const t = 176 - (i * (176 - 4)) / (STONES.length - 1);
   const r = (t * Math.PI) / 180;
-  return { ...s, x: 500 + 468 * Math.cos(r), y: 322 - 236 * Math.sin(r) };
+  return { ...s, x: 500 + 452 * Math.cos(r), y: 296 - 196 * Math.sin(r) };
 });
 
 const ARC_PATH = (() => {
   const pts = Array.from({ length: 97 }, (_, k) => {
     const r = ((180 - (k * 180) / 96) * Math.PI) / 180;
-    return `${(500 + 468 * Math.cos(r)).toFixed(1)},${(322 - 236 * Math.sin(r)).toFixed(1)}`;
+    return `${(500 + 452 * Math.cos(r)).toFixed(1)},${(296 - 196 * Math.sin(r)).toFixed(1)}`;
   });
   return `M ${pts.join(" L ")}`;
 })();
@@ -83,7 +83,7 @@ function Arch() {
 
       {/* ---- desktop: the arch ---- */}
       <div className="mt-10 hidden lg:block">
-        <div className="relative w-full" style={{ paddingBottom: "34%" }}>
+        <div className="relative w-full" style={{ paddingBottom: "31%" }}>
           <svg
             viewBox="0 0 1000 340"
             className="absolute inset-0 h-full w-full"
@@ -97,10 +97,10 @@ function Arch() {
               strokeLinecap="round"
               strokeDasharray="0.1 15"
               vectorEffect="non-scaling-stroke"
-              initial={reduce ? false : { pathLength: 0 }}
-              whileInView={{ pathLength: 1 }}
-              viewport={{ once: true, amount: 0.4 }}
-              transition={{ duration: 1.6, ease: EASE }}
+              initial={reduce ? false : { opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 1.2, ease: EASE }}
             />
           </svg>
 
