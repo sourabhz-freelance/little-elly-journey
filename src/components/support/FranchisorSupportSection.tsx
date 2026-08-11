@@ -83,24 +83,21 @@ function Arch() {
 
       {/* ---- desktop: the arch ---- */}
       <div className="mt-10 hidden lg:block">
-        <div className="relative w-full" style={{ paddingBottom: "31%" }}>
+        <div className="relative w-full" style={{ paddingBottom: "29%" }}>
           <svg
-            viewBox="0 0 1000 340"
+            viewBox="0 60 1000 290"
             className="absolute inset-0 h-full w-full"
             fill="none"
             aria-hidden="true"
           >
-            <motion.path
+            <path
               d={ARC_PATH}
               stroke="var(--pink)"
               strokeWidth={3}
               strokeLinecap="round"
               strokeDasharray="0.1 13"
               vectorEffect="non-scaling-stroke"
-              initial={reduce ? false : { opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 1.2, ease: EASE }}
+              opacity={0.85}
             />
           </svg>
 
@@ -115,7 +112,7 @@ function Arch() {
               className="absolute flex h-[clamp(2rem,3.4vw,2.9rem)] w-[clamp(2rem,3.4vw,2.9rem)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[0.7rem] font-display text-[0.8rem] font-semibold tabular-nums outline-none transition-transform duration-300 hover:-translate-y-[62%] focus-visible:-translate-y-[62%]"
               style={{
                 left: `${(s.x / 1000) * 100}%`,
-                top: `${(s.y / 340) * 100}%`,
+                top: `${((s.y - 60) / 290) * 100}%`,
                 background:
                   active === i
                     ? s.accent
@@ -125,7 +122,7 @@ function Arch() {
                   active === i
                     ? `0 10px 24px -10px color-mix(in oklab, ${s.accent} 70%, transparent)`
                     : "none",
-                border: `1px solid color-mix(in oklab, ${s.accent} 30%, transparent)`,
+                border: `1px solid color-mix(in oklab, ${s.accent} 45%, transparent)`,
               }}
               initial={reduce ? false : { opacity: 0, y: 14, scale: 0.85 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
