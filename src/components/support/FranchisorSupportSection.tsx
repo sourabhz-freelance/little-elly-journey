@@ -9,12 +9,17 @@ import {
   ClipboardList,
   Target,
   Timer,
+  MapPinned,
+  UserPlus,
+  BadgeCheck,
 } from "lucide-react";
 import { supportContent as S } from "@/content/franchisorSupport";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const YOURS_ICONS = { Search, KeyRound, HeartHandshake, ShieldCheck } as const;
 const VOICE_ICONS = { Wallet, ClipboardList, Target, Timer } as const;
+const GRANT_ICONS = { MapPinned, UserPlus, BadgeCheck } as const;
+
 
 const useRise = () => {
   const reduce = useReducedMotion();
@@ -141,36 +146,89 @@ function Responsibilities() {
 
 
 
+/** The grant — three rights drawn inside one dashed territory boundary. */
 function Grant() {
   const rise = useRise();
+  const reduce = useReducedMotion();
+
   return (
-    <motion.div
-      className="mt-24 rounded-[2.5rem] border border-coral/20 bg-coral/[0.05] px-6 py-12 sm:px-12"
-      {...rise(0)}
-    >
-      <p className="text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
+    <div className="mt-24">
+      <motion.p
+        className="text-center text-[11px] font-semibold uppercase tracking-[0.32em] text-coral"
+        {...rise(0)}
+      >
         {S.grantKicker}
-      </p>
-      <div className="mt-8 grid gap-4 md:grid-cols-3">
-        {S.grant.map((g, i) => (
-          <motion.p
-            key={g}
-            {...rise(0.07 * i)}
-            className="rounded-2xl bg-white/70 px-6 py-6 font-display text-[1.02rem] leading-snug text-ink"
-          >
-            {g}
-          </motion.p>
-        ))}
-      </div>
-      <motion.p className="mt-6 text-center text-sm text-ink/45" {...rise(0.1)}>
+      </motion.p>
+      <motion.h3
+        className="mx-auto mt-4 max-w-[22ch] text-center font-display text-2xl leading-tight text-ink sm:text-[1.85rem]"
+        {...rise(0.05)}
+      >
+        {S.grantHeadline}
+      </motion.h3>
+
+      <motion.div
+        className="relative mt-12 rounded-[2.5rem] border-2 border-dashed border-coral/35 bg-coral/[0.04] px-6 pb-12 pt-14 sm:px-12"
+        {...rise(0.08)}
+      >
+        <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-cream px-4 py-1 font-display text-[0.78rem] font-semibold uppercase tracking-[0.2em] text-coral">
+          {S.grantBoundary}
+        </span>
+
+        {/* dotted trail linking the three rights */}
+        <motion.div
+          className="pointer-events-none absolute left-[22%] right-[22%] top-[6.6rem] hidden h-[3px] md:block"
+          style={{
+            backgroundImage: "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
+            backgroundSize: "14px 3px",
+            backgroundRepeat: "repeat-x",
+            transformOrigin: "left",
+          }}
+          aria-hidden="true"
+          initial={reduce ? false : { scaleX: 0, opacity: 0 }}
+          whileInView={{ scaleX: 1, opacity: 0.8 }}
+          viewport={{ once: true, amount: 0.4 }}
+          transition={{ duration: 1.2, ease: EASE, delay: 0.2 }}
+        />
+
+        <div className="relative grid gap-8 md:grid-cols-3">
+          {S.grant.map((g, i) => {
+            const Icon = GRANT_ICONS[g.icon as keyof typeof GRANT_ICONS];
+            return (
+              <motion.div key={g.id} {...rise(0.08 * i)} className="text-center">
+                <span
+                  className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border-2 border-coral/25 bg-cream text-coral shadow-[0_10px_24px_-14px_var(--coral)]"
+                  aria-hidden="true"
+                >
+                  <Icon size={26} strokeWidth={1.6} />
+                </span>
+                <p className="mt-4 font-display text-[0.72rem] font-semibold tracking-[0.24em] text-coral/60">
+                  {g.step}
+                </p>
+                <p className="mt-2 font-display text-lg leading-snug text-ink">{g.title}</p>
+                <p className="mx-auto mt-2 max-w-[30ch] text-sm leading-relaxed text-ink/55">
+                  {g.line}
+                </p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </motion.div>
+
+      <motion.p
+        className="mx-auto mt-6 max-w-[58ch] text-center text-sm leading-relaxed text-ink/45"
+        {...rise(0.1)}
+      >
         {S.grantNote}
       </motion.p>
-    </motion.div>
+    </div>
   );
 }
 
+/** Where you have a voice — a round table: four decisions spoked off one hub. */
 function Voice() {
   const rise = useRise();
+  const reduce = useReducedMotion();
+
   return (
     <div className="mt-24">
       <motion.p
@@ -179,30 +237,107 @@ function Voice() {
       >
         {S.voiceKicker}
       </motion.p>
-      <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-        {S.voice.map((v, i) => {
-          const Icon = VOICE_ICONS[v.icon as keyof typeof VOICE_ICONS];
-          return (
-            <motion.div
-              key={v.id}
-              {...rise(0.06 * i)}
-              className="rounded-3xl border border-ink/[0.08] bg-white/70 p-6"
-            >
-              <span
-                className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/10 text-turquoise"
-                aria-hidden="true"
-              >
-                <Icon size={19} strokeWidth={1.7} />
-              </span>
-              <p className="mt-4 font-display text-lg leading-tight text-ink">{v.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-ink/55">{v.line}</p>
-            </motion.div>
-          );
-        })}
+      <motion.h3
+        className="mx-auto mt-4 max-w-[22ch] text-center font-display text-2xl leading-tight text-ink sm:text-[1.85rem]"
+        {...rise(0.05)}
+      >
+        {S.voiceHeadline}
+      </motion.h3>
+
+      {/* desktop: hub and four spokes */}
+      <div className="relative mx-auto mt-14 hidden max-w-4xl lg:block">
+        <svg
+          viewBox="0 0 100 100"
+          preserveAspectRatio="none"
+          className="pointer-events-none absolute inset-0 h-full w-full"
+          aria-hidden="true"
+        >
+          {[
+            "M50 50 L 30 22",
+            "M50 50 L 70 22",
+            "M50 50 L 30 78",
+            "M50 50 L 70 78",
+          ].map((d, i) => (
+            <motion.path
+              key={d}
+              d={d}
+              fill="none"
+              stroke="var(--turquoise)"
+              strokeWidth={2.2}
+              strokeLinecap="round"
+              strokeDasharray="0.1 7"
+              vectorEffect="non-scaling-stroke"
+              initial={reduce ? false : { pathLength: 0, opacity: 0 }}
+              whileInView={{ pathLength: 1, opacity: 0.6 }}
+              viewport={{ once: true, amount: 0.3 }}
+              transition={{ duration: 0.8, ease: EASE, delay: 0.3 + i * 0.1 }}
+            />
+          ))}
+        </svg>
+
+        <div className="relative grid grid-cols-[1fr_13rem_1fr] items-center gap-x-6 gap-y-12">
+          <motion.div {...rise(0.1)}>
+            <VoiceCard v={S.voice[0]!} />
+          </motion.div>
+
+          <motion.div
+            className="row-span-2 mx-auto flex h-40 w-40 flex-col items-center justify-center rounded-full border-2 border-turquoise/30 bg-white/80 text-center backdrop-blur-sm"
+            initial={reduce ? false : { opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7, ease: EASE }}
+          >
+            <p className="font-display text-lg leading-tight text-ink">{S.voiceHub[0]}</p>
+            <p className="mt-1 font-display text-lg leading-tight text-turquoise">
+              {S.voiceHub[1]}
+            </p>
+          </motion.div>
+
+          <motion.div {...rise(0.16)}>
+            <VoiceCard v={S.voice[1]!} />
+          </motion.div>
+          <motion.div {...rise(0.22)}>
+            <VoiceCard v={S.voice[2]!} />
+          </motion.div>
+          <motion.div {...rise(0.28)}>
+            <VoiceCard v={S.voice[3]!} />
+          </motion.div>
+        </div>
+      </div>
+
+      {/* stacked */}
+      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:hidden">
+        {S.voice.map((v, i) => (
+          <motion.div key={v.id} {...rise(0.06 * i)}>
+            <VoiceCard v={v} />
+          </motion.div>
+        ))}
       </div>
     </div>
   );
 }
+
+function VoiceCard({ v }: { v: (typeof S.voice)[number] }) {
+  const Icon = VOICE_ICONS[v.icon as keyof typeof VOICE_ICONS];
+  return (
+    <div className="h-full rounded-3xl border border-turquoise/20 bg-white/80 p-6 backdrop-blur-sm">
+      <div className="flex items-center justify-between gap-3">
+        <span
+          className="flex h-10 w-10 items-center justify-center rounded-full bg-turquoise/10 text-turquoise"
+          aria-hidden="true"
+        >
+          <Icon size={19} strokeWidth={1.7} />
+        </span>
+        <span className="rounded-full bg-turquoise/10 px-3 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-turquoise">
+          {v.cadence}
+        </span>
+      </div>
+      <p className="mt-4 font-display text-lg leading-tight text-ink">{v.title}</p>
+      <p className="mt-2 text-sm leading-relaxed text-ink/55">{v.line}</p>
+    </div>
+  );
+}
+
 
 function TermTimeline() {
   const reduce = useReducedMotion();
