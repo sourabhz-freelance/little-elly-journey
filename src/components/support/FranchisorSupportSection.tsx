@@ -214,7 +214,7 @@ function TermTimeline() {
         <motion.div
           className="pointer-events-none absolute left-3 top-[10px] hidden h-[3px] lg:block"
           style={{
-            right: "calc(12.5% + 0.75rem)",
+            right: "calc(12.5% + 6rem)",
             backgroundImage: "radial-gradient(circle, var(--pink) 1.5px, transparent 1.6px)",
             backgroundSize: "14px 3px",
             backgroundRepeat: "repeat-x",
