@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import {
   BookOpen,
@@ -11,7 +12,6 @@ import {
   ClipboardList,
   Target,
   Timer,
-  Check,
 } from "lucide-react";
 import { supportContent as S } from "@/content/franchisorSupport";
 
@@ -112,9 +112,9 @@ function Arch() {
               key={s.label}
               type="button"
               onMouseEnter={() => setActive(i)}
-              onMouseLeave={() => setActive((a) => (a === i ? null : a))}
+              onMouseLeave={() => setActive((a: number | null) => (a === i ? null : a))}
               onFocus={() => setActive(i)}
-              onBlur={() => setActive((a) => (a === i ? null : a))}
+              onBlur={() => setActive((a: number | null) => (a === i ? null : a))}
               className="absolute flex h-[clamp(2rem,3.4vw,2.9rem)] w-[clamp(2rem,3.4vw,2.9rem)] -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-[0.7rem] font-display text-[0.8rem] font-semibold tabular-nums outline-none transition-transform duration-300 hover:-translate-y-[62%] focus-visible:-translate-y-[62%]"
               style={{
                 left: `${(s.x / 1000) * 100}%`,
@@ -369,7 +369,7 @@ export default function FranchisorSupportSection() {
           </p>
         </motion.div>
 
-        <Beam />
+        <Arch />
         <Grant />
         <Voice />
         <TermTimeline />
