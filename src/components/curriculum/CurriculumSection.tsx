@@ -297,6 +297,14 @@ export default function CurriculumSection() {
         }}
       />
 
+      {/* Elly — the child this curriculum is about */}
+      <EllyFloating
+        pose="read"
+        float={6}
+        className="absolute bottom-6 left-2 z-0 hidden h-44 w-44 opacity-95 xl:block"
+      />
+
+
       <div className="relative z-10 mx-auto max-w-6xl">
         <motion.div className="text-center" {...rise(0)}>
           <p className="text-[11px] font-semibold uppercase tracking-[0.32em] text-coral">
