@@ -77,7 +77,7 @@ export default function Hero() {
         </motion.h1>
 
         <motion.p className="max-w-[46ch] text-base leading-relaxed text-ink/55 sm:text-lg" {...rise(0.7)}>
-          {C.eyebrow} — {C.sublineRest.trim()}
+          {C.sublineBold} {C.sublineRest.trim()}
         </motion.p>
 
         {/* proof strip — numbers highlighted */}
