@@ -41,6 +41,41 @@ export default function DemographicsSection() {
           </p>
         </motion.div>
 
+        {/* the territory in question, not all of India */}
+        <div className="mt-14">
+          <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/40">
+            {D.regionKicker}
+          </p>
+          <div className="mt-6 grid gap-5 sm:grid-cols-3">
+            {D.region.map((r, i) => (
+              <motion.div
+                key={r.id}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.4 }}
+                transition={{ duration: 0.6, ease: EASE, delay: 0.08 * i }}
+                className="rounded-3xl border bg-white/70 p-7 backdrop-blur-sm"
+                style={{ borderColor: `color-mix(in oklab, ${r.accent} 26%, transparent)` }}
+              >
+                <p
+                  className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:clamp(2rem,3.6vw,2.75rem)]"
+                  style={{ color: r.accent }}
+                >
+                  {r.value}
+                </p>
+                <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
+                  {r.label}
+                </p>
+                <p className="mt-2 text-[0.95rem] leading-relaxed text-ink/60">{r.note}</p>
+                <p className="mt-4 text-xs text-ink/35">{r.source}</p>
+              </motion.div>
+            ))}
+          </div>
+          <p className="mx-auto mt-5 max-w-[70ch] text-center text-xs leading-relaxed text-ink/35">
+            {D.regionNote}
+          </p>
+        </div>
+
         <div className="mt-14 space-y-4">
           {D.drivers.map((d, i) => {
             const isOpen = open === d.id;
