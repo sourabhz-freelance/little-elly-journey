@@ -46,10 +46,7 @@ export default function DubaiResponsibilitySection() {
         </motion.div>
 
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
-          {R.columns.map((c, i) => (
-            <motion.div
-              key={c.id}
-        <div className="mt-14 grid gap-6 lg:grid-cols-3">
+
           {R.columns.map((c, i) => {
             const Icon = ICONS[c.icon as keyof typeof ICONS] ?? Crown;
             return (
