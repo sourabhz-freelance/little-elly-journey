@@ -13,8 +13,8 @@ import {
   GraduationCap,
 } from "lucide-react";
 import { curriculumContent as C } from "@/content/curriculum";
-import childPhoto from "@/assets/happy-child.jpg";
-import childPhotoGirl from "@/assets/happy-child-girl.jpg";
+const childPhoto = "/people/happy-child.jpg";
+const childPhotoGirl = "/people/happy-child-girl.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -52,7 +52,7 @@ function ChildPhoto() {
         alt={p.alt}
         width={1024}
         height={1024}
-        loading="lazy"
+        
         className="absolute inset-0 h-full w-full object-cover"
         initial={reduce ? false : { opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -219,6 +219,13 @@ function Wheel() {
               aria-hidden="true"
             >
               <Icon size={16} strokeWidth={1.8} />
+            </span>
+            <span
+              className="mx-auto mt-1 block font-display text-[0.95rem] font-semibold leading-none"
+              style={{ color: p.accent }}
+              aria-hidden="true"
+            >
+              {p.letter}
             </span>
             <p className="mt-1 font-display text-[0.8rem] leading-[1.15] text-ink text-balance">
               {p.title}

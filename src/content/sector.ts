@@ -40,20 +40,54 @@ export const marketContent = {
       source: "IMARC / Expert Market Research",
     },
   ],
-  chart: {
-    title: "The curve, not the moment",
-    caption:
-      "Illustrative growth path from a 2025 base of $5.1B at ~9.2% CAGR. Source: IMARC Group.",
-    from: 5.1,
-    cagr: 0.092,
-    years: [2025, 2027, 2029, 2031, 2034],
+  /** Replaces the growth curve: who actually runs the market today. */
+  composition: {
+    title: "Who runs the market today",
+    lead: "Out of every 100 preschools operating in India, only a handful carry a national brand and a common system.",
+    brandedOf100: 8,
+    brandedLabel: "Branded, system-run centres",
+    independentLabel: "Independent, unbranded centres",
+    takeaway:
+      "The competition is fragmentation itself — which is exactly what an operating system, not a single school, is built to consolidate.",
+    caption: "Indicative industry estimate of branded penetration in organised early-years supply.",
   },
 } as const;
 
 export const demographicsContent = {
   kicker: "The tailwind",
-  headline: ["India isn't", "running out of children."],
+  headline: ["India's child population remains significant.", "The opportunity is evolving."],
   sub: "Seven structural forces, none of them a trend. Tap a force to open it.",
+
+  /** Andhra Pradesh & Telangana — the territory in question, not all of India. */
+  regionKicker: "Closer to home — Andhra Pradesh & Telangana",
+  region: [
+    {
+      id: "people",
+      value: "8.5 cr",
+      label: "People across the two states",
+      note: "A single language market with two fast-growing capitals.",
+      source: "Census 2011",
+      accent: "var(--coral)",
+    },
+    {
+      id: "children",
+      value: "88 lakh",
+      label: "Children aged 0-6",
+      note: "The cohort that walks into a preschool, refreshed every year.",
+      source: "Census 2011",
+      accent: "var(--turquoise)",
+    },
+    {
+      id: "urban",
+      value: "39%",
+      label: "Telangana urban share",
+      note: "Andhra Pradesh at 30% and rising — urban families buy structured early years.",
+      source: "Census 2011",
+      accent: "var(--orange)",
+    },
+  ],
+  regionNote:
+    "State figures are indicative and will be replaced with the numbers from the dashboard shared by the research team.",
   drivers: [
     {
       id: "children",
@@ -114,7 +148,7 @@ export const demographicsContent = {
       icon: "GraduationCap",
       stat: "#2 spend",
       title: "Education is the second thing an Indian family buys after a home",
-      body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through demonetisation, GST and a pandemic — and why fee realisation stays strong.",
+      body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through downturns and a pandemic — and why fee realisation stays strong.",
       source: "Household consumption expenditure surveys, MoSPI",
       accent: "var(--orange)",
     },

@@ -15,8 +15,8 @@ import {
   ShieldCheck,
 } from "lucide-react";
 import { partnerFrameworkContent as P } from "@/content/partnerFramework";
-import partnerMan from "@/assets/partner-man.jpg";
-import partnerWoman from "@/assets/partner-woman.jpg";
+const partnerMan = "/people/partner-man.jpg";
+const partnerWoman = "/people/partner-woman.jpg";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -52,7 +52,7 @@ function PartnerPhoto() {
         alt={p.alt}
         width={1024}
         height={1024}
-        loading="lazy"
+        
         className="absolute inset-0 h-full w-full object-cover"
         initial={reduce ? false : { opacity: 0, scale: 1.04 }}
         animate={{ opacity: 1, scale: 1 }}
@@ -225,7 +225,7 @@ export default function PartnerFrameworkSection() {
           className="mx-auto mt-20 max-w-[24ch] text-center font-display leading-tight text-ink [font-size:clamp(1.5rem,3vw,2.4rem)]"
           {...rise(0.1)}
         >
-          “We stand by you at <span className="text-coral">every angle.</span>”
+          Structured support at <span className="text-coral">every level of the business.</span>
         </motion.p>
       </div>
     </section>

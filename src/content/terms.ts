@@ -34,7 +34,7 @@ export const termsContent = {
     "Five years, then renewal on mutual terms",
     "You pick the state you know best",
     "You fill it in five years — with our help",
-    "No royalty on your franchisees' fees",
+    "You earn on every new franchisee signed and every new admission",
     "Brand standards protect everyone in the family",
   ],
 } as const;

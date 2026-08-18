@@ -102,7 +102,7 @@ export const commercialsContent = {
 export const revenueContent = {
   kicker: "Where the money comes from",
   headline: ["You are paid", "every year, per child."],
-  sub: "Parents pay your franchisees. Four things flow upward from there — and half of the two that recur is yours.",
+  sub: "Four streams flow from the model. Two recurring streams are shared equally with the Master Franchise.",
 
   flows: [
     {

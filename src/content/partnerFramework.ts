@@ -50,7 +50,7 @@ export const partnerFrameworkContent = {
       accent: "var(--pink)",
     },
   ],
-  closing: "We stand by you at every angle.",
+  closing: "Structured support at every level of the business.",
 
   /** Commercials — indicative placeholders until territory numbers are confirmed. */
   moneyKicker: "The commercials, plainly",

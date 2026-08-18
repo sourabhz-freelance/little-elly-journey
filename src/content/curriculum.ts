@@ -1,50 +1,55 @@
 /** Section 07 — The H.A.P.P.Y. curriculum, as a whole system. */
 export const curriculumContent = {
-  kicker: "How did 172 centres, 19 cities, 20 years happen?",
+  kicker: "The curriculum behind the brand",
   headline: ["1 lakh+ parents have loved", "our H.A.P.P.Y. curriculum"],
-  proof: ["1 lakh+ happy parents", "172 centres", "20+ years"],
+  proof: ["Every letter of H.A.P.P.Y. built into the day"],
 
   wheelKicker: "One curriculum, three circles",
-  wheelLead: "The child at the centre. What we teach around her. What she becomes.",
+  wheelLead: "Five commitments — H, A, P, P, Y — the child at the centre of all of them.",
 
   /** Inner ring — the five things the curriculum builds. */
   pillars: [
     {
       id: "body",
+      letter: "H",
       icon: "HeartPulse",
-      title: "A healthy body",
+      title: "A Healthy body",
       line: "Movement, nutrition, rest.",
       long: "Movement, nutrition and rest — the body a mind depends on.",
       accent: "var(--coral)",
     },
     {
       id: "mind",
+      letter: "A",
       icon: "Lightbulb",
-      title: "An awakened mind",
+      title: "An Awakened mind",
       line: "Wonder before worksheets.",
       long: "Questions before answers; wonder before worksheets.",
       accent: "var(--cyan)",
     },
     {
       id: "heart",
+      letter: "P",
       icon: "ToyBrick",
-      title: "A playful heart",
+      title: "A Playful heart",
       line: "Play, taken seriously.",
       long: "Play is the work of childhood, and we take it seriously.",
       accent: "var(--yellow)",
     },
     {
       id: "self",
+      letter: "P",
       icon: "Sparkles",
-      title: "A capable self",
+      title: "A Purposeful self",
       line: "Small independences, daily.",
       long: "Small independences, practised daily, until they feel ordinary.",
       accent: "var(--periwinkle)",
     },
     {
       id: "learning",
+      letter: "Y",
       icon: "BookOpen",
-      title: "A love of learning",
+      title: "A Yearning to learn",
       line: "The outcome that outlives school.",
       long: "The one outcome that outlives every report card.",
       accent: "var(--turquoise)",

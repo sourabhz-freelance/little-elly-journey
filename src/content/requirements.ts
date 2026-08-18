@@ -50,7 +50,6 @@ export const requirementsContent = {
       points: [
         "One-time Master Franchisee fee for the five-year term",
         "Model centre, territory office and launch marketing",
-        "GST at 18% on the fee — recoverable as input credit",
         "Refundable security deposit and office advance",
         "Working capital for the first operating season",
       ],

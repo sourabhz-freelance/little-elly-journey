@@ -1,7 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { housesContent as H } from "@/content/houses";
-import learningEdgeLogo from "@/assets/learning-edge.png";
-import k2Logo from "@/assets/k2-learning.png";
+const learningEdgeLogo = "/learning-edge.png";
+const k2Logo = "/k2-learning.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
