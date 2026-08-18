@@ -104,7 +104,7 @@ export const dubaiModels = {
     {
       id: "land",
       icon: "LandPlot",
-      label: "Land & building",
+      label: "Land and building",
       focoWho: "You",
       fofoWho: "You",
       foco: "Owned by you, or held by you on long lease",
@@ -113,7 +113,7 @@ export const dubaiModels = {
     {
       id: "fitout",
       icon: "Hammer",
-      label: "Fit-out",
+      label: "Fit-out and equipment",
       focoWho: "You",
       fofoWho: "You",
       foco: "Yours, built to brand specification",
@@ -122,7 +122,7 @@ export const dubaiModels = {
     {
       id: "licence",
       icon: "BadgeCheck",
-      label: "Licence & KHDA permit",
+      label: "Trade licence and KHDA permit",
       focoWho: "We",
       fofoWho: "You",
       foco: "Held by the Master Franchisee",

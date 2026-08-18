@@ -1,21 +1,21 @@
 import { useState } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import {
+  ArrowLeft,
+  ArrowRight,
   BadgeCheck,
-  Building2,
   DoorOpen,
   GraduationCap,
   Hammer,
-  Landmark,
   LandPlot,
   Receipt,
+  RotateCcw,
   Scale,
   Settings2,
   Users,
   Wallet,
 } from "lucide-react";
 import { dubaiModels as M } from "@/content/dubai";
-import HoverReveal from "@/components/shared/HoverReveal";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -32,7 +32,10 @@ const ICONS = {
   DoorOpen,
 } as const;
 
-type Mode = "foco" | "fofo";
+const FOCO = "var(--coral)";
+const FOFO = "var(--cyan)";
+
+type Row = (typeof M.rows)[number];
 
 function useRise() {
   const reduce = useReducedMotion();
@@ -47,107 +50,128 @@ function useRise() {
         };
 }
 
-/** The big two-panel picture: who owns, who operates. */
-function ModelCard({
-  mode,
-  active,
-  onSelect,
-}: {
-  mode: Mode;
-  active: boolean;
-  onSelect: () => void;
-}) {
-  const d = M[mode];
-  const accent = d.accent;
-  const owns = mode === "foco" ? "You own it" : "You own it";
-  const runs = mode === "foco" ? "We run it" : "You run it";
-
+/** The big illustration for the topic currently being explained. */
+function TopicArt({ icon, index }: { icon: string; index: number }) {
+  const Icon = ICONS[icon as keyof typeof ICONS] ?? LandPlot;
   return (
-    <button
-      type="button"
-      onClick={onSelect}
-      aria-pressed={active}
-      className="group relative w-full rounded-[2rem] border p-8 text-left transition-all duration-500 sm:p-10"
+    <div className="relative flex h-[190px] w-full items-center justify-center sm:h-[230px]">
+      <div
+        className="absolute h-[150px] w-[150px] rounded-full sm:h-[190px] sm:w-[190px]"
+        style={{
+          background:
+            "radial-gradient(circle at 50% 40%, color-mix(in oklab, var(--yellow) 45%, transparent), transparent 70%)",
+        }}
+        aria-hidden="true"
+      />
+      <svg
+        viewBox="0 0 200 200"
+        className="absolute h-[180px] w-[180px] sm:h-[215px] sm:w-[215px]"
+        aria-hidden="true"
+      >
+        <circle
+          cx="100"
+          cy="100"
+          r="86"
+          fill="none"
+          stroke="color-mix(in oklab, var(--pink) 75%, transparent)"
+          strokeWidth="3"
+          strokeLinecap="round"
+          strokeDasharray="0.1 17"
+        />
+      </svg>
+      <div
+        className="relative flex h-[104px] w-[104px] items-center justify-center rounded-[2rem] bg-white shadow-[0_28px_60px_-38px_color-mix(in_oklab,var(--ink)_70%,transparent)] sm:h-[124px] sm:w-[124px]"
+        style={{ color: "var(--coral)" }}
+      >
+        <Icon className="h-12 w-12 sm:h-14 sm:w-14" strokeWidth={1.4} />
+        <span
+          className="absolute -right-3 -top-3 flex h-9 w-9 items-center justify-center rounded-full font-display text-sm text-white"
+          style={{ background: "var(--ink)" }}
+        >
+          {String(index + 1).padStart(2, "0")}
+        </span>
+      </div>
+    </div>
+  );
+}
+
+function Panel({
+  tag,
+  accent,
+  who,
+  detail,
+}: {
+  tag: string;
+  accent: string;
+  who: string;
+  detail: string;
+}) {
+  return (
+    <div
+      className="rounded-[1.5rem] border p-6"
       style={{
-        borderColor: active
-          ? `color-mix(in oklab, ${accent} 55%, transparent)`
-          : "color-mix(in oklab, var(--ink) 8%, transparent)",
-        background: active
-          ? `color-mix(in oklab, ${accent} 8%, white)`
-          : "color-mix(in oklab, white 70%, transparent)",
-        boxShadow: active ? `0 30px 70px -40px color-mix(in oklab, ${accent} 80%, transparent)` : "none",
+        borderColor: `color-mix(in oklab, ${accent} 35%, transparent)`,
+        background: `color-mix(in oklab, ${accent} 7%, white)`,
       }}
     >
-      <div className="flex items-center justify-between">
+      <span
+        className="inline-flex items-center rounded-full px-3.5 py-1 font-display text-xs leading-none text-white"
+        style={{ background: accent }}
+      >
+        {tag}
+      </span>
+      <p className="mt-4 font-display text-xl leading-snug text-ink">{who}</p>
+      <p className="mt-2 text-[0.93rem] leading-relaxed text-ink/60">{detail}</p>
+    </div>
+  );
+}
+
+/** A settled row in the growing table. */
+function TableRow({ row, i }: { row: Row; i: number }) {
+  const Icon = ICONS[row.icon as keyof typeof ICONS] ?? LandPlot;
+  return (
+    <motion.div
+      layout
+      initial={{ opacity: 0, y: -14 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, ease: EASE }}
+      className="grid grid-cols-1 items-start gap-3 border-t border-ink/[0.08] px-4 py-4 sm:grid-cols-[1.1fr_1fr_1fr] sm:gap-6 sm:px-6"
+      style={{ background: i % 2 ? "color-mix(in oklab, var(--cream) 55%, white)" : "white" }}
+    >
+      <div className="flex items-center gap-3">
         <span
-          className="inline-flex items-center rounded-full px-4 py-1.5 font-display text-sm leading-none text-white"
-          style={{ background: accent }}
-        >
-          {d.tag}
-        </span>
-        <span
-          className="h-3 w-3 rounded-full transition-all"
-          style={{
-            background: active ? accent : "color-mix(in oklab, var(--ink) 12%, transparent)",
-            boxShadow: active ? `0 0 0 5px color-mix(in oklab, ${accent} 18%, transparent)` : "none",
-          }}
+          className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl"
+          style={{ background: "color-mix(in oklab, var(--ink) 6%, transparent)", color: "var(--ink)" }}
           aria-hidden="true"
-        />
+        >
+          <Icon className="h-[17px] w-[17px]" strokeWidth={1.6} />
+        </span>
+        <p className="font-display text-[0.95rem] leading-tight text-ink">{row.label}</p>
       </div>
-
-      {/* the picture: a building you own, and a hand that runs it */}
-      <div className="mt-8 flex items-end gap-5">
-        <div className="flex flex-col items-center">
-          <span
-            className="flex h-16 w-16 items-center justify-center rounded-2xl"
-            style={{ background: `color-mix(in oklab, ${accent} 16%, transparent)`, color: accent }}
-            aria-hidden="true"
-          >
-            <Building2 className="h-7 w-7" />
-          </span>
-          <span className="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/45">
-            {owns}
-          </span>
-        </div>
-
-        <div className="mb-7 flex-1">
-          <div
-            className="h-[2px] w-full rounded-full"
-            style={{
-              backgroundImage: `repeating-linear-gradient(90deg, ${accent} 0 6px, transparent 6px 14px)`,
-            }}
-            aria-hidden="true"
-          />
-        </div>
-
-        <div className="flex flex-col items-center">
-          <span
-            className="flex h-16 w-16 items-center justify-center rounded-2xl text-white"
-            style={{ background: accent }}
-            aria-hidden="true"
-          >
-            {mode === "foco" ? <Landmark className="h-7 w-7" /> : <Settings2 className="h-7 w-7" />}
-          </span>
-          <span className="mt-3 text-[11px] font-semibold uppercase tracking-[0.18em] text-ink/45">
-            {runs}
-          </span>
-        </div>
+      <div>
+        <p className="font-display text-sm" style={{ color: FOCO }}>
+          {row.focoWho}
+        </p>
+        <p className="mt-1 text-[0.82rem] leading-relaxed text-ink/50">{row.foco}</p>
       </div>
-
-      <p className="mt-8 font-display text-xl leading-snug text-ink">{d.title}</p>
-      <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/55">
-        {mode === "foco"
-          ? "No licence, no staff, no operating cost. Paid on gross collections."
-          : "Your licence, your team, your surplus — with the platform behind you."}
-      </p>
-    </button>
+      <div>
+        <p className="font-display text-sm" style={{ color: FOFO }}>
+          {row.fofoWho}
+        </p>
+        <p className="mt-1 text-[0.82rem] leading-relaxed text-ink/50">{row.fofo}</p>
+      </div>
+    </motion.div>
   );
 }
 
 export default function OwnershipModelsSection() {
   const rise = useRise();
-  const [mode, setMode] = useState<Mode>("foco");
-  const accent = M[mode].accent;
+  const rows = M.rows;
+  // index of the topic on the stage; rows.length === everything explained
+  const [step, setStep] = useState(0);
+  const done = step >= rows.length;
+  const current = done ? null : rows[step];
+  const settled = rows.slice(0, step);
 
   return (
     <section
@@ -171,119 +195,152 @@ export default function OwnershipModelsSection() {
             {M.headline[0]} <span className="text-coral">{M.headline[1]}</span>
           </h2>
           <p className="mx-auto mt-6 max-w-[52ch] text-base leading-relaxed text-ink/55 sm:text-lg">
-            Same brand. Same curriculum. Same system. The only question is who holds the licence,
-            who employs the team — and how you get paid.
+            One piece at a time. Each answer settles into the table below — by the end, you have the
+            whole comparison in one place.
           </p>
         </motion.div>
 
-        <motion.div className="mt-14 grid gap-6 lg:grid-cols-2" {...rise(0.08)}>
-          <ModelCard mode="foco" active={mode === "foco"} onSelect={() => setMode("foco")} />
-          <ModelCard mode="fofo" active={mode === "fofo"} onSelect={() => setMode("fofo")} />
+        {/* THE STAGE */}
+        <motion.div
+          {...rise(0.08)}
+          layout
+          className="mt-14 overflow-hidden rounded-[2.25rem] border border-ink/[0.07] bg-white/75 backdrop-blur-sm"
+          style={{
+            boxShadow: "0 40px 90px -60px color-mix(in oklab, var(--ink) 70%, transparent)",
+          }}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {current ? (
+              <motion.div
+                key={current.id}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -12 }}
+                transition={{ duration: 0.4, ease: EASE }}
+                className="grid gap-8 p-8 sm:p-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-center"
+              >
+                <div>
+                  <TopicArt icon={current.icon} index={step} />
+                  <p className="mt-4 text-center font-display text-2xl leading-tight text-ink sm:text-[1.75rem]">
+                    {current.label}
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2">
+                  <Panel tag="FOCO" accent={FOCO} who={current.focoWho} detail={current.foco} />
+                  <Panel tag="FOFO" accent={FOFO} who={current.fofoWho} detail={current.fofo} />
+                </div>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="done"
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.45, ease: EASE }}
+                className="p-10 text-center"
+              >
+                <p className="font-display text-2xl text-ink sm:text-3xl">
+                  That is the whole picture.
+                </p>
+                <p className="mx-auto mt-3 max-w-[46ch] text-[0.95rem] leading-relaxed text-ink/55">
+                  Same brand, same curriculum, same system under both. Only the licence, the payroll
+                  and the way you are paid change.
+                </p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* controls */}
+          <div className="flex flex-wrap items-center justify-between gap-4 border-t border-ink/[0.07] bg-white/60 px-6 py-4 sm:px-8">
+            <div className="flex items-center gap-2" aria-hidden="true">
+              {rows.map((r, i) => (
+                <span
+                  key={r.id}
+                  className="h-1.5 rounded-full transition-all duration-500"
+                  style={{
+                    width: i === step ? 26 : 10,
+                    background:
+                      i < step
+                        ? "color-mix(in oklab, var(--coral) 55%, transparent)"
+                        : i === step
+                          ? "var(--coral)"
+                          : "color-mix(in oklab, var(--ink) 12%, transparent)",
+                  }}
+                />
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2">
+              <span className="mr-2 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
+                {Math.min(step + 1, rows.length)} / {rows.length}
+              </span>
+              <button
+                type="button"
+                onClick={() => setStep((s) => Math.max(0, s - 1))}
+                disabled={step === 0}
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/10 text-ink/60 transition hover:bg-ink/[0.04] disabled:opacity-30"
+                aria-label="Previous point"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+              {done ? (
+                <button
+                  type="button"
+                  onClick={() => setStep(0)}
+                  className="inline-flex items-center gap-2 rounded-full border border-ink/10 px-5 py-2.5 font-display text-sm text-ink/70 transition hover:bg-ink/[0.04]"
+                >
+                  <RotateCcw className="h-4 w-4" /> Start over
+                </button>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setStep((s) => s + 1)}
+                  className="inline-flex items-center gap-2 rounded-full px-6 py-2.5 font-display text-sm text-white transition hover:opacity-90"
+                  style={{ background: "var(--coral)" }}
+                >
+                  {step === rows.length - 1 ? "See the full picture" : "Next"}
+                  <ArrowRight className="h-4 w-4" />
+                </button>
+              )}
+            </div>
+          </div>
         </motion.div>
 
-        {/* the shared platform base */}
+        {/* THE TABLE THAT BUILDS ITSELF */}
+        <AnimatePresence initial={false}>
+          {settled.length > 0 ? (
+            <motion.div
+              layout
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className="mt-8 overflow-hidden rounded-[2rem] border border-ink/[0.07] bg-white"
+            >
+              <div className="hidden grid-cols-[1.1fr_1fr_1fr] gap-6 bg-cream/70 px-6 py-3.5 sm:grid">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-ink/40">
+                  What it is
+                </p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: FOCO }}>
+                  FOCO
+                </p>
+                <p className="text-[10px] font-semibold uppercase tracking-[0.24em]" style={{ color: FOFO }}>
+                  FOFO
+                </p>
+              </div>
+              {settled.map((r, i) => (
+                <TableRow key={r.id} row={r} i={i} />
+              ))}
+            </motion.div>
+          ) : null}
+        </AnimatePresence>
+
         <motion.div
-          {...rise(0.12)}
-          className="mt-4 rounded-[2rem] border border-ink/[0.07] bg-white/60 px-8 py-5 text-center backdrop-blur-sm"
+          {...rise(0.1)}
+          className="mt-6 rounded-[2rem] border border-ink/[0.07] bg-white/60 px-8 py-5 text-center backdrop-blur-sm"
         >
           <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-ink/40">
             One platform under both
           </p>
         </motion.div>
-
-        {/* the switchboard */}
-        <motion.div {...rise(0.06)} className="mt-20 text-center">
-          <p className="font-display text-2xl text-ink sm:text-3xl">Who holds what?</p>
-          <p className="mt-2 text-sm text-ink/50">
-            Flip the switch. Hover any tile for the fine print.
-          </p>
-
-          <div
-            className="mx-auto mt-7 inline-flex rounded-full border p-1"
-            style={{ borderColor: `color-mix(in oklab, ${accent} 30%, transparent)` }}
-            role="tablist"
-            aria-label="Ownership model"
-          >
-            {(["foco", "fofo"] as Mode[]).map((m) => (
-              <button
-                key={m}
-                type="button"
-                role="tab"
-                aria-selected={mode === m}
-                onClick={() => setMode(m)}
-                className="relative rounded-full px-7 py-2.5 font-display text-sm"
-              >
-                {mode === m ? (
-                  <motion.span
-                    layoutId="model-switch"
-                    className="absolute inset-0 rounded-full"
-                    style={{ background: M[m].accent }}
-                    transition={{ duration: 0.4, ease: EASE }}
-                  />
-                ) : null}
-                <span className={mode === m ? "relative text-white" : "relative text-ink/50"}>
-                  {M[m].tag}
-                </span>
-              </button>
-            ))}
-          </div>
-        </motion.div>
-
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
-          {M.rows.map((r, i) => {
-            const Icon = ICONS[r.icon as keyof typeof ICONS] ?? LandPlot;
-            const who = mode === "foco" ? r.focoWho : r.fofoWho;
-            const detail = mode === "foco" ? r.foco : r.fofo;
-            const mine = who === "You";
-            return (
-              <motion.div key={r.id} {...rise(0.03 * i)}>
-                <HoverReveal
-                  accent={accent}
-                  className="h-[172px] rounded-[1.5rem]"
-                  detail={
-                    <div className="flex h-full flex-col justify-center">
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-white/60">
-                        {M[mode].tag}
-                      </p>
-                      <p className="mt-2 text-[0.9rem] leading-relaxed text-white">{detail}</p>
-                    </div>
-                  }
-                >
-                  <div className="flex h-[172px] flex-col justify-between rounded-[1.5rem] border border-ink/[0.07] bg-white/70 p-5 text-left backdrop-blur-sm">
-                    <span
-                      className="flex h-10 w-10 items-center justify-center rounded-xl"
-                      style={{
-                        background: `color-mix(in oklab, ${accent} 14%, transparent)`,
-                        color: accent,
-                      }}
-                      aria-hidden="true"
-                    >
-                      <Icon className="h-[18px] w-[18px]" />
-                    </span>
-                    <div>
-                      <p className="font-display text-[0.95rem] leading-tight text-ink">{r.label}</p>
-                      <motion.p
-                        key={who}
-                        initial={{ opacity: 0, y: 6 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.35, ease: EASE }}
-                        className="mt-2 inline-flex rounded-full px-3 py-1 text-[11px] font-semibold leading-none"
-                        style={{
-                          background: mine
-                            ? `color-mix(in oklab, ${accent} 18%, transparent)`
-                            : "color-mix(in oklab, var(--ink) 6%, transparent)",
-                          color: mine ? accent : "color-mix(in oklab, var(--ink) 55%, transparent)",
-                        }}
-                      >
-                        {who}
-                      </motion.p>
-                    </div>
-                  </div>
-                </HoverReveal>
-              </motion.div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );
