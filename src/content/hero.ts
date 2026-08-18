@@ -7,15 +7,15 @@ export const heroContent = {
   eyebrow: "An invitation to belong",
   headline: ["Our", "family", "is", "growing."],
   headlineAccentIndex: 3,
-  sublineBold: "172 centres. Two happy decades.",
-  sublineRest: " And an open hand, waiting for yours.",
+  sublineBold: "An invitation to belong.",
+  sublineRest: " An opportunity to build together.",
   scrollCue: "Scroll to continue",
   proof: [
     { value: 172, suffix: "", label: "Centres & growing" },
     { value: 19, suffix: "", label: "Cities" },
     { value: 20, suffix: "+", label: "Years" },
   ] as const,
-  proofTag: "India's most admired preschool",
+  proofTag: "India's Most Admired Preschool",
   brand: {
     name: "Little Elly",
     tagline: "A Happy Preschool",
