@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { dubaiConsiderations as C } from "@/content/dubai";
+import HoverReveal from "@/components/shared/HoverReveal";
+import { WEIGH_ART } from "./weighArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
