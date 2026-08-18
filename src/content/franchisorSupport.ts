@@ -5,7 +5,7 @@ export const supportContent = {
   sub: "Nineteen obligations sit with us. Four sit with you. Switch between the two.",
 
   tabs: {
-    ours: { label: "We carry", note: "Nineteen obligations the Franchisor owes you under the Master Franchise Agreement." },
+    ours: { label: "We carry", note: "Nineteen obligations the Franchisor owes the Master Franchise under the Master Franchise Agreement. We write and update every SOP; implementation on the ground sits with the Master Franchise." },
     yours: { label: "You carry", note: "Four responsibilities stay with the Master Franchisee." },
   },
 
@@ -85,11 +85,11 @@ export const supportContent = {
     {
       id: "standards",
       icon: "ShieldCheck",
-      title: "Hold the standard",
-      line: "Walk the floors and keep every centre worthy of the name.",
+      title: "Implement the SOPs",
+      line: "We write and update the SOPs. Ensuring every unit franchisee implements and upholds them on the ground is the Master Franchise's responsibility.",
     },
   ],
-  yoursNote: "Everything else is ours to carry.",
+  yoursNote: "Everything else is ours to build and maintain — the standards travel with you to every centre.",
 
   grantKicker: "The grant",
   grantHeadline: "Three rights, inside one boundary.",
