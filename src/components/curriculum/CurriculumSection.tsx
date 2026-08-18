@@ -220,6 +220,13 @@ function Wheel() {
             >
               <Icon size={16} strokeWidth={1.8} />
             </span>
+            <span
+              className="mx-auto mt-1 block font-display text-[0.95rem] font-semibold leading-none"
+              style={{ color: p.accent }}
+              aria-hidden="true"
+            >
+              {p.letter}
+            </span>
             <p className="mt-1 font-display text-[0.8rem] leading-[1.15] text-ink text-balance">
               {p.title}
             </p>
