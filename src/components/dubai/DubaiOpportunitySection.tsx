@@ -1,6 +1,8 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { dubaiOpportunity as O } from "@/content/dubai";
 import { useCountUp } from "@/components/sector/useCountUp";
+import HoverReveal from "@/components/shared/HoverReveal";
+import { FORCE_ART } from "./forceArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
