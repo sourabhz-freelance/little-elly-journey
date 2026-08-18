@@ -18,6 +18,7 @@ import TermsSection from "@/components/terms/TermsSection";
 import CostOfEntrySection from "@/components/commercials/CostOfEntrySection";
 import RevenueFlowSection from "@/components/commercials/RevenueFlowSection";
 import FranchisorSupportSection from "@/components/support/FranchisorSupportSection";
+import EditionToggle from "@/components/shared/EditionToggle";
 
 const title = "Little Elly Master Franchise — Our Family Is Growing";
 const description =
@@ -38,6 +39,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <main className="bg-cream">
+      <EditionToggle />
       <HousesHero />
       <HousesSection />
       <Hero />
