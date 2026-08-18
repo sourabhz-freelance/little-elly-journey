@@ -28,34 +28,50 @@ function Stat({ s, delay }: { s: (typeof M.stats)[number]; delay: number }) {
   );
 }
 
-/** Simple growth bars derived from the stated base + CAGR. */
-function GrowthChart() {
-  const { from, cagr, years } = M.chart;
-  const base = years[0];
-  const values = years.map((y) => from * Math.pow(1 + cagr, y - base));
-  const max = Math.max(...values);
+/** Who runs the market: 100 dots, only a handful branded. */
+function CompositionPanel() {
+  const C = M.composition;
+  const dots = Array.from({ length: 100 }, (_, i) => i < C.brandedOf100);
 
   return (
     <div className="rounded-3xl border border-ink/[0.07] bg-white/70 p-8 backdrop-blur-sm sm:p-10">
-      <p className="font-display text-xl text-ink sm:text-2xl">{M.chart.title}</p>
-      <div className="mt-10 flex h-56 items-end gap-4 sm:gap-8">
-        {values.map((v, i) => (
-          <div key={years[i]} className="flex h-full flex-1 flex-col items-center justify-end gap-3">
-            <span className="font-display text-sm font-semibold text-ink/70 sm:text-base">
-              ${v.toFixed(1)}B
-            </span>
-            <motion.div
-              initial={{ height: 8 }}
-              whileInView={{ height: Math.round((v / max) * 170) }}
-              viewport={{ once: true, amount: 0, margin: "-10% 0px" }}
-              transition={{ duration: 0.9, ease: EASE, delay: 0.1 * i }}
-              className="w-full rounded-t-xl bg-coral"
+      <p className="font-display text-xl text-ink sm:text-2xl">{C.title}</p>
+      <p className="mt-3 max-w-[56ch] text-base leading-relaxed text-ink/55">{C.lead}</p>
+
+      <div className="mt-10 grid gap-10 md:grid-cols-[auto_minmax(0,1fr)] md:items-center">
+        <div className="grid w-fit grid-cols-10 gap-[6px]" aria-hidden="true">
+          {dots.map((branded, i) => (
+            <motion.span
+              key={i}
+              initial={{ opacity: 0, scale: 0.6 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true, amount: 0 }}
+              transition={{ duration: 0.35, ease: EASE, delay: 0.004 * i }}
+              className={`h-[13px] w-[13px] rounded-[4px] sm:h-4 sm:w-4 ${
+                branded ? "bg-coral" : "bg-ink/[0.09]"
+              }`}
             />
-            <span className="text-xs text-ink/45">{years[i]}</span>
+          ))}
+        </div>
+
+        <div>
+          <div className="flex items-baseline gap-3">
+            <span className="font-display font-semibold leading-none text-coral [font-size:clamp(2.4rem,4.5vw,3.4rem)]">
+              {C.brandedOf100}
+              <span className="text-ink/25"> / 100</span>
+            </span>
           </div>
-        ))}
+          <p className="mt-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-coral/80">
+            {C.brandedLabel}
+          </p>
+          <p className="mt-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-ink/35">
+            {C.independentLabel}
+          </p>
+          <p className="mt-5 max-w-[46ch] text-base leading-relaxed text-ink/60">{C.takeaway}</p>
+        </div>
       </div>
-      <p className="mt-8 text-xs leading-relaxed text-ink/35">{M.chart.caption}</p>
+
+      <p className="mt-8 text-xs leading-relaxed text-ink/35">{C.caption}</p>
     </div>
   );
 }
