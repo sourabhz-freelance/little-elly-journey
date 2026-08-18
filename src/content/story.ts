@@ -1,19 +1,19 @@
 /** Section 02 — "We've already walked it". Presenter-led storyboard copy. */
 export const storyContent = {
   kicker: "The invisible asset",
-  intro: "Twenty years of doing it the hard way — so you don't have to.",
+  intro: "Every problem in this business has already been met, paid for and solved once. That solved system is what a Master Franchise partner inherits.",
   beats: [
     {
       id: "start",
       index: "01",
       title: "We started.",
-      line: "Twenty years ago there was no map. Just a room, a few children, and a conviction.",
+      line: "Twenty years ago, there was no roadmap. Just a room, a few filled seats, and a conviction.",
     },
     {
       id: "wrong",
       index: "02",
-      title: "We got it wrong.",
-      line: "Wrong turns. Dead ends. Every one of them paid for, and none of them wasted.",
+      title: "We learned it the hard way.",
+      line: "Wrong sites, wrong hires, wrong assumptions — each one paid for once, and each one now a rule in the operating system you receive.",
     },
     {
       id: "rebuild",
@@ -37,7 +37,7 @@ export const storyContent = {
       id: "gift",
       index: "06",
       title: "Now, the gift.",
-      line: "The hardest part is already done. We'd like to hand it to you.",
+      line: "The hardest part is already built. A Master Franchise partner starts from there, not from zero.",
     },
   ],
 } as const;

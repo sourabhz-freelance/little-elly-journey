@@ -114,7 +114,7 @@ export const demographicsContent = {
       icon: "GraduationCap",
       stat: "#2 spend",
       title: "Education is the second thing an Indian family buys after a home",
-      body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through demonetisation, GST and a pandemic — and why fee realisation stays strong.",
+      body: "It is the last line item a household cuts and the first it stretches for. That is why the category held through downturns and a pandemic — and why fee realisation stays strong.",
       source: "Household consumption expenditure surveys, MoSPI",
       accent: "var(--orange)",
     },

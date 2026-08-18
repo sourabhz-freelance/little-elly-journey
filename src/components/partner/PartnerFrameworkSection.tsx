@@ -225,7 +225,7 @@ export default function PartnerFrameworkSection() {
           className="mx-auto mt-20 max-w-[24ch] text-center font-display leading-tight text-ink [font-size:clamp(1.5rem,3vw,2.4rem)]"
           {...rise(0.1)}
         >
-          “We stand by you at <span className="text-coral">every angle.</span>”
+          Structured support at <span className="text-coral">every level of the business.</span>
         </motion.p>
       </div>
     </section>

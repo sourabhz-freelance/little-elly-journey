@@ -77,7 +77,7 @@ function Flow({ f, i }: { f: (typeof R.flows)[number]; i: number }) {
           >
             {f.master > 0 && (
               <span className="font-display text-sm font-semibold text-cream">
-                You · {f.master}%
+                Master Franchise · {f.master}%
               </span>
             )}
           </motion.div>
@@ -90,7 +90,7 @@ function Flow({ f, i }: { f: (typeof R.flows)[number]; i: number }) {
             transition={{ duration: 0.9, ease: EASE, delay: 0.15 }}
           >
             <span className="font-display text-xs font-semibold text-ink/60">
-              Little Elly · {100 - f.master}%
+              Learning Edge · {100 - f.master}%
             </span>
           </motion.div>
         </div>
