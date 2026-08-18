@@ -9,7 +9,7 @@ type Props = { className?: string | undefined };
 
 const VB = "0 0 120 90";
 
-function Svg({ children, className }: { children: React.ReactNode; className?: string | undefined | undefined }) {
+function Svg({ children, className }: { children: React.ReactNode; className?: string | undefined }) {
   return (
     <svg
       viewBox={VB}
