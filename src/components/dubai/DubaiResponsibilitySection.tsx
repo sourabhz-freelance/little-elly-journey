@@ -1,7 +1,12 @@
 import { motion, useReducedMotion } from "framer-motion";
+import { Crown, Building2, KeyRound } from "lucide-react";
 import { dubaiResponsibility as R } from "@/content/dubai";
+import HoverReveal from "@/components/shared/HoverReveal";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+
+const ICONS = { Crown, Building2, KeyRound } as const;
+
 
 export default function DubaiResponsibilitySection() {
   const reduce = useReducedMotion();
