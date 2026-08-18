@@ -91,10 +91,10 @@ export default function Hero() {
         </motion.div>
 
         <motion.p
-          className="text-[11px] font-medium uppercase tracking-[0.2em] text-ink/45"
+          className="mt-1 font-display font-semibold leading-tight tracking-[-0.01em] text-ink [font-size:clamp(1.15rem,2.4vw,1.75rem)]"
           {...rise(1.05)}
         >
-          {C.proofTag}
+          {C.proofTag.split(" Preschool")[0]} <span className="text-coral">Preschool</span>
         </motion.p>
       </div>
 
