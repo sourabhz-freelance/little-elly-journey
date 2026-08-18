@@ -1,5 +1,7 @@
 import { motion, useReducedMotion } from "framer-motion";
 import { dubaiConsiderations as C } from "@/content/dubai";
+import HoverReveal from "@/components/shared/HoverReveal";
+import { WEIGH_ART } from "./weighArt";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -40,26 +42,40 @@ export default function DubaiConsiderationsSection() {
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2">
-          {C.items.map((it, i) => (
-            <motion.div
-              key={it.id}
-              {...rise(0.07 * i)}
-              className="rounded-3xl border bg-white/70 p-8 backdrop-blur-sm"
-              style={{ borderColor: `color-mix(in oklab, ${it.accent} 26%, transparent)` }}
-            >
-              <p
-                className="font-display text-4xl leading-none"
-                style={{ color: it.accent }}
-                aria-hidden="true"
-              >
-                {String(i + 1).padStart(2, "0")}
-              </p>
-              <p className="mt-4 font-display text-xl text-ink">{it.title}</p>
-              <p className="mt-3 text-[0.95rem] leading-relaxed text-ink/60">{it.body}</p>
-            </motion.div>
-          ))}
+        <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {C.items.map((it, i) => {
+            const Art = WEIGH_ART[it.art as keyof typeof WEIGH_ART];
+            return (
+              <motion.div key={it.id} {...rise(0.07 * i)}>
+                <HoverReveal
+                  accent={it.accent}
+                  className="h-full cursor-help rounded-3xl"
+                  detail={
+                    <div className="flex h-full flex-col justify-center">
+                      <p className="font-display text-lg leading-snug text-cream">{it.title}</p>
+                      <p className="mt-3 text-[0.9rem] leading-relaxed text-cream/85">{it.body}</p>
+                    </div>
+                  }
+                >
+                  <div
+                    className="flex h-full flex-col rounded-3xl border bg-white/70 p-7 backdrop-blur-sm"
+                    style={{ borderColor: `color-mix(in oklab, ${it.accent} 26%, transparent)` }}
+                  >
+                    <div
+                      className="flex h-24 items-center justify-center"
+                      style={{ color: it.accent }}
+                    >
+                      {Art ? <Art className="h-full w-auto" /> : null}
+                    </div>
+                    <p className="mt-6 font-display text-lg leading-snug text-ink">{it.title}</p>
+                    <p className="mt-2 text-[0.95rem] leading-snug text-ink/55">{it.line}</p>
+                  </div>
+                </HoverReveal>
+              </motion.div>
+            );
+          })}
         </div>
+
 
         <motion.div
           {...rise(0.1)}

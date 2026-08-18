@@ -49,29 +49,38 @@ export const dubaiOpportunity = {
   forces: [
     {
       id: "regulated",
+      art: "gate",
       title: "The regulator is the moat",
-      body: "KHDA sets the permit, the space per child, the staff-to-child ratio and the director standard. That is a barrier to the casual operator and an advantage to a system that already runs to those standards.",
+      line: "KHDA lets few in. We already qualify.",
+      body: "Permit, space per child, staff ratio, director standard — a barrier to the casual operator, an advantage to a system already built to it.",
       accent: "var(--coral)",
     },
     {
       id: "dualincome",
+      art: "twoincomes",
       title: "Dual income is the norm",
-      body: "Two working parents, no grandparents in the same city, long commutes. Full-day early years provision is the default requirement rather than the premium option.",
+      line: "Two salaries in. Full day, not optional.",
+      body: "Two working parents, no grandparents in the city, long commutes. Full-day early years is the default requirement.",
       accent: "var(--turquoise)",
     },
     {
       id: "quality",
-      title: "Parents shop on quality, not price",
-      body: "Fee policy is governed centrally so centres never compete against each other on price. Reputation, curriculum and inspection outcome decide the enrolment.",
+      art: "scales",
+      title: "Parents shop on quality",
+      line: "Fees are governed. Reputation decides.",
+      body: "Fee policy is set centrally, so centres never compete on price. Curriculum and inspection outcome win the enrolment.",
       accent: "var(--orange)",
     },
     {
       id: "residential",
-      title: "Demand sits inside the communities",
-      body: "Ground-floor premises with a shaded outdoor play area, in family-dense villa communities. The site rules narrow the map — which protects whoever gets there first.",
+      art: "community",
+      title: "Demand sits in the communities",
+      line: "Ground floor. Shaded play. Few such sites.",
+      body: "Family-dense villa communities, ground-floor premises with outdoor play. The site rules narrow the map — and protect whoever gets there first.",
       accent: "var(--periwinkle)",
     },
   ],
+
   disclaimer:
     "Figures are drawn from publicly available sources for orientation only. They are indicative, not a projection, and require confirmation from KHDA, DET and independent advisers.",
 } as const;
@@ -469,37 +478,47 @@ export const dubaiConsiderations = {
   kicker: "Said plainly",
   headline: ["What to weigh", "before you sign."],
   sub: "Four things a serious centre owner should press us on.",
+
   items: [
     {
       id: "counterparty",
+      art: "handshake",
       title: "FOCO counterparty",
-      body: "Under FOCO your income depends on the Master Franchisee continuing to operate. Assess the Master Franchisee as a counterparty, not only the centre as an asset.",
+      line: "Your rent depends on our operating.",
+      body: "Under FOCO your income continues only while the Master Franchisee keeps operating. Assess us as a counterparty, not only the centre as an asset.",
       accent: "var(--coral)",
     },
     {
       id: "specificity",
+      art: "purposebuilt",
       title: "Asset specificity",
-      body: "A KHDA-compliant early childhood centre is a purpose-built asset. If the operating agreement ends, redeployment needs a new licensed operator or a re-fit. The land and building retain independent value; the fit-out largely does not.",
+      line: "Building holds value. Fit-out mostly doesn't.",
+      body: "A KHDA-compliant centre is purpose-built. If the operating agreement ends, redeployment needs a new licensed operator or a re-fit.",
       accent: "var(--orange)",
     },
     {
       id: "variability",
+      art: "variable",
       title: "Variability",
-      body: "Consideration calculated on collections is variable, not fixed. It moves with enrolment and with the fee schedule, and it will be lower through the occupancy ramp than at maturity.",
+      line: "Collections move. So does the payout.",
+      body: "Consideration calculated on collections is variable, not fixed. It moves with enrolment and fees, and is lower through the ramp than at maturity.",
       accent: "var(--periwinkle)",
     },
     {
       id: "ramp",
+      art: "ramp",
       title: "The FOFO ramp",
-      body: "Under FOFO you carry staffing cost from opening while enrolment builds. Working capital should be planned separately from set-up cost.",
+      line: "Salaries start on day one. Enrolment doesn't.",
+      body: "Under FOFO you carry staffing cost from opening while enrolment builds. Plan working capital separately from set-up cost.",
       accent: "var(--turquoise)",
     },
   ],
   termSheet: {
     kicker: "And the numbers",
     title: "The rates live in the term sheet.",
-    body: "Commercial rates, term, payment cycle and transfer provisions are set out in the term sheet and governed by the definitive agreements. We would rather hand you a number we can stand behind than one that reads well on a slide.",
+    body: "Commercial rates, term, payment cycle and transfer provisions are set out in the term sheet and governed by the definitive agreements.",
     disclaimer:
       "This deck is a summary prepared for discussion. It is not an offer, and it does not constitute investment, legal or tax advice. Nothing in it is a representation or assurance as to financial performance or return. Prospective centre owners should take independent legal, tax and financial advice.",
   },
+
 } as const;

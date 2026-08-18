@@ -12,7 +12,6 @@ import DubaiAreasSection from "@/components/dubai/DubaiAreasSection";
 import OwnershipModelsSection from "@/components/dubai/OwnershipModelsSection";
 import DubaiPlatformSection from "@/components/dubai/DubaiPlatformSection";
 import DubaiResponsibilitySection from "@/components/dubai/DubaiResponsibilitySection";
-import DubaiNotesSection from "@/components/dubai/DubaiNotesSection";
 import DubaiConsiderationsSection from "@/components/dubai/DubaiConsiderationsSection";
 
 const title = "Little Elly Dubai — FOCO & FOFO Centre Ownership";
@@ -56,7 +55,6 @@ function DubaiDeck() {
       <OwnershipModelsSection />
       <DubaiPlatformSection />
       <DubaiResponsibilitySection />
-      <DubaiNotesSection />
       <DubaiConsiderationsSection />
     </main>
   );
