@@ -49,29 +49,38 @@ export const dubaiOpportunity = {
   forces: [
     {
       id: "regulated",
+      art: "gate",
       title: "The regulator is the moat",
-      body: "KHDA sets the permit, the space per child, the staff-to-child ratio and the director standard. That is a barrier to the casual operator and an advantage to a system that already runs to those standards.",
+      line: "KHDA lets few in. We already qualify.",
+      body: "Permit, space per child, staff ratio, director standard — a barrier to the casual operator, an advantage to a system already built to it.",
       accent: "var(--coral)",
     },
     {
       id: "dualincome",
+      art: "twoincomes",
       title: "Dual income is the norm",
-      body: "Two working parents, no grandparents in the same city, long commutes. Full-day early years provision is the default requirement rather than the premium option.",
+      line: "Two salaries in. Full day, not optional.",
+      body: "Two working parents, no grandparents in the city, long commutes. Full-day early years is the default requirement.",
       accent: "var(--turquoise)",
     },
     {
       id: "quality",
-      title: "Parents shop on quality, not price",
-      body: "Fee policy is governed centrally so centres never compete against each other on price. Reputation, curriculum and inspection outcome decide the enrolment.",
+      art: "scales",
+      title: "Parents shop on quality",
+      line: "Fees are governed. Reputation decides.",
+      body: "Fee policy is set centrally, so centres never compete on price. Curriculum and inspection outcome win the enrolment.",
       accent: "var(--orange)",
     },
     {
       id: "residential",
-      title: "Demand sits inside the communities",
-      body: "Ground-floor premises with a shaded outdoor play area, in family-dense villa communities. The site rules narrow the map — which protects whoever gets there first.",
+      art: "community",
+      title: "Demand sits in the communities",
+      line: "Ground floor. Shaded play. Few such sites.",
+      body: "Family-dense villa communities, ground-floor premises with outdoor play. The site rules narrow the map — and protect whoever gets there first.",
       accent: "var(--periwinkle)",
     },
   ],
+
   disclaimer:
     "Figures are drawn from publicly available sources for orientation only. They are indicative, not a projection, and require confirmation from KHDA, DET and independent advisers.",
 } as const;
