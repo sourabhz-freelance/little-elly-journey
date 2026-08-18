@@ -77,11 +77,12 @@ export function ArtTwoIncomes({ className }: Props) {
   const reduce = useReducedMotion();
   const pulse = (delay: number) =>
     reduce
-      ? undefined
+      ? {}
       : {
           animate: { x: delay === 0 ? [0, 20] : [0, -20], opacity: [0, 1, 0] },
           transition: { duration: 2.2, repeat: Infinity, delay, ease: "easeInOut" as const },
         };
+
   return (
     <Svg className={className}>
       {/* two parents */}
