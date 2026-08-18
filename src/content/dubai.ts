@@ -478,14 +478,7 @@ export const dubaiConsiderations = {
   kicker: "Said plainly",
   headline: ["What to weigh", "before you sign."],
   sub: "Four things a serious centre owner should press us on.",
-  items: [
-    {
-      id: "counterparty",
-      title: "FOCO counterparty",
-      body: "Under FOCO your income depends on the Master Franchisee continuing to operate. Assess the Master Franchisee as a counterparty, not only the centre as an asset.",
-      accent: "var(--coral)",
-    },
-  sub: "Four things a serious centre owner should press us on.",
+
   items: [
     {
       id: "counterparty",
