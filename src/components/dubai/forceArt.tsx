@@ -5,11 +5,11 @@ import { motion, useReducedMotion } from "framer-motion";
  * Colour comes from the parent via `color` / currentColor.
  */
 
-type Props = { className?: string };
+type Props = { className?: string | undefined };
 
 const VB = "0 0 120 90";
 
-function Svg({ children, className }: { children: React.ReactNode; className?: string }) {
+function Svg({ children, className }: { children: React.ReactNode; className?: string | undefined | undefined }) {
   return (
     <svg
       viewBox={VB}
@@ -37,7 +37,7 @@ export function ArtGate({ className }: Props) {
           stroke="currentColor"
           strokeOpacity={0.2}
           strokeWidth={2}
-          animate={reduce ? undefined : { x: [0, 8, 0] }}
+          animate={reduce ? {} : { x: [0, 8, 0] }}
           transition={{ duration: 4 + i, repeat: Infinity, ease: "easeInOut" }}
         />
       ))}
@@ -48,7 +48,7 @@ export function ArtGate({ className }: Props) {
       <path d="M30 20 q30 -14 60 0" stroke="currentColor" strokeWidth={3} />
       {/* bars that lift open */}
       <motion.g
-        animate={reduce ? undefined : { y: [0, -16, -16, 0] }}
+        animate={reduce ? {} : { y: [0, -16, -16, 0] }}
         transition={{ duration: 5, repeat: Infinity, times: [0, 0.3, 0.8, 1], ease: "easeInOut" }}
       >
         {[0, 1, 2].map((i) => (
@@ -63,7 +63,7 @@ export function ArtGate({ className }: Props) {
       </motion.g>
       {/* the one who gets through */}
       <motion.g
-        animate={reduce ? undefined : { x: [-16, 0, 34, 34] }}
+        animate={reduce ? {} : { x: [-16, 0, 34, 34] }}
         transition={{ duration: 5, repeat: Infinity, times: [0, 0.3, 0.8, 1], ease: "easeInOut" }}
       >
         <circle cx="52" cy="52" r="6" fill="currentColor" />
@@ -138,7 +138,7 @@ export function ArtScales({ className }: Props) {
       <path d="M46 70 h28" stroke="currentColor" strokeWidth={3} />
       <motion.g
         style={{ originX: "60px", originY: "26px" }}
-        animate={reduce ? undefined : { rotate: [0, -9, -9, 0] }}
+        animate={reduce ? {} : { rotate: [0, -9, -9, 0] }}
         transition={{ duration: 5, repeat: Infinity, times: [0, 0.35, 0.85, 1], ease: "easeInOut" }}
       >
         <path d="M22 26 H98" stroke="currentColor" strokeWidth={3} />
@@ -154,7 +154,7 @@ export function ArtScales({ className }: Props) {
       <motion.path
         d="M22 14 l2.6 5.4 5.9.8-4.3 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8-4.3-4.1 5.9-.8z"
         fill="currentColor"
-        animate={reduce ? undefined : { scale: [1, 1.15, 1] }}
+        animate={reduce ? {} : { scale: [1, 1.15, 1] }}
         transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
         style={{ originX: "22px", originY: "22px" }}
       />
@@ -178,7 +178,7 @@ export function ArtCommunity({ className }: Props) {
       ))}
       {/* the centre */}
       <motion.g
-        animate={reduce ? undefined : { y: [0, -3, 0] }}
+        animate={reduce ? {} : { y: [0, -3, 0] }}
         transition={{ duration: 3.4, repeat: Infinity, ease: "easeInOut" }}
       >
         <path d="M46 40 l14 -13 14 13" stroke="currentColor" strokeWidth={3} />
@@ -214,7 +214,7 @@ export function ArtCommunity({ className }: Props) {
           stroke="currentColor"
           strokeOpacity={0.25}
           strokeWidth={2}
-          animate={reduce ? undefined : { scale: [0.6, 1.25], opacity: [0.4, 0] }}
+          animate={reduce ? {} : { scale: [0.6, 1.25], opacity: [0.4, 0] }}
           transition={{ duration: 3, repeat: Infinity, delay: i * 1.5, ease: "easeOut" }}
           style={{ originX: "60px", originY: "51px" }}
         />
