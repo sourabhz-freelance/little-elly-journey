@@ -9,6 +9,7 @@ import {
   Landmark,
 } from "lucide-react";
 import { dubaiPlatform as P } from "@/content/dubai";
+import HoverReveal from "@/components/shared/HoverReveal";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 
@@ -34,8 +35,6 @@ export default function DubaiPlatformSection() {
           transition: { duration: 0.7, ease: EASE, delay },
         };
 
-  const total = P.clusters.reduce((n, c) => n + c.items.length, 0);
-
   return (
     <section
       className="relative w-full overflow-hidden bg-cream px-6 py-28 sm:px-10 lg:py-36"
@@ -56,47 +55,79 @@ export default function DubaiPlatformSection() {
           <h2 className="mx-auto mt-5 max-w-[18ch] font-display font-semibold leading-[1.05] tracking-[-0.03em] text-ink [font-size:clamp(2.2rem,5vw,3.9rem)]">
             {P.headline[0]} <span className="text-coral">{P.headline[1]}</span>
           </h2>
-          <p className="mx-auto mt-6 max-w-[48ch] text-base leading-relaxed text-ink/55 sm:text-lg">
+          <p className="mx-auto mt-6 max-w-[46ch] text-base leading-relaxed text-ink/55 sm:text-lg">
             {P.sub}
-          </p>
-          <p className="mt-6 text-[11px] font-semibold uppercase tracking-[0.24em] text-ink/35">
-            {total} things we carry
           </p>
         </motion.div>
 
-        <div className="mt-14 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-14 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
           {P.clusters.map((c, i) => {
             const Icon = ICONS[c.icon as keyof typeof ICONS] ?? Sparkles;
+            const featured = i === 0;
             return (
               <motion.div
                 key={c.id}
-                {...rise(0.06 * i)}
-                className="flex flex-col rounded-3xl border bg-white/70 p-8 backdrop-blur-sm"
-                style={{ borderColor: `color-mix(in oklab, ${c.accent} 26%, transparent)` }}
+                {...rise(0.05 * i)}
+                className={featured ? "lg:col-span-1" : undefined}
               >
-                <span
-                  className="flex h-11 w-11 items-center justify-center rounded-2xl"
-                  style={{
-                    background: `color-mix(in oklab, ${c.accent} 16%, transparent)`,
-                    color: c.accent,
-                  }}
-                  aria-hidden="true"
+                <HoverReveal
+                  accent={c.accent}
+                  className="h-[248px] rounded-[1.75rem]"
+                  detail={
+                    <div className="flex h-full flex-col">
+                      <p className="font-display text-lg leading-snug text-white">{c.title}</p>
+                      <ul className="mt-3 space-y-2 overflow-hidden">
+                        {c.items.map((it) => (
+                          <li
+                            key={it}
+                            className="flex gap-2.5 text-[0.78rem] leading-snug text-white/85"
+                          >
+                            <span
+                              className="mt-[7px] h-1 w-1 shrink-0 rounded-full bg-white/70"
+                              aria-hidden="true"
+                            />
+                            {it}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  }
                 >
-                  <Icon className="h-5 w-5" />
-                </span>
-                <p className="mt-5 font-display text-lg leading-snug text-ink">{c.title}</p>
-                <ul className="mt-4 space-y-2.5">
-                  {c.items.map((it) => (
-                    <li key={it} className="flex gap-3 text-[0.9rem] leading-relaxed text-ink/60">
+                  <div
+                    className="flex h-[248px] flex-col justify-between rounded-[1.75rem] border bg-white/70 p-7 backdrop-blur-sm"
+                    style={{ borderColor: `color-mix(in oklab, ${c.accent} 24%, transparent)` }}
+                  >
+                    <div className="flex items-start justify-between">
                       <span
-                        className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full"
-                        style={{ background: c.accent }}
+                        className="flex h-14 w-14 items-center justify-center rounded-2xl"
+                        style={{
+                          background: `color-mix(in oklab, ${c.accent} 15%, transparent)`,
+                          color: c.accent,
+                        }}
                         aria-hidden="true"
-                      />
-                      {it}
-                    </li>
-                  ))}
-                </ul>
+                      >
+                        <Icon className="h-6 w-6" />
+                      </span>
+                      <span
+                        className="font-display text-2xl leading-none"
+                        style={{ color: `color-mix(in oklab, ${c.accent} 35%, transparent)` }}
+                        aria-hidden="true"
+                      >
+                        {String(i + 1).padStart(2, "0")}
+                      </span>
+                    </div>
+                    <div>
+                      <p className="font-display text-xl leading-snug text-ink">{c.title}</p>
+                      <p className="mt-2 text-[0.92rem] leading-relaxed text-ink/55">{c.essence}</p>
+                      <p
+                        className="mt-4 text-[10px] font-semibold uppercase tracking-[0.2em]"
+                        style={{ color: `color-mix(in oklab, ${c.accent} 70%, transparent)` }}
+                      >
+                        Hover for detail
+                      </p>
+                    </div>
+                  </div>
+                </HoverReveal>
               </motion.div>
             );
           })}
