@@ -2,7 +2,7 @@
 export const curriculumContent = {
   kicker: "The curriculum behind the brand",
   headline: ["1 lakh+ parents have loved", "our H.A.P.P.Y. curriculum"],
-  proof: ["1 lakh+ parents", "Every letter of H.A.P.P.Y. built into the day"],
+  proof: ["Every letter of H.A.P.P.Y. built into the day"],
 
   wheelKicker: "One curriculum, three circles",
   wheelLead: "Five commitments — H, A, P, P, Y — the child at the centre of all of them.",
