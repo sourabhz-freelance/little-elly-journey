@@ -115,7 +115,7 @@ export default function MarketSection() {
         </div>
 
         <div className="mt-8">
-          <GrowthChart />
+          <CompositionPanel />
         </div>
       </div>
     </section>
