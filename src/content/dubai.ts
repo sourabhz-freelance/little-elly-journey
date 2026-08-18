@@ -485,30 +485,47 @@ export const dubaiConsiderations = {
       body: "Under FOCO your income depends on the Master Franchisee continuing to operate. Assess the Master Franchisee as a counterparty, not only the centre as an asset.",
       accent: "var(--coral)",
     },
+  sub: "Four things a serious centre owner should press us on.",
+  items: [
+    {
+      id: "counterparty",
+      art: "handshake",
+      title: "FOCO counterparty",
+      line: "Your rent depends on our operating.",
+      body: "Under FOCO your income continues only while the Master Franchisee keeps operating. Assess us as a counterparty, not only the centre as an asset.",
+      accent: "var(--coral)",
+    },
     {
       id: "specificity",
+      art: "purposebuilt",
       title: "Asset specificity",
-      body: "A KHDA-compliant early childhood centre is a purpose-built asset. If the operating agreement ends, redeployment needs a new licensed operator or a re-fit. The land and building retain independent value; the fit-out largely does not.",
+      line: "Building holds value. Fit-out mostly doesn't.",
+      body: "A KHDA-compliant centre is purpose-built. If the operating agreement ends, redeployment needs a new licensed operator or a re-fit.",
       accent: "var(--orange)",
     },
     {
       id: "variability",
+      art: "variable",
       title: "Variability",
-      body: "Consideration calculated on collections is variable, not fixed. It moves with enrolment and with the fee schedule, and it will be lower through the occupancy ramp than at maturity.",
+      line: "Collections move. So does the payout.",
+      body: "Consideration calculated on collections is variable, not fixed. It moves with enrolment and fees, and is lower through the ramp than at maturity.",
       accent: "var(--periwinkle)",
     },
     {
       id: "ramp",
+      art: "ramp",
       title: "The FOFO ramp",
-      body: "Under FOFO you carry staffing cost from opening while enrolment builds. Working capital should be planned separately from set-up cost.",
+      line: "Salaries start on day one. Enrolment doesn't.",
+      body: "Under FOFO you carry staffing cost from opening while enrolment builds. Plan working capital separately from set-up cost.",
       accent: "var(--turquoise)",
     },
   ],
   termSheet: {
     kicker: "And the numbers",
     title: "The rates live in the term sheet.",
-    body: "Commercial rates, term, payment cycle and transfer provisions are set out in the term sheet and governed by the definitive agreements. We would rather hand you a number we can stand behind than one that reads well on a slide.",
+    body: "Commercial rates, term, payment cycle and transfer provisions are set out in the term sheet and governed by the definitive agreements.",
     disclaimer:
       "This deck is a summary prepared for discussion. It is not an offer, and it does not constitute investment, legal or tax advice. Nothing in it is a representation or assurance as to financial performance or return. Prospective centre owners should take independent legal, tax and financial advice.",
   },
+
 } as const;
