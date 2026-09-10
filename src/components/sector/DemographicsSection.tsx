@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { demographicsContent as D } from "@/content/sector";
 import { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } from "lucide-react";
+import { DEFAULT_STATE_ID, STATE_STATS } from "@/content/states";
+import { StateSelectorBar } from "./StateSelector";
 
 const ICONS = { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } as const;
 
@@ -9,6 +11,37 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function DemographicsSection() {
   const [open, setOpen] = useState<string | null>(D.drivers[0].id);
+  const [selectedId, setSelectedId] = useState(DEFAULT_STATE_ID);
+  const stateBlockRef = useRef<HTMLDivElement>(null);
+  const state = STATE_STATS.find((s) => s.id === selectedId) ?? STATE_STATS[0]!;
+
+  const regionCards = [
+    {
+      id: "people",
+      value: state.people,
+      label: `People in ${state.name}`,
+      note: "A large, young consumer market on your doorstep.",
+      source: "Census 2011",
+      accent: "var(--coral)",
+    },
+    {
+      id: "children",
+      value: state.children,
+      label: "Children aged 0–6",
+      note: "The cohort that walks into a preschool, refreshed every year.",
+      source: "Census 2011",
+      accent: "var(--turquoise)",
+    },
+    {
+      id: "urban",
+      value: state.urban,
+      label: "Urban population share",
+      note: "Urban families are the ones who buy structured early years.",
+      source: "Census 2011",
+      accent: "var(--orange)",
+    },
+  ];
+
 
   return (
     <section
@@ -23,6 +56,17 @@ export default function DemographicsSection() {
         }}
       />
       <div className="relative z-10 mx-auto max-w-5xl">
+        <StateSelectorBar
+          state={state}
+          onSelect={(id) => {
+            setSelectedId(id);
+            window.setTimeout(
+              () => stateBlockRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+              120,
+            );
+          }}
+        />
+
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 24 }}
@@ -139,12 +183,12 @@ export default function DemographicsSection() {
         {/* hairline break, then the state */}
         <div className="mx-auto mt-20 h-px w-full max-w-3xl bg-ink/10" />
 
-        <div className="mt-16">
+        <div className="mt-16 scroll-mt-24" ref={stateBlockRef}>
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/40">
-            {D.regionKicker}
+            Closer to home — {state.name}
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-3">
-            {D.region.map((r, i) => (
+            {regionCards.map((r, i) => (
               <motion.div
                 key={r.id}
                 initial={{ opacity: 0, y: 18 }}
@@ -154,12 +198,21 @@ export default function DemographicsSection() {
                 className="rounded-3xl border bg-white/70 p-7 backdrop-blur-sm"
                 style={{ borderColor: `color-mix(in oklab, ${r.accent} 26%, transparent)` }}
               >
-                <p
-                  className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:clamp(2rem,3.6vw,2.75rem)]"
-                  style={{ color: r.accent }}
-                >
-                  {r.value}
-                </p>
+                <div className="overflow-hidden">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={`${state.id}-${r.id}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.32, ease: EASE }}
+                      className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:clamp(2rem,3.6vw,2.75rem)]"
+                      style={{ color: r.accent }}
+                    >
+                      {r.value}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
                 <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
                   {r.label}
                 </p>
@@ -169,7 +222,8 @@ export default function DemographicsSection() {
             ))}
           </div>
           <p className="mx-auto mt-5 max-w-[70ch] text-center text-xs leading-relaxed text-ink/35">
-            {D.regionNote}
+            Source: Census of India 2011. The three figures above tailor to the state selected for
+            this meeting, and reset to the default when the page is refreshed.
           </p>
         </div>
 
