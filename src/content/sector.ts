@@ -58,6 +58,9 @@ export const demographicsContent = {
   headline: ["India's child population remains significant.", "The opportunity is evolving."],
   sub: "Seven structural forces, none of them a trend. Tap a force to open it.",
 
+  /** India-wide case, shown first. */
+  indiaKicker: "Why India is a great place to build a preschool business",
+
   /** Andhra Pradesh & Telangana — the territory in question, not all of India. */
   regionKicker: "Closer to home — Andhra Pradesh & Telangana",
   region: [
