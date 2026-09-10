@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { demographicsContent as D } from "@/content/sector";
 import { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } from "lucide-react";
+import { DEFAULT_STATE_ID, STATE_STATS } from "@/content/states";
+import { StateSelectorBar } from "./StateSelector";
 
 const ICONS = { Baby, TrendingUp, Briefcase, Landmark, Users, Home, GraduationCap } as const;
 
@@ -9,6 +11,37 @@ const EASE = [0.22, 1, 0.36, 1] as const;
 
 export default function DemographicsSection() {
   const [open, setOpen] = useState<string | null>(D.drivers[0].id);
+  const [selectedId, setSelectedId] = useState(DEFAULT_STATE_ID);
+  const stateBlockRef = useRef<HTMLDivElement>(null);
+  const state = STATE_STATS.find((s) => s.id === selectedId) ?? STATE_STATS[0]!;
+
+  const regionCards = [
+    {
+      id: "people",
+      value: state.people,
+      label: `People in ${state.name}`,
+      note: "A large, young consumer market on your doorstep.",
+      source: "Census 2011",
+      accent: "var(--coral)",
+    },
+    {
+      id: "children",
+      value: state.children,
+      label: "Children aged 0–6",
+      note: "The cohort that walks into a preschool, refreshed every year.",
+      source: "Census 2011",
+      accent: "var(--turquoise)",
+    },
+    {
+      id: "urban",
+      value: state.urban,
+      label: "Urban population share",
+      note: "Urban families are the ones who buy structured early years.",
+      source: "Census 2011",
+      accent: "var(--orange)",
+    },
+  ];
+
 
   return (
     <section
