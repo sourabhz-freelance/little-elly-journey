@@ -33,40 +33,29 @@ export function StateSelectorBar({
   return (
     <>
       <div className="relative mx-auto mb-16 w-full max-w-xl text-center">
-        <div
-          className="pointer-events-none absolute inset-x-0 -inset-y-6 rounded-[3rem]"
-          style={{
-            background:
-              "radial-gradient(60% 120% at 50% 50%, color-mix(in oklab, var(--coral) 12%, transparent), transparent 75%)",
-          }}
-        />
-        <TrailWisp className="pointer-events-none absolute inset-x-0 -bottom-2 mx-auto w-[80%] opacity-40" />
-        <Paw className="pointer-events-none absolute -left-2 -top-4 h-10 w-10 opacity-[0.13]" />
-        <Paw className="pointer-events-none absolute -right-1 bottom-0 h-8 w-8 rotate-12 opacity-[0.1]" />
+        <Paw className="pointer-events-none absolute -left-2 -top-4 h-9 w-9 opacity-[0.06]" />
 
-        <p className="relative text-[11px] font-medium uppercase tracking-[0.24em] text-ink/35">
-          Personalise the numbers to who&apos;s in the room.
+        <p className="relative text-[10px] font-medium uppercase tracking-[0.28em] text-ink/40">
+          Region shown
         </p>
 
         <motion.button
           type="button"
           onClick={() => setOpen(true)}
-          whileHover={{ y: -2 }}
+          whileHover={{ y: -1 }}
           transition={{ duration: 0.25, ease: EASE }}
           aria-haspopup="dialog"
           aria-expanded={open}
-          className="relative mt-4 inline-flex items-center gap-3 rounded-full border border-coral/25 bg-white/85 px-7 py-3.5 text-left shadow-[0_10px_30px_-14px_color-mix(in_oklab,var(--coral)_55%,transparent)] backdrop-blur-sm transition-shadow hover:shadow-[0_18px_44px_-16px_color-mix(in_oklab,var(--coral)_70%,transparent)]"
+          className="group relative mt-3 inline-flex items-center gap-2.5 rounded-full border border-ink/10 bg-white/70 px-5 py-2.5 text-left shadow-[0_4px_14px_-10px_color-mix(in_oklab,var(--ink)_60%,transparent)] backdrop-blur-sm transition-colors hover:border-coral/40"
         >
-          <span
-            className="flex h-8 w-8 items-center justify-center rounded-full"
-            style={{ background: "color-mix(in oklab, var(--coral) 14%, transparent)", color: "var(--coral)" }}
+          <MapPin
+            size={15}
+            strokeWidth={1.9}
+            className="text-ink/35 transition-colors group-hover:text-coral"
             aria-hidden="true"
-          >
-            <MapPin size={16} strokeWidth={1.9} />
-          </span>
-          <span className="text-[0.95rem] text-ink/55">Tailoring this for</span>
-          <span className="font-display text-lg font-semibold text-coral">{state.name}</span>
-          <ChevronDown size={18} strokeWidth={1.9} className="text-ink/30" aria-hidden="true" />
+          />
+          <span className="font-display text-base font-semibold text-coral">{state.name}</span>
+          <ChevronDown size={16} strokeWidth={1.9} className="text-ink/30" aria-hidden="true" />
         </motion.button>
       </div>
 

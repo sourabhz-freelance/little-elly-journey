@@ -222,8 +222,7 @@ export default function DemographicsSection() {
             ))}
           </div>
           <p className="mx-auto mt-5 max-w-[70ch] text-center text-xs leading-relaxed text-ink/35">
-            Source: Census of India 2011. The three figures above tailor to the state selected for
-            this meeting, and reset to the default when the page is refreshed.
+            Source: Census of India 2011.
           </p>
         </div>
 
