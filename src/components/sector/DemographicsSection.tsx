@@ -172,12 +172,12 @@ export default function DemographicsSection() {
         {/* hairline break, then the state */}
         <div className="mx-auto mt-20 h-px w-full max-w-3xl bg-ink/10" />
 
-        <div className="mt-16">
+        <div className="mt-16 scroll-mt-24" ref={stateBlockRef}>
           <p className="text-center text-[11px] font-semibold uppercase tracking-[0.28em] text-ink/40">
-            {D.regionKicker}
+            Closer to home — {state.name}
           </p>
           <div className="mt-6 grid gap-5 sm:grid-cols-3">
-            {D.region.map((r, i) => (
+            {regionCards.map((r, i) => (
               <motion.div
                 key={r.id}
                 initial={{ opacity: 0, y: 18 }}
