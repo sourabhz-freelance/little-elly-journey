@@ -187,12 +187,21 @@ export default function DemographicsSection() {
                 className="rounded-3xl border bg-white/70 p-7 backdrop-blur-sm"
                 style={{ borderColor: `color-mix(in oklab, ${r.accent} 26%, transparent)` }}
               >
-                <p
-                  className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:clamp(2rem,3.6vw,2.75rem)]"
-                  style={{ color: r.accent }}
-                >
-                  {r.value}
-                </p>
+                <div className="overflow-hidden">
+                  <AnimatePresence mode="wait" initial={false}>
+                    <motion.p
+                      key={`${state.id}-${r.id}`}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.32, ease: EASE }}
+                      className="font-display font-semibold leading-none tracking-[-0.02em] [font-size:clamp(2rem,3.6vw,2.75rem)]"
+                      style={{ color: r.accent }}
+                    >
+                      {r.value}
+                    </motion.p>
+                  </AnimatePresence>
+                </div>
                 <p className="mt-4 text-[11px] font-semibold uppercase tracking-[0.22em] text-ink/40">
                   {r.label}
                 </p>
