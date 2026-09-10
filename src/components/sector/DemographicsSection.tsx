@@ -56,6 +56,17 @@ export default function DemographicsSection() {
         }}
       />
       <div className="relative z-10 mx-auto max-w-5xl">
+        <StateSelectorBar
+          state={state}
+          onSelect={(id) => {
+            setSelectedId(id);
+            window.setTimeout(
+              () => stateBlockRef.current?.scrollIntoView({ behavior: "smooth", block: "center" }),
+              120,
+            );
+          }}
+        />
+
         <motion.div
           className="text-center"
           initial={{ opacity: 0, y: 24 }}
@@ -211,7 +222,8 @@ export default function DemographicsSection() {
             ))}
           </div>
           <p className="mx-auto mt-5 max-w-[70ch] text-center text-xs leading-relaxed text-ink/35">
-            {D.regionNote}
+            Source: Census of India 2011. The three figures above tailor to the state selected for
+            this meeting, and reset to the default when the page is refreshed.
           </p>
         </div>
 
