@@ -153,11 +153,10 @@ function StateOverlay({
 
             <div className="max-h-[86vh] overflow-y-auto px-7 py-9 sm:px-10">
               <h3 className="font-display text-2xl font-semibold tracking-[-0.02em] text-ink sm:text-3xl">
-                Who&apos;s in the room?
+                Choose a state or union territory
               </h3>
               <p className="mt-3 max-w-[52ch] text-sm leading-relaxed text-ink/60">
-                Pick the state or union territory your prospect is from — the three figures below
-                will speak to them. Your choice resets when the page is refreshed.
+                See the early-years opportunity where you are.
               </p>
 
               <input
